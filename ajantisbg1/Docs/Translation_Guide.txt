@@ -1,0 +1,38 @@
+Translation guide for the romance part of the Ajantis Expansion Mod (AEM): Differences to the BG1NPC Project tra-lines. Why double the work?
+
+In this document it is specified which textlines were directly taken out of the BG1NPC Project Ajantis romance. The BG1 romance had to be altered a bit due to the restrictions of the BG1 engine, so there are new lines, but a lot of them are the same as in the BG1NPC Project.
+
+Note: Some textlines are combined with sound references. For BG1, the soundfiles are called [AJANTXX], "XX" being a number. In the BG1NPC Project, the soundfiles are given in the form [%tutu_var%AJANTXX]. This should be adjusted accordingly, if translations are taken from one mod for the other. Apart from that, the wording is the same if specified below.
+
+
+File "Ajantis_Messenger.tra" from AEM is equivalent to "x#ajroadd_pr.tra" from BG1NPC Project: Fully equivalent, including the numbering.
+
+All lines in file "Ajantis_RepReactions.tra" from AEM are equivalent to the lines with the same number in "x#ajint.tra" from BG1NPC Project.
+
+File "ajantisbhaallts.tra" from AEM is equivalent to "x#ajantisbhaallts.tra" from BG1NPC Project: Fully equivalent, including the numbering.
+
+File "ajantisbhaallts_RA1.tra" from AEM is equivalent to lines @132 to @201 in "x#ajint.tra" from BG1NPC Project: Fully equivalent, including the numbering.
+
+File "ajantisdreamlts.tra" from AEM is equivalent to "x#ajantisdreamlts.tra" from BG1NPC Project: Fully equivalent, including the numbering.
+
+File "Ajantisiniflirts_d.tra" from AEM is equivalent to "x#ajantisiniflirts_pr.tra" from BG1NPC Project: Fully equivalent, including the numbering.
+
+File "AjantisLTs.tra" from AEM, @0 to line @1262: equivalent to the lines with the same number in "x#ajantislts_pr.tra" from BG1NPC Project. 
+Note: In "AjantisLTs.tra" (from AEM), there are not used lines in between that were taken out for the English version. They don't have to be taken out, though, so the translations of lines @0 to @1262 could be copied&pasted directly from the BG1NPC Project, if available. If the translation from AEM should be used for BG1NPC Project, make sure you add the missing lines (there are several).
+
+All lines in file "AjantisLTs_Add.tra" from AEM are equivalent to the lines with the same number in "x#ajantisaddlts_pr.tra" from BG1NPC Project.
+
+All lines in file "AjantisPC_PID.tra" from AEM are equivalent to the lines with the same number in "x#pcinit_tmp.tra" from BG1NPC Project.
+
+File "AjantisPCiniflirts.tra" from AEM, @0 to line @339: equivalent to the lines with the same number in "x#ajpcfl_tmp.tra" from BG1NPC Project. 
+
+File "AjantisRomnpc_talks.tra" from AEM is equivalent to "x#ajantisnpc_talks_pr.tra" from BG1NPC Project: Fully equivalent, including the numbering.
+
+
+
+
+
+
+
+
+

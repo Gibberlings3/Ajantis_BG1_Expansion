@@ -1,0 +1,38 @@
+/* tp2, d, and baf parsing variables based on conversion */
+    OUTER_SPRINT "tutu_var" ""
+
+    /* BGT-only shutdown of D and BAF after BG1 content */
+    OUTER_SPRINT ~BGT_VAR~ ~~
+
+/* Set BG1 Joined Dialogue Files */
+    OUTER_SPRINT "AJANTIS_JOINED" "AJANTJ"
+
+/* BG1 Chapters */
+    OUTER_SPRINT "tutu_chapter_1" "1"
+    OUTER_SPRINT "tutu_chapter_2" "2"
+    OUTER_SPRINT "tutu_chapter_3" "3"
+    OUTER_SPRINT "tutu_chapter_4" "4"
+    OUTER_SPRINT "tutu_chapter_5" "5"
+    OUTER_SPRINT "tutu_chapter_6" "6"
+    OUTER_SPRINT "tutu_chapter_7" "7"
+    OUTER_SPRINT "PrologueChapter" "0"
+    OUTER_SPRINT "PrologueChapterAdvance" "0"
+
+
+
+/* These definitions are designed for this mod: differences between BG1 and Tutu/BGT */
+OUTER_SPRINT ~CLERIC_ALL~ ~CLERIC~
+
+OUTER_SPRINT ~AJANTIS_SHIELD~ ~X#AJSBG1~ 
+OUTER_SPRINT ~PARTY_RESTED~ ~GlobalGT("X#AjantisRomanceRestCounter","GLOBAL",1)
+	GlobalTimerNotExpired("X#AjantisRomanceRestAfterTimer","GLOBAL")~
+OUTER_SPRINT ~SET_FP_TIMER_1DAY~ ~SetGlobalTimer("C#AjantisFPTimer","GLOBAL",ONE_DAY)~
+OUTER_SPRINT ~SET_FP_TIMER~ ~SetGlobalTimer("C#AjantisFPTimer","GLOBAL",SIX_DAYS)~
+OUTER_SPRINT ~FP_TIMER_EXPIRED~ ~GlobalTimerExpired("C#AjantisFPTimer","GLOBAL")~
+OUTER_SPRINT ~AreaCheck_Undercity~ ~Global("Z!EmulAreaCheck","GLOBAL",123)~
+OUTER_SPRINT
+~AreaCheck_CandlekCellarL1~ ~Global("Z!EmulAreaCheck","GLOBAL",2615)~
+OUTER_SPRINT ~AreaCheck_OUTDOOR~ ~Global("Z!EmulAreaOutdoor","GLOBAL",1)~
+OUTER_SPRINT ~CombatCounter_0~ ~!GlobalTimerNotExpired("Z!EnemySeenPeriod60","GLOBAL")~
+OUTER_SPRINT ~InMyArea_Player1~ ~Detect(Player1)~
+OUTER_SPRINT ~InMyArea_Ajantis~ ~Detect("ajantis")~

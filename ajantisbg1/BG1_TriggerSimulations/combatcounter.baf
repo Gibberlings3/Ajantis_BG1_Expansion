@@ -1,0 +1,32 @@
+IF
+   Global("Z!EnemyAlreadySeen","LOCALS",0)
+   InParty(Myself)
+   See([ENEMY])
+   ActionListEmpty()
+THEN
+   RESPONSE #100
+      SetGlobal("Z!EnemyAlreadySeen","LOCALS",1)
+END
+
+IF
+   Global("Z!EnemyAlreadySeen","LOCALS",0)
+   InParty(Myself)
+   Died([ENEMY])
+THEN
+   RESPONSE #100
+      SetGlobal("Z!EnemyAlreadySeen","LOCALS",1)
+END
+
+IF
+  InParty(Myself)
+  !See([ENEMY])
+  Global("Z!EnemyAlreadySeen","LOCALS",1)
+THEN
+RESPONSE #100
+  SetGlobal("Z!EnemyAlreadySeen","LOCALS",0)
+  SetGlobalTimer("Z!EnemySeenPeriod30","GLOBAL",30) // halbe Minute, halbe Tour im Spiel
+  SetGlobalTimer("Z!EnemySeenPeriod60","GLOBAL",60) //eineMinute, volle Tour im Spiel
+  SetGlobalTimer("Z!EnemySeenPeriod150","GLOBAL",150) //reale 2,5 Minuten, halbe Stunde im Spiel
+  SetGlobalTimer("Z!EnemySeenPeriod900","GLOBAL",900) // drei Stunden im Spiel
+  SetGlobalTimer("Z!EnemySeenPeriod7200","GLOBAL",7200) // Tag und Nacht im Spiel
+END

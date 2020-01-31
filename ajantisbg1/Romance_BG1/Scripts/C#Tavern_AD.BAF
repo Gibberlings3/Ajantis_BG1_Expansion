@@ -1,0 +1,21 @@
+IF
+	InParty("ajantis")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisReadyForNT","GLOBAL",1)
+THEN
+  RESPONSE #100	
+  SetGlobal("X#AjantisReadyForNT","GLOBAL",2)
+  SetGlobal("X#AjantisRomanceNight3","GLOBAL",1)
+  SetGlobal("X#AjantisRomanceWaitLT","GLOBAL",2)
+END
+
+IF
+	InParty("ajantis")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisReadyForNT1","GLOBAL",1)
+THEN
+  RESPONSE #100	
+  SetGlobal("X#AjantisReadyForNT1","GLOBAL",2)
+END

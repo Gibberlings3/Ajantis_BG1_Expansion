@@ -1,0 +1,14 @@
+@0    = ~Messire Raleo Lancebrise ! Je suis enchanté de voir que vos voyages vous ont mené ici, mon seigneur. Comment se porte votre famille ?~
+@1    = ~Ah, le plus jeune des rejetons Ilvastarr. Vous êtes impressionnant avec toutes ces armes et cette armure.~
+@2    = ~Merci, Seigneur Lancebrise.~
+@3    = ~Ma famille se portait bien, du moins lorsque je les ai quittés. Eila devient une jeune dame, désormais, messire écuyer, vous seriez surpris si vous la voyiez.~
+@4    = ~Si vous le dites, mon seigneur.~
+@5    = ~Mes excuses pour cette interruption, <CHARNAME>. Messire Lancebrise est un ami de mes parents. Son frère, le Seigneur des Collines de Lancevent, en Amn, est un allié de l'Ordre du Coeur Radieux.~
+@6    = ~Je suis heureux d'entendre que votre famille se porte bien. Remettez-leur mes salutations, la prochaine fois que vos voyages vous ramènent chez vous.~
+@7    = ~Bien sûr. Cela ne sera pas pour tout de suite, cependant. Mais à présent, je suis certain que votre camarade a des questions à propos de cette ville, n'est-ce pas ?~
+@8    = ~Ne soyez pas timide, posez vos questions.~
+
+/* new for v13 */
+@9   = ~Mendas? Mendas from Warerdeep? I never... But I have been away from my home for quite a while... <CHARNAME>, as intriguing as this expedition does sound, we do not have time for this now. Leave this expedition to more experienced sailors.~
+@10  = ~This, I fear, settles it. <CHARNAME>, you do not consider stealing from the Merchant's League?~
+@11  = ~Ly... Lycantrophy? This is not compatible with my duties as a paladin. We need to find a cure, and quick!~

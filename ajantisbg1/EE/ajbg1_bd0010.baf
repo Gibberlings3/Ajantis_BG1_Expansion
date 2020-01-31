@@ -1,0 +1,24 @@
+/* Messenger in BG city - beginning of SoD, after defeating Korlasz, before marching against Caelar */
+
+IF 
+	!Dead("Ajantis")
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	GlobalLT("C#AjantisSoDLetter","GLOBAL",2)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#AjantisBG1LetterTimer","GLOBAL",120)
+		SetGlobal("C#AjantisSoDLetter","GLOBAL",2)
+END
+
+
+IF 
+	!Dead("Ajantis")
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	GlobalLT("C#AjantisSoDLetter","GLOBAL",3)
+	RealGlobalTimerExpired("C#AjantisBG1LetterTimer","GLOBAL")
+THEN
+	RESPONSE #100
+		CreateCreatureObject("C#AjSoD1",Player1,0,0,0)
+		SetGlobal("C#AjantisSoDLetter","GLOBAL",3)
+		ActionOverride("C#AjSoD1",StartDialogNoSet(Player1))
+END

@@ -1,0 +1,132 @@
+IF 
+  InParty(Myself)
+  GlobalGT("X#AjantisLoveTalk","GLOBAL",24)
+  !Global("X#AjantisRomanceActive","GLOBAL",3)
+  Global("X#AjantisRomNPC1","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomNPC1","GLOBAL",1)
+    SetGlobalTimer("X#AjantisRomNPCTalksT","GLOBAL",ONE_DAY)
+END
+
+IF 
+  InParty(Myself)
+  GlobalTimerExpired("X#AjantisRomNPCTalksT","GLOBAL")
+  !Global("X#AjantisRomanceActive","GLOBAL",3)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  GlobalGT("X#AjantisLoveTalk","GLOBAL",24)
+  GlobalLT("X#AjantisLoveTalk","GLOBAL",34)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+  InParty("khalid")
+  See("khalid")
+  !StateCheck("khalid",CD_STATE_NOTVALID)
+  InParty("jaheira")
+  See("jaheira")
+  !StateCheck("jaheira",CD_STATE_NOTVALID)
+  Global("X#AjantisRomJahKal1","GLOBAL",0)
+THEN
+  RESPONSE #100
+   SetGlobal("X#AjantisRomJahKal1","GLOBAL",1)
+END
+
+IF 
+  InParty(Myself)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  InParty("khalid")
+  !StateCheck("khalid",CD_STATE_NOTVALID)
+  InParty("jaheira")
+  !StateCheck("jaheira",CD_STATE_NOTVALID)
+  Global("X#AjantisRomJahKal1","GLOBAL",1)
+THEN
+  RESPONSE #100
+   ActionOverride("ajantis",Dialogue("jaheira"))
+END
+
+IF 
+  InParty(Myself)
+  GlobalTimerExpired("X#AjantisRomNPCTalksT","GLOBAL")
+  !Global("X#AjantisRomanceActive","GLOBAL",3)
+  GlobalGT("X#AjantisLoveTalk","GLOBAL",24)
+  GlobalLT("X#AjantisLoveTalk","GLOBAL",34)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+  InParty("dynaheir")
+  See("dynaheir")
+  !StateCheck("dynaheir",CD_STATE_NOTVALID)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  Global("X#AjantisRomDyna1","GLOBAL",0)
+THEN
+  RESPONSE #100
+   SetGlobal("X#AjantisRomDyna1","GLOBAL",1)
+END
+
+IF 
+  Global("X#AjantisRomDyna1","GLOBAL",1)
+  InParty(Myself)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  InParty("dynaheir")
+  !StateCheck("dynaheir",CD_STATE_NOTVALID)
+THEN
+  RESPONSE #100
+   ActionOverride("ajantis",Dialogue("dynaheir"))
+END
+
+IF 
+  InParty(Myself)
+  GlobalTimerExpired("X#AjantisRomNPCTalksT","GLOBAL")
+  !Global("X#AjantisRomanceActive","GLOBAL",3)
+  GlobalGT("X#AjantisLoveTalk","GLOBAL",24)
+  GlobalLT("X#AjantisLoveTalk","GLOBAL",34)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+  InParty("yeslick")
+  See("yeslick")
+  !StateCheck("yeslick",CD_STATE_NOTVALID)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  Global("X#AjantisRomYesl1","GLOBAL",0)
+THEN
+  RESPONSE #100
+   SetGlobal("X#AjantisRomYesl1","GLOBAL",1)
+END
+
+IF 
+  Global("X#AjantisRomYesl1","GLOBAL",1)
+  InParty(Myself)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  InParty("yeslick")
+  !StateCheck("yeslick",CD_STATE_NOTVALID)
+THEN
+  RESPONSE #100
+   ActionOverride("ajantis",Dialogue("yeslick"))
+END
+
+IF 
+  InParty(Myself)
+  GlobalTimerExpired("X#AjantisRomNPCTalksT","GLOBAL")
+  !Global("X#AjantisRomanceActive","GLOBAL",3)
+  !Global("X#AjantisCoranChallenge","GLOBAL",1)
+  GlobalGT("X#AjantisLoveTalk","GLOBAL",24)
+  GlobalLT("X#AjantisLoveTalk","GLOBAL",34)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+  InParty("branwen")
+  See("branwen")
+  !StateCheck("branwen",CD_STATE_NOTVALID)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  Global("X#AjantisRomBran1","GLOBAL",0)
+THEN
+  RESPONSE #100
+   SetGlobal("X#AjantisRomBran1","GLOBAL",1)
+END
+
+IF 
+  Global("X#AjantisRomBran1","GLOBAL",1)
+  InParty(Myself)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  InParty("branwen")
+  !StateCheck("branwen",CD_STATE_NOTVALID)
+THEN
+  RESPONSE #100
+   ActionOverride("ajantis",Dialogue("branwen"))
+END

@@ -1,0 +1,16 @@
+IF
+      True()
+THEN
+    RESPONSE #100
+	CutSceneId("ajantis")
+	ClearAllActions()
+	MoveViewObject("ajantis",VERY_FAST)
+//	ActionOverride(Player1,FaceObject("ajantis"))
+	Wait(2)
+	ForceSpell(Player1,3109)
+	Wait(3)
+	ForceSpell(Player1,1107) //CLERIC_PROTECT_FROM_EVIL
+	Wait(2)
+	EndCutSceneMode()
+	ActionOverride("ajantis",Dialogue([PC]))
+END

@@ -1,0 +1,67 @@
+@0   = ~Installs Ajantis BG1 Expansion Modification~
+@1   = ~Tutu detected. Installing Ajantis friendship path...~
+@2   = ~BGT detected. Installing Ajantis friendship path...~
+@3   = ~Original BG1 detected. Installing BG1 version...~
+@4   = ~Medium Shield~
+@5   = ~Ilvastarr Family Shield~
+@6   = ~This is Ajantis' family shield. It shows the coat of arms of the noble Ilvastarr family of Waterdeep: a metallic green dragon with orange eyes on a golden field.~
+@7   = ~A medium shield is carried in the same manner as a small shield.  Its weight prevents the character from using his shield hand for anything other than carrying the medium shield.  Medium shields are usually made of metal, range from 3'-4' in diameter, and can be of any shape, from round to square to a spread dragon's wings.  A typical medieval shield resembles a triangle with one point facing downward.
+
+This particular shield bears the coat of arms of the noble Ilvastarr family of Waterdeep: a metallic green dragon with orange eyes on a golden field.
+
+STATISTICS:
+
+Armor Class Bonus: 1
+Weight: 7
+Only Usable By:
+ Ajantis~
+@8   = ~Flower pendant~
+@9   = ~Enchanted flower pendant
+
+This is the enchanted pendant Ajantis gave to you.
+
+STATISTICS:
+
+Can cast Protection from Evil on the carrier (five charges).
+
+Cannot be used by:
+ Creatures of evil alignment~
+@10   = ~Enchanted flower pendant
+
+This is the enchanted pendant Ajantis gave to you. All charges are used up.
+
+Cannot be used by:
+ Creatures of evil alignment~
+@11   = ~Ajantis' engagement ring~
+@12   = ~Engagement ring
+
+This is your engagement ring that Ajantis gave to you. The ring is an Ilvastarr family treasure. It is ornamented in a rather plain way, with only a few elaborate decorations around a light-blue gem.~
+@13   = ~Douglas~
+
+@14   = ~Baldur's Gate Enhanced Edition detected.~
+
+@15   = ~Enhanced Edition Trilogy detected.~
+
+/* new for v11 */
+@16   = ~Install the unique BG:EE BAM for Ajantis' Family Shield~
+@17   = ~This component is only available for the Enhanced Edition.~
+@18  = ~Ajantis' shield from BG1NPC Project not installed.~
+
+@19  = ~Letter from Ajantis~
+@20  = ~To Lady <CHARNAME> of Candlekeep, currently residing in Baldur's Gate City, Ducal Palace
+
+Beloved <CHARNAME>,
+now I am on the way to Waterdeep, to the home of my family as we have recently discussed. My heart is full of worry that my parents may not agree to our betrothal... Will I be able to help them see your charm, your imperturbable determination, your impressive talents? That you walk the path of good without the slightest doubt? I can only hope that they will see past the stigma of 'daughter of Bhaal' into my heart and the woman whom I see in you, beloved!
+
+Loving you, revering you, and missing you, your Ajantis.~
+@21  = ~Beloved <CHARNAME>, 
+Everything has turned out differently than I had planned. After I was detained on the way to Waterdeep by my martial duties (there are still many municipalities along the coast which suffer from the remaining bandit rabble), a message from the Order calling me to my brethren overtook me before the gates of the city! You know why - Baldur's Gate must be full of refugees by now, driven away by Caelar and her men. I am left with no other option than to send one short letter to my parents, and then go directly south. I have not spoken yet with my parents about your heritage, beloved. Forgive me!
+I am painstricken I left you when I did. What importance do my personal aims have in times like these? Now you are there and I am here, and I cannot come near you. Be Helms blessing with you!
+
+Loving you, revering you, and missing you, your Ajantis.~ 
+@22  = ~Beloved <CHARNAME>, 
+What news reached us from Baldur's Gate. You are marching against this warlord, love. Yes, I guess it would have to be you, heroine of Baldur's Gate! And still no possibility for me to return to you, the streets are full with refugees, and I am ordered to help here - we Order brethren are needed here, and much so. I am scared about your well-being, love. I know you are able to handle danger, probably better than I can. And you are in good hands, with the Flaming Fist now back to representing a force of good, and also Waterhavian forces supposed to help in the upcoming battle. How I wished to be one of them! To be at your side, to fight at your side - to protect you, as good as I could.
+
+The Order is in highest alert, we cannot let Caelar turn the land into a battle field! But even if we march, I will not be where you are, so many are the places where our help is needed. All I can do is wish you well, my love. May Helm protect you - may all the gods protect you, so I will have you back unharmed and in one piece!
+
+Loving you, revering you, and missing you, your Ajantis.~

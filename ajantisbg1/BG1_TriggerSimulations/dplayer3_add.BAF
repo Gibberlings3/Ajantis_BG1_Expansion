@@ -1,0 +1,9 @@
+//dplayer3_add.baf
+IF
+    CheckStat(Player1,0,FATIGUE)
+THEN
+    RESPONSE #100
+        ApplySpellRES("Z!FATIG1",Player1)
+        IncrementGlobal("X#AjantisRomanceRestCounter","GLOBAL",1)
+        SetGlobalTimer("X#AjantisRomanceRestAfterTimer","GLOBAL",30)
+END

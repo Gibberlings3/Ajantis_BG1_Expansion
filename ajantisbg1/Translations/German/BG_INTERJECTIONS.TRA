@@ -1,0 +1,14 @@
+@0    = ~Fürst Raleo Windspeer! Es freut mich, dass Eure Reisen Euch hierher geführt haben. Wie geht es der Familie?~
+@1    = ~Ah, der jüngste Sohn Ilvastarr. Beeindruckend seht Ihr aus, mit den ganzen Waffen und der Rüstung.~
+@2    = ~Danke, Fürst Windspeer.~
+@3    = ~Meiner Familie geht es gut, zumindest tat es das, als ich aufgebrochen bin. Eila wird langsam zu einer jungen Dame, Herr Knappe, Ihr wärt überrascht, wenn Ihr sie sehen könntet.~
+@4    = ~Wenn Ihr es sagt, mein Fürst.~
+@5    = ~Vergebt diese Verzögerung, <CHARNAME>. Fürst Windspeer ist ein Freund meiner Eltern. Sein Bruder ist Fürst der Windspeerhügel in Amn, und ein Vertrauter des Ordens des Strahlenden Herzens.~
+@6    = ~Ich freue mich, dass es Eurer Familie gut geht. Sagt Ihnen meine Grüße, wenn Ihr sie das nächste mal seht.~
+@7    = ~Gerne. Das wird noch eine Weile dauern, fürchte ich. Aber ich glaube, Ihr wolltet noch ein paar Fragen zu dieser Stadt stellen, ist es nicht so?~
+@8    = ~Fragt nur zu.~
+
+/* new for v13 */
+@9   = ~Mendas? Mendas aus Tiefwasser? Den Namen habe ich noch nie... Aber ich war nun schon recht lange von zu hause fort. <CHARNAME>, so reizvoll diese Expedition auch anmutet, wir haben nicht die Zeit für einen solchen Abstecher. Überlasst diese Reise erfahreneren Seeleuten.~
+@10  = ~Damit ist diese Sache ja wohl erledigt. Oder, <CHARNAME>? Ihr erwägt nicht etwa tatsächlich, die Händlerliga zu bestehlen?~
+@11  = ~Ly... Lykantropie? Das ist nicht mit meinen Palainpflichten zu vereinbaren. Wir müssen schnellstmöglich Heilung finden!~

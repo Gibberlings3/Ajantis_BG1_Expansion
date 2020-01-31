@@ -1,0 +1,81 @@
+Ajantis Romance for Original BG1
+
+Ajantis did not start his travels along the Sword Coast expecting to find the woman after his heart. For the right Player1, the romance will just happen, and Ajantis himself will be overwhelmed by the feelings he experiences. But, as much as Ajantis is fascinated by a Player1 who either shares his views or politely rejects them, he will stop romancing or even attack if evil actions are taken, or if Player1 insults his beliefs or his family. There are many different options in Ajantis's talks, and Player1 does not always have to agree with him in order to continue being his romantic interest. However, insulting his beliefs or his family will end the romance. It is very important for Ajantis to see Player1 on the path of good and righteousness, so high reputation is a must for romancing this paladin. Ajantis will have an inner conflict when the truth about Player1's Bhaal-heritage comes out. Only if this revelation comes after he had already confessed his love, the bond between Player1 and him is strong enough for the romance to continue. This romance includes core love-talks, both sequential and reactive to events in the game, PC-initiated flirt-packs, and some NPC-initiated flirts.
+
+The BG1 Ajantis romance is the adapted version of the BG1NPC Project romance. Due to the restrictions of the BG1 engine, some dialogues and their conditions had to be adjusted slightly. The requirements and conditions of the romance for original BG1 will be specified below.
+
+There is no music theme for the original BG1 romance yet.
+
+ROMANCE REQUIREMENTS:
+
+Alignments: all good alignments, Lawful neutral, or Neutral 
+Classes: all classes except thieves. Druids are included, even if they have a different alignment than the above-mentioned. 
+Reputation: has to be 11 or above for the romance to initiate; has to be above 15 in order for the romance to progress after LT 14.
+Special: the romance will end early if Player1 is a thief. It will also be interrupted if Bhaal's heritage is revealed too early in the relationship. 
+
+FIRST LINE AND TALK NUMBERING SCHEME:
+
+LT 1 (for Reputation greater 11): My lady, we formed our alliance to fight the bandits threatening travelers in this area...
+
+LT 1a (if Gorion was not mentioned in LT 1): My lady, I... overheard that you were raised by Gorion, well known keeper of Candlekeep library...
+
+LT 2: My lady, I told you I am a squire paladin of the Most Holy Order of the Radiant Heart...
+
+LT 3: Look at all that is happening around us, my lady. People feel nervous and insecure...
+
+LT 4: Lady <CHARNAME>, we have combined our forces to bring criminals to justice...
+
+LT 5: I would give my life if I could destroy all evil around us with one stroke of my sword...
+
+LT 6: My lady, you may recall that I am from Waterdeep...
+
+LT 7: Lady <CHARNAME>, we talked about Waterdeep, and you know that my family lives there...
+
+LT 8: My lady, we have talked much of me and my family since we have met...
+
+LT 9: My lady, as I have already told you I am trying to win glory and honor to get knighted by the Order of the Most Radiant Heart...
+
+LT 10: Lady <CHARNAME>, may I share my thoughts with you?...
+
+LT 11 (OUTDOOR and NIGHT): It is dark already, and the stars are out...
+
+LT 12 (after next Rest after LT 11, if Player1 and Ajantis were talking about the stars): Good morning, my lady. I see you are awake.
+
+LT 13 (for Reputation greater 15): My lady, ever since we've talked about our families, I've been wondering what type of life you would have preferred...
+
+LT 14: Lady <CHARNAME>, during our last battle I was once again fortunate enough to be able to admire your fighting style...
+
+LT 15 (OUTDOOR): My lady, do you see the blossoms that are spreading along the path?...
+
+LT 16: My lady, might I pose a private question?
+
+LT 17a (CITY Area): Ajantis Ilvastarr! I have brought a letter for you, my lord.
+
+LT 17 (Confession dialogue): My lady, could I speak to you about an important matter? Please, let us step away from the others.
+
+LT 18: My love, I enjoyed adorning you with a flower once...
+
+LT 19 (At NIGHT): It is night again...
+
+LT 20: I am so happy to have you at my side, my love.
+
+LT 20a (including morning-after dialogue: in an INN): Is this where we will rest for today?
+
+LT 21: My love, we did not talk of this yet...
+
+LT 22: My eyes are on you very often, my love.
+
+LT 23 (in an INN): Is this where we will rest for today?...
+
+LT 24 (At the Entrance of the Undercity): What an evil place, full of the restless dead!
+
+
+BHAALCYCLE (After Player1's Bhaal heritage is revealed, for committed romance):
+LT Bhaal 1: <CHARNAME>, you... you are an offspring of *Bhaal*, the Lord of Murder?!
+
+LT Bhaal 2: You know Alaundo's prophecies. The offspring of Bhaal will fight each other for the throne of their sire...
+
+LT Bhaal 3: <CHARNAME>, I seek your forgiveness for... drilling you in your time of turmoil. Let me try to explain my harshness...
+
+LT Bhaal 4: I... did not talk to you about this earlier, my love, but I want you to know...
+

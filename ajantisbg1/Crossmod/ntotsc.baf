@@ -1,0 +1,27 @@
+/* crossmod with NTotSC */
+
+IF 	%BGT_VAR%
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	%InMyArea_Player1%
+	!See([ENEMY])
+	%CombatCounter_0%
+	Global("C#AjantisBG1_HolySymbolNTotSC","GLOBAL",0)
+	HasItem("ntmisc08",Myself)
+THEN
+  RESPONSE #100
+    SetGlobal("C#AjantisBG1_HolySymbolNTotSC","GLOBAL",1)
+END
+
+/* dialogue triggering  */
+IF 	%BGT_VAR%
+	InParty(Myself)
+	%InMyArea_Player1%
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C#AjantisBG1_HolySymbolNTotSC","GLOBAL",1)
+THEN
+  RESPONSE #100
+	%STARTDIALOGNOSET_PLAYER1%
+END

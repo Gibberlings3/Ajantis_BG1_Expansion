@@ -1,0 +1,350 @@
+//Ajantis romance
+
+//For romance, Player1 has to be non evil female human, half-human, 
+//elf or halfling. for thieves, romance will start but stopped by Ajantis 
+
+//here we go, BG1 syntax without OR()!
+//PC is human
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,49) //CHAOTIC_GOOD
+    Race(Player1,HUMAN)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,33) //NEUTRAL_GOOD
+    Race(Player1,HUMAN)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,17) //LAWFUL_GOOD
+    Race(Player1,HUMAN)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,18) //LAWFUL_NEUTRAL
+    Race(Player1,HUMAN)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,34) //NEUTRAL
+    Race(Player1,HUMAN)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Class(Player1,DRUID)
+    Race(Player1,HUMAN)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+
+//PC is half elf
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,49) //CHAOTIC_GOOD
+    Race(Player1,HALF_ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,33) //NEUTRAL_GOOD
+    Race(Player1,HALF_ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,17) //LAWFUL_GOOD
+    Race(Player1,HALF_ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,18) //LAWFUL_NEUTRAL
+    Race(Player1,HALF_ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,34) //NEUTRAL
+    Race(Player1,HALF_ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Class(Player1,DRUID)
+    Race(Player1,HALF_ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+
+//PC is elf
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,49) //CHAOTIC_GOOD
+    Race(Player1,ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,33) //NEUTRAL_GOOD
+    Race(Player1,ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,17) //LAWFUL_GOOD
+    Race(Player1,ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,18) //LAWFUL_NEUTRAL
+    Race(Player1,ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,34) //NEUTRAL
+    Race(Player1,ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Class(Player1,DRUID)
+    Race(Player1,ELF)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+//PC is halfling
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,49) //CHAOTIC_GOOD
+    Race(Player1,HALFLING)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,33) //NEUTRAL_GOOD
+    Race(Player1,HALFLING)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,17) //LAWFUL_GOOD
+    Race(Player1,HALFLING)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,18) //LAWFUL_NEUTRAL
+    Race(Player1,HALFLING)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Alignment(Player1,34) //NEUTRAL
+    Race(Player1,HALFLING)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+
+IF
+  Global("X#AjantisRomanceMatch","GLOBAL",0)
+  Global("X#AjantisRomanceCheckMatch","GLOBAL",0)
+  Gender(Player1,FEMALE)
+  ReputationGT(Player1,10)
+  Class(Player1,DRUID)
+    Race(Player1,HALFLING)
+   
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceCheckMatch","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceMatch","GLOBAL",1)
+END
+

@@ -1,0 +1,70 @@
+@132  = ~<CHARNAME>, you... you are an offspring of *Bhaal*, the God of Murder?!~
+@133  = ~I didn't know that myself, Ajantis!~
+@134  = ~So it seems, indeed.~
+@135  = ~You say this as if this information didn't move you at all! Did you know that already?~
+@136  = ~No, I just found out now, Ajantis.~
+@137  = ~Why is this of interest to you, Ajantis?~
+@138  = ~You didn't know that yourself... Yes, I believe you. What a perplexing discovery! What a heritage you are carrying!~
+@139  = ~Well, I guess I have to believe you. What a perplexing discovery! What a heritage you are carrying!~
+@140  = ~Answer my questions honestly. What does this mean to you? How will you treat this heritage?~
+@141  = ~I loathe being an offspring of Bhaal! Evil won't have a chance on me. I will do all that is in my power not to carry on what my father left behind!~
+@142  = ~I don't know... It is all happening so fast. I don't want to be involved in this! Best if this were a great misunderstanding!~
+@143  = ~Hmm... I have to think about it. This actually provides some very interesting new possibilities...~
+@144  = ~I am a god's child, Ajantis. I can sense the power that's in me! I have to use it. Anything else would be wrong!~
+@145  = ~Why this is of interest to me?! I am a paladin of Helm, and you... an offspring of Bhaal! I have to know how you will deal with your heritage!~
+// @146  
+@147  = ~I am very relieved and happy to hear that.~
+@148  = ~Great words, but I doubt you will have the steadiness and willpower to make them come true.~
+@149  = ~It seems to be real, so you have to deal with it! Trying to hide from your godly heritage won't work, it will only leave you unprepared in times of need!~
+@150  = ~Possibilities?! Do you seriously consider using the powers of your bloody father for your own aims?~
+@151  = ~No, I didn't mean it like that. It was only a general thought.~
+@152  = ~Indeed! I am a god's child, Ajantis. I can sense the power that's in me! I have to use it. Anything else would be wrong!~
+@153  = ~What are you talking about?! Bhaal was the deity of murder and destruction! Do you want those evil powers to become *yours*?~
+@154  = ~Sure! A lot of unexpected possibilities are coming my way... The more I think of it, the more I like the idea!~
+@155  = ~Do I have a choice? You know Alaundo's prophecies. I have to be the last, otherwise I will fall by the hand of one of my brothers or sisters.~
+@156  = ~Not the *evil* forces, Ajantis. All I am talking about is the godly powers I hold in me. I will use them for my own purposes!~
+@157  = ~You know Alaundo's prophecies. The offspring of Bhaal will fight each other for the throne of their father, bringing chaos and destruction to all around them. Where will you be when this happens, <CHARNAME>?~
+@158  = ~You base your words on mortal translations of the prophecies. I am sure some of his offspring will fight for the throne, but I refuse to take an evil path simply because some... deity decided to impregnate my mother. And I will be wherever I need to be, in order to destroy it... before it can destroy me.~
+@159  = ~I just can't accept this as my destiny! I don't want to fight for the throne of Bhaal, I don't want to spread chaos and destruction! I will remain true to my path, trying to do good!~
+@160  = ~Well, if this is the will of the gods, I fear it will happen that way.~
+@161  = ~I have to fight this fight! It is the only way I will get my father's heritage, which belongs to me!~
+@162  = ~Are you that naive, to think you could trick the true nature of your father, and use his powers to do *good*?!~
+@163  = ~Why should this be impossible? I am not evil, Ajantis. If it is my destiny to take my father's place - why not do it *my* way?~
+@164  = ~Who is talking about doing good, Ajantis?... Once I have the powers, I'll do whatever *I* want!~
+@165  = ~I can't believe you are saying this. Stay away from me! I will stay with you, but only to watch your steps. Helm, in his holy might, will help me fight you, if this should become necessary!~
+// @166  
+// @167  
+@168  = ~So, you are going to kill your brothers and sisters? You are going to spill their blood and other's over the soil of your country?~
+@169  = ~I didn't say it is *my* will! All I am doing is accepting my destiny. If this is what the gods hold for me, I will play their game.~
+@170  = ~Indeed! I won't sit and wait until my power-seeking half-brothers and sisters pass by, trying to get nearer to our father's throne by killing me!~
+@171  = ~I will wade through their blood, and I will smile about it, Ajantis!~
+@172  = ~Because we mortals aren't born to have and *control* such powers, <CHARNAME>! Bhaal himself was a mortal, but he was wicked and power-hungry, and so were the godly powers he received. What you are talking about is to use and form these evil powers for your own, not evil purposes! How do you know you will be strong enough for that?~
+@173  = ~I don't know it, Ajantis, but I will do all that is in my power to make it come true.~
+@174  = ~Of course I'll be strong enough! Haven't I already chosen the path of goodness, despite my heritage?~
+@175  = ~Ah, poppycock! Time will tell. Why are you worried about it now?~
+@176  = ~I can't believe you are treating this so lightly! Get rational, <CHARNAME>! This is the power of a deity you are facing. It will form *you*, not the other way round. You have to be firm in faith, steady without the smallest hesitation on the path of goodness and righteousness, and then there might be a chance to succeed!~
+@177  = ~Well, you seem to have stayed on the right path up to now... I see a chance for you to reach your goal.~
+@178  = ~You will fail, <CHARNAME>. You have already performed evil deeds on our travels. You are not on the right path, and your willpower isn't strong enough! The evil powers will overwhelm you!~
+@179  = ~You are definitely on the path of righteousness, and I see a chance for you to reach your goal.~
+@180  = ~But how will you succeed? You know Alaundo's prophecies. The offspring of Bhaal will fight each other for the throne of their father, bringing chaos and destruction to all around them. Where will you be when this happens, <CHARNAME>?~
+@181  = ~I will stay with you... but only to watch your steps! Helm, in his holy might, will give me strength to fight you, if this should become necessary!~
+// @182  
+@183  = ~Your words let my doubts disappear. Let us move on, and be vigilant. I will fight at your side and assist you in your magnanimous plan as much as I can.~
+@184  = ~You choose great words, but they can't make my doubts disappear. I will fight at your side and assist you in your magnanimous plan, as long as you stay on the right path.~
+// @185  
+// @186  
+@187  = ~I see. Let us move on and be vigilant. I will fight at your side and assist you, as long as you stay on the right path.~
+// @188  
+//@189  
+@190  = ~Don't accept destiny as a given! It is not yet decided *how* things will happen. You can influence the path your future will take with your good powers! As a paladin I have to know how you will decide, once that day comes.~
+@191  = ~Ajantis, I will try to stay on the path of goodness, no matter what the future will bring. Please, believe me!~
+@192  = ~When the day comes, I will do whatever destiny has prepared for me. If it means I have to kill other Bhaal offspring, then so be it.~
+@193  = ~That means you *will* actively participate in making the prophecy come true...~
+// @194  
+// @195  
+@196  = ~The readiness apparent in your words frightens me. And yet you would have the power to stay on the path of good...~
+@197  = ~Let us move on and be vigilant. I will fight at your side and assist you, as long as you stay on the right path.~
+// @198  
+@199  = ~My heart is saddened when considering this. You have already performed evil deeds on our travels... I must concentrate on my duties as a paladin. I will keep my thoughts to myself, from now on.~
+@200  = ~Let us move on and be vigilant, <CHARNAME>. I will fight at your side and assist you, as long as you stay on the right path.~
+@201  = ~You evil creature! Now you reveal your true intentions! Raise your weapon, I won't let you go any further!~ [%TUTU_VAR%AJANT31]

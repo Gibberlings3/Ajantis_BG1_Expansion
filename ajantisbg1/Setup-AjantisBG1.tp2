@@ -1,0 +1,567 @@
+
+//Ajantis BG1 expansion
+//original romance was developped for BGTutu / BGT "BG1NPC project", G3
+// Author: jastey
+
+
+//vanilla BG1 version, Tutu and BGT version. Automatic identification.
+
+//For BG1, this mod adds the BG1NPC Ajantis romance, and a friendship path
+//For Tutu, BGT, BG:EE, and EET this mod adds the Ajantis friendship path and some more romance reactions in addition to the BG1NPC Project
+
+BACKUP ~AjantisBG1/Backup~
+AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
+
+//MODDER
+
+VERSION ~14~ //
+
+README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
+
+
+ALWAYS
+
+/* check for a ready SoD */
+
+ ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN
+  FAIL ~Your SoD game needs to be modmerged before mods can be installed on this game. Check the readme for more information and a link to download the DLC Merger or Modmerge.~
+ END
+
+
+
+ ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN
+    INCLUDE ~AjantisBG1/lib/ajantis_tutu.tpa~
+    INCLUDE ~AjantisBG1/lib/g3_tutu_cpmvars.tpa~
+
+    /* Tell the player it is using Tutu */
+    PRINT @1
+ END 
+
+ ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+    INCLUDE ~AjantisBG1/lib/ajantis_bgt.tpa~
+    INCLUDE ~AjantisBG1/lib/g3_bgt_cpmvars.tpa~
+
+     /* Tell the player it is using BGT stuff */
+      PRINT @2
+ END 
+
+ ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+   INCLUDE ~AjantisBG1/lib/ajantis_bgee.tpa~
+   INCLUDE ~AjantisBG1/lib/g3_bgee_cpmvars.tpa~
+        PRINT @14
+ END
+
+ ACTION_IF GAME_IS ~eet~ THEN BEGIN
+   INCLUDE ~AjantisBG1/lib/ajantis_eet.tpa~
+      INCLUDE ~EET/other/cpmvars/eet_cpmvars.tpa~
+        PRINT @15
+ END
+
+
+ ACTION_DEFINE_ARRAY fl#noconvert BEGIN AJANTIS_MESSENGER.TRA AJANTIS_REPREACTIONS.TRA AJANTISBHAALLTS.TRA AJANTISBHAALLTS_RA1.TRA AJANTISDREAMLTS.TRA AJANTISINIFLIRTS_D.TRA AJANTISLTS.TRA AJANTISLTS_ADD.TRA AJANTISPC_PID.TRA AJANTISPCINIFLIRTS.TRA AJANTISROMNPC_TALKS.TRA ROM_INTERJECTIONS.TRA END
+
+ ACTION_DEFINE_ARRAY fl#reload BEGIN SETUP-AJANTISBG1.TRA END
+
+  LAF HANDLE_CHARSETS
+    INT_VAR
+      infer_charset = 1
+    STR_VAR
+      tra_path = EVAL ~AjantisBG1\Translations\~
+      noconvert_array = fl#noconvert
+      reload_array = fl#reload
+  END
+
+
+
+
+/* vanilla BG1, general */
+ACTION_IF GAME_IS ~bg1 totsc~ THEN BEGIN
+PRINT @3
+
+   INCLUDE ~AjantisBG1/lib/ajantis_bg1.tpa~
+
+/* BG1 with TotSC installed */
+   ACTION_IF GAME_IS ~totsc~ THEN BEGIN
+	INCLUDE ~AjantisBG1/lib/bg1.tpa~
+   END ELSE BEGIN 
+
+/* BG1 without TotSC installed */
+	INCLUDE ~AjantisBG1/lib/totsc.tpa~
+   END
+END 
+
+
+    //TRAs declared in LANGUAGE must be reloaded
+  LOAD_TRA ~AjantisBG1/Translations/%LANGUAGE%/Setup-AjantisBG1.tra~
+
+END
+
+
+AUTO_TRA ~AjantisBG1/Translations/%s~
+
+
+LANGUAGE ~English~
+         ~English~
+         ~AjantisBG1/Translations/English/Setup-AjantisBG1.tra~
+
+LANGUAGE ~Francais~
+         ~French~
+         ~AjantisBG1/Translations/French/Setup-AjantisBG1.tra~
+
+LANGUAGE ~Deutsch~
+         ~German~
+         ~AjantisBG1/Translations/German/Setup-AjantisBG1.tra~
+
+
+BEGIN @0
+
+
+
+
+
+  /* STATE.IDS patching to ToB - thanks, Cam, if you read it */
+  /* adds custom IsValidForPartyDialogue state */
+  APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~CD_STATE_NOTVALID~
+
+
+/* Ajantis Friendship path */
+
+   COMPILE EVALUATE_BUFFER ~AjantisBG1/Friendship/Ajantis_friendship_d.d~
+
+
+ACTION_IF GAME_IS ~tutu tutu_totsc bgt bgee eet~ THEN BEGIN
+/* for totsc scripts will be installed below */
+
+EXTEND_TOP ~%tutu_var%ajantis.bcs~ ~AjantisBG1/Friendship/Ajantis_friendship.baf~
+EVALUATE_BUFFER 
+/* in case BG1NPC romance ends, Ajantis shouldn't start friendship track from the beginning */
+EXTEND_TOP ~%tutu_var%ajantis.bcs~ ~AjantisBG1/Friendship/Variable_transfer.baf~
+EVALUATE_BUFFER 
+
+END
+
+
+/* more interjections */
+
+ACTION_IF GAME_IS ~tutu tutu_totsc bgt bgee eet~ THEN BEGIN
+
+COMPILE EVALUATE_BUFFER ~AjantisBG1/Friendship/Tutu_Interjections.d~
+USING ~AjantisBG1/translations/%LANGUAGE%/BG_Interjections.tra~
+
+END
+
+
+/* content for EE: banter and romance conflicts */
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+  COMPILE EVALUATE_BUFFER ~AjantisBG1/ee/Ajantis_ee.d~
+  EXTEND_TOP ~%tutu_var%ajantis.bcs~ ~AjantisBG1/ee/Ajantis_ee.baf~
+EVALUATE_BUFFER 
+END
+
+
+/* more content after BG1 ending and right before transition to BGII/SoD */
+
+/* Sarevok is dead dialogue. Will only trigger for BG:EE/EET if EBG1 is installed, i.e. if game remains in BG1 after Sarevok's death. */
+ACTION_IF GAME_IS ~bgt bgee eet~ THEN BEGIN
+
+EXTEND_TOP ~%tutu_var%ajantis.bcs~ ~AjantisBG1/BG1_end/c#ajan_bg1end_bgt.baf~
+EVALUATE_BUFFER 
+COMPILE EVALUATE_BUFFER ~AjantisBG1/BG1_end/c#ajan_bg1end_bgt.d~ USING ~AjantisBG1/translations/%LANGUAGE%/ajantisbg1_transition.tra~
+END
+
+/* extra dialogue for transition for BG1 -> BGII: BGT */
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+COMPILE EVALUATE_BUFFER ~AjantisBG1/BG1_end/ajantisbg1_bgt_transition.d~ USING ~AjantisBG1/translations/%LANGUAGE%/ajantisbg1_transition.tra~
+END
+
+/* comment after Korlasz is defeated */
+ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+
+COPY_EXISTING ~bdintro.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
+~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+END
+BUT_ONLY_IF_IT_CHANGES
+
+/* make sure Ajantis only complains about Korlasz' death if she actually tried to surrender */
+EXTEND_TOP ~BD0130.bcs~ ~AjantisBG1/ee/ajbg1_bd0130.baf~ EVALUATE_BUFFER
+
+EXTEND_TOP ~BDAJANTI.bcs~ ~AjantisBG1/BG1_end/c#ajan_bg1end_sod.baf~
+EVALUATE_BUFFER 
+COMPILE EVALUATE_BUFFER ~AjantisBG1/BG1_end/c#ajan_bg1end_sod.d~ USING ~AjantisBG1/translations/%LANGUAGE%/ajantisbg1_transition.tra~
+COMPILE EVALUATE_BUFFER ~AjantisBG1/BG1_end/ajantisbg1_sod_transition.d~ USING ~AjantisBG1/translations/%LANGUAGE%/ajantisbg1_transition.tra~
+
+/* transition from BG1 to SoD: in case Ajantis was in party but dead, he will be silently revived */
+
+/* only install this if BGII mod isn't installed already */
+ACTION_IF NOT (MOD_IS_INSTALLED ~ajantisbg2/setup-ajantisbg2.TP2~ ~0~) THEN BEGIN
+  EXTEND_TOP ~BD0103.bcs~ ~AjantisBG1/ee/sod_transition.baf~ EVALUATE_BUFFER
+END
+
+/* romance reactions: add reply options so PC can shut down SoD romances */
+COMPILE EVALUATE_BUFFER ~AjantisBG1/ee/sod_romancereactions.d~ 
+
+/* SoD "content" for romance case: Ajantis will write letters */
+
+/* first letter */
+  COPY ~AjantisBG1/ee/C#AJBG11.itm~ ~override/C#AJBG11.itm~
+    SAY NAME1 @19
+    SAY NAME2 @19
+    SAY DESC @20
+
+/* second letter */
+  COPY ~AjantisBG1/ee/C#AJBG11.itm~ ~override/C#AJBG12.itm~
+    SAY NAME1 @19
+    SAY NAME2 @19
+    SAY DESC @21
+
+/* third letter */
+  COPY ~AjantisBG1/ee/C#AJBG11.itm~ ~override/C#AJBG13.itm~
+    SAY NAME1 @19
+    SAY NAME2 @19
+    SAY DESC @22
+
+/* messenger */
+  COPY_EXISTING ~bdtsmess.cre~ ~override/C#AjSoD1.cre~
+WRITE_ASCII 0x2cc ~C#AjSoD1~  #8  // dialogue
+WRITE_ASCII 0x280 ~C#AjSoD1~ #32  // death variable
+WRITE_ASCII 0x280 ~C#AjSoD1~ #32  // Override script
+WRITE_BYTE 0x2c 27 // Metal color
+WRITE_BYTE 0x2d 66 // Minor color
+WRITE_BYTE 0x2e 59 // Major color
+WRITE_BYTE 0x2f 12 // Skin color
+WRITE_BYTE 0x30 16 // Leather color
+WRITE_BYTE 0x31 30 // Armor color
+WRITE_BYTE 0x32 41 // Hair color
+
+
+/* first letter */
+EXTEND_BOTTOM ~BD0103.bcs~ ~AjantisBG1/ee/ajbg1_bd0103.baf~ EVALUATE_BUFFER
+/* second letter */
+EXTEND_BOTTOM ~BD0010.bcs~ ~AjantisBG1/ee/ajbg1_BD0010.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~BD0020.bcs~ ~AjantisBG1/ee/ajbg1_BD0010.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~BD0030.bcs~ ~AjantisBG1/ee/ajbg1_BD0010.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~BD0040.bcs~ ~AjantisBG1/ee/ajbg1_BD0010.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~BD0050.bcs~ ~AjantisBG1/ee/ajbg1_BD0010.baf~ EVALUATE_BUFFER
+/* third letter */
+EXTEND_BOTTOM ~BD3000.bcs~ ~AjantisBG1/ee/ajbg1_BD3000.baf~ EVALUATE_BUFFER
+
+COMPILE EVALUATE_BUFFER ~AjantisBG1/ee/ajantis_sod_letters.d~ USING ~AjantisBG1/translations/%LANGUAGE%/AJANTIS_EE.TRA~
+
+END
+
+
+
+
+
+/* content for original BG1 game */
+
+ACTION_IF GAME_IS ~bg1 totsc~ THEN BEGIN
+
+
+INCLUDE ~AjantisBG1/BG1_TriggerSimulations/BG1AreaCheck_emulation.tpa~
+
+
+/* spells for detection of morning talks: Player1 gets fake spell, that will be cast to activate a morning talk. After the next rest, the spell will be restored, and the morning dialogue can be triggered via "HaveSpell()" Thank you Zed Nocear! */
+
+APPEND ~action.ids~ ~160 ApplySpellRES(S:ResRef*,O:Target*)~       UNLESS ~ApplySpellRES~
+
+ACTION_IF (FILE_CONTAINS_EVALUATED (~dplayer3.BCS~ ~"Z!FATIG1"~))
+    THEN BEGIN
+        COPY_EXISTING ~dplayer3.BCS~ ~override~
+            DECOMPILE_BCS_TO_BAF
+            REPLACE_TEXTUALLY ~ApplySpellRES("Z!FATIG1",Player1)~
+                                             ~ApplySpellRES("Z!FATIG1",Player1)
+IncrementGlobal("X#AjantisRomanceRestCounter","GLOBAL",1) SetGlobalTimer("X#AjantisRomanceRestAfterTimer","GLOBAL",30)~
+            COMPILE_BAF_TO_BCS
+    END
+    ELSE BEGIN
+        EXTEND_TOP ~dplayer3.BCS~ ~AjantisBG1/BG1_TriggerSimulations/dplayer3_add.BAF~
+        COPY ~AjantisBG1/BG1_TriggerSimulations/Z!FATIG1.SPL~ ~override~
+    END
+
+/* "Combat Counter" - Simulation, also from Zed Nocear */
+//Give BioWare NPCs override scripts
+COPY_EXISTING_REGEXP GLOB ~^alora[0-9]*\.cre~ ~override~
+    WRITE_ASCII SCRIPT_OVERRIDE ~alora~
+    READ_ASCII SCRIPT_CLASS ~Class_Script_Name~
+    PATCH_IF ( ~%Class_Script_Name%~ STRING_EQUAL_CASE ~alora~ ) // Skript ~Alora~ wird aus Stelle CLASS geloescht, aber nicht Skript mit anderem Name
+
+        THEN BEGIN
+            WRITE_LONG 0x250 0x00000000
+            WRITE_LONG 0x254 0x00000000
+        END
+    BUT_ONLY_IF_IT_CHANGES
+COPY_EXISTING ~alora.BCS~ ~override~
+    REPLACE_BCS_BLOCK ~AjantisBG1/BG1_TriggerSimulations/alora_old.baf~ ~AjantisBG1/BG1_TriggerSimulations/alora_new.baf~ //delete bad blocks
+    BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING_REGEXP GLOB ~^branwe[0-9]*\.cre~ ~override~
+	WRITE_ASCII SCRIPT_OVERRIDE ~branwen~
+   BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING_REGEXP GLOB ~^faldor[0-9]*\.cre~ ~override~
+	WRITE_ASCII SCRIPT_OVERRIDE ~faldorn~
+   BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING_REGEXP GLOB ~^garric[0-9]*\.cre~ ~override~
+	WRITE_ASCII SCRIPT_OVERRIDE ~garrick~
+   BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING_REGEXP GLOB ~^imoen[0-9]+\.cre~ ~override~ // imoen1,2,4,6.CRE but not imoen.CRE
+	WRITE_ASCII SCRIPT_OVERRIDE ~imoen~
+   BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING_REGEXP GLOB ~^skie[0-9]*\.cre~ ~override~
+	WRITE_ASCII SCRIPT_OVERRIDE ~skie~
+   BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING_REGEXP GLOB ~^xan[0-9]*\.cre~ ~override~
+   WRITE_LONG 0x248 0x00000000  
+   WRITE_LONG 0x250 0x00000000  
+   WRITE_ASCII SCRIPT_OVERRIDE ~xan~
+   BUT_ONLY_IF_IT_CHANGES
+
+//patching der Skripte für die CombatCounter() simulation
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~dplayer3.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~dplayer3.BCS~ ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~dplayer2.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~dplayer2.BCS~ ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~ajantis.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~ajantis.BCS~  ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~alora.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~alora.BCS~    ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~branwen.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~branwen.BCS~  ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~coran.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~coran.BCS~    ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~dynaheir.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~dynaheir.BCS~ ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~edwin.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~edwin.BCS~    ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~eldoth.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~eldoth.BCS~   ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~faldorn.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~faldorn.BCS~  ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~garrick.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~garrick.BCS~  ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~imoen.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~imoen.BCS~    ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~jaheira.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~jaheira.BCS~  ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~khalid.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~khalid.BCS~   ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~kagain.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~kagain.BCS~   ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~kivan.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~kivan.BCS~    ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~minsc.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~minsc.BCS~    ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~montaron.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~montaron.BCS~ ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~quayle.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~quayle.BCS~   ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~safana.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~safana.BCS~   ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~sharteel.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~sharteel.BCS~ ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~skie.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~skie.BCS~     ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~tiax.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~tiax.BCS~     ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~viconia.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~viconia.BCS~  ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~xan.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~xan.BCS~      ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~xzar.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~xzar.BCS~     ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+  END
+ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~yeslick.BCS~ ~Z!EnemyAlreadySeen~))
+  THEN BEGIN
+    EXTEND_BOTTOM ~yeslick.BCS~  ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
+END
+
+  COPY ~AjantisBG1/Romance_BG1/Bam~ ~override~
+
+/* Ajantis shield */
+  COPY ~AjantisBG1/Romance_BG1/Items/X#AJSBG1.itm~ ~override~
+    SAY NAME1 @4
+    SAY NAME2 @5
+    SAY UNIDENTIFIED_DESC @6
+    SAY DESC @7
+      BUT_ONLY_IF_IT_CHANGES
+
+
+  /* Give Ajantis his shield */
+  COPY_EXISTING ~ajanti.cre~  ~override~
+                ~ajanti4.cre~ ~override~
+                ~ajanti6.cre~ ~override~
+    ADD_CRE_ITEM ~X#AJSBG1~ #0 #0 #0 ~IDENTIFIED~ ~SHIELD~
+  BUT_ONLY_IF_IT_CHANGES
+
+
+ /* items */
+  COPY ~AjantisBG1/Romance_BG1/Items/X#AJNBG1.itm~ ~override~
+    SAY NAME1 @8
+    SAY NAME2 @8
+    SAY UNIDENTIFIED_DESC @9
+    SAY DESC @9
+
+  COPY ~AjantisBG1/Romance_BG1/Items/X#A2NBG1.itm~ ~override~
+    SAY NAME1 @8
+    SAY NAME2 @8
+    SAY UNIDENTIFIED_DESC @10
+    SAY DESC @10
+
+
+  COPY ~AjantisBG1/Romance_BG1/Items/X#AJRORI.itm~ ~override~
+    SAY NAME1 @11
+    SAY NAME2 @11
+    SAY UNIDENTIFIED_DESC @12
+    SAY DESC @12
+
+  /* creatures */
+  COPY ~AjantisBG1/Romance_BG1/CRE/X#AJDOUG.cre~ ~override~ //Douglas
+    SAY NAME1 @13
+    SAY NAME2 @13
+
+
+EXTEND_TOP ~ajantis.bcs~ ~AjantisBG1/Romance_BG1/Scripts/Ajantisromnpc.baf~ 
+EXTEND_TOP ~ajantis.bcs~ ~AjantisBG1/Romance_BG1/Scripts/ReputationReaction.baf~ EVALUATE_BUFFER 
+EXTEND_TOP ~ajantis.bcs~ ~AjantisBG1/Friendship/Ajantis_friendship.baf~
+EVALUATE_BUFFER 
+EXTEND_TOP ~ajantis.bcs~ ~AjantisBG1/Romance_BG1/Scripts/AjantisRom.baf~ EVALUATE_BUFFER 
+EXTEND_TOP ~ajantis.bcs~ ~AjantisBG1/Romance_BG1/Scripts/Ajantisiniflirts.baf~ 
+EXTEND_TOP ~ajantis.bcs~ ~AjantisBG1/Friendship/Variable_transfer.baf~
+EVALUATE_BUFFER 
+EXTEND_TOP ~ajantis.bcs~ ~AjantisBG1/Romance_BG1/Scripts/AjantisRomCheckMatch.BAF~
+
+COMPILE EVALUATE_BUFFER ~AjantisBG1/Romance_BG1/Scripts/x#ajdoug.baf~
+COMPILE EVALUATE_BUFFER ~AjantisBG1/Romance_BG1/Scripts/x#ajrcut.baf~
+
+COMPILE EVALUATE_BUFFER ~AjantisBG1/Romance_BG1/Dialogues/AjantisLTs.d~
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/ajantisbhaallts.d~
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/ajantisbhaallts_RA1.d~
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/ajantisdreamlts.d~
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/Ajantisiniflirts_d.d~
+COMPILE EVALUATE_BUFFER ~AjantisBG1/Romance_BG1/Dialogues/Ajantis_RepReactions.d~ 
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/AjantisRomnpc_talks.d~
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/Ajantis_Messenger.d~
+
+ACTION_IF FILE_EXISTS ~data/ExpAreas.bif~ THEN BEGIN
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/AjantisLTs_Add.d~
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/C#TROM.d~
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/REPLACE_ROM.d~
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/ROM_interjections.d~
+
+
+END ELSE BEGIN 
+COMPILE ~AjantisBG1/Romance_BG1/Dialogues/AjantisLTs_Add_noTotSC.d~
+USING ~AjantisBG1/translations/%LANGUAGE%/AjantisLTs_Add.tra~
+END
+
+//Interjection. I_C_T does not work here.
+COMPILE ~AjantisBG1/Friendship/C#DUMP.d~
+COMPILE ~AjantisBG1/Friendship/REPLACE.d~
+COMPILE ~AjantisBG1/Friendship/BG_Interjections.d~
+
+//PIDs
+COMPILE EVALUATE_BUFFER ~AjantisBG1/Romance_BG1/Dialogues/AjantisPC_PID.d~
+COMPILE EVALUATE_BUFFER ~AjantisBG1/Romance_BG1/Dialogues/AjantisPCiniflirts.d~
+
+
+
+/* tavern-script blocks for "night talk" */
+
+EXTEND_BOTTOM ~AR1001.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR0116.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR0119.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR0103.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR0114.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR0705.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR0105.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR0133.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR2301.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR3304.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR3307.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR3351.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+EXTEND_BOTTOM ~AR3357.BCS~ ~AjantisBG1/Romance_BG1/Scripts/C#Tavern_AD.BAF~
+
+END //BG1
+
+
+/* crossmod with NTotSC - for all games */
+
+/* no check needed - if NTotSC is not installed, it will not show */
+
+COMPILE EVALUATE_BUFFER ~AjantisBG1/crossmod/ntotsc.d~ USING ~AjantisBG1/translations/%LANGUAGE%/crossmod.tra~
+EXTEND_TOP ~%tutu_var%ajantis.bcs~ ~AjantisBG1/crossmod/ntotsc.baf~
+EVALUATE_BUFFER 
+
+
+//////////////////////////////////////////////////////
+
+/* For EE, the Ajantis' family shield BAM can be used for the family shield: if BG1NPC is installed */
+
+BEGIN @16  /* ~Install the unique BG:EE BAM for Ajantis' Family Shield~ */
+REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @17 /* ~This component is only available for the Enhanced Edition.~ */
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~override/x#ajshld.itm~) @18 /* ~Ajantis' shield from BG1NPC Project not installed.~ */
+
+COPY_EXISTING ~x#ajshld.itm~ ~override~
+WRITE_ASCII 0x3a ~1SHLDAJ~ #8
+
+
+

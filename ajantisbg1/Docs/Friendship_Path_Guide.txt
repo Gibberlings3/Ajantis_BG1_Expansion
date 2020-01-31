@@ -1,0 +1,73 @@
+Friendship Path for Ajantis (all BG1 engines: original BG1, Tutu, EasyTutu, BGT, BG:EE, EET)
+
+The friendship dialogues are available to all Player1s. For evil aligned Player1s, the sequential dialogues will be over at the eigth discussion - Ajantis doesn't feel like talking about private matters or beliefs in this case. However:
+For BG1 and BG1:TotSC: if Player1 matches the romance conditions, the romance will be triggered instead of the friendship.
+For Tutu/BGT/BG:EE/EET: BG1NPC Project, including the component "Ajantis romance" has to be installed in order for the romance to trigger. If the component "Ajantis romance" of the BG1NPC project is not installed, the whole frindship path will be played.
+
+If the romance has triggered, the transition to the friendship path will take place only if the romance was ended by the PC (either by committing to another NPC, or by choosing the PID-option "Do not talk to me any longer. I am aware that this means we will not come any closer." This PID-Option is available after the third lovetalk, the talk about Helm.), but only if the romance was broken after one of the earlier lovetalks. The latest lovetalk after which the transition can occur is LT 10 ("Lady <CHARNAME>, may I share my thoughts with you?..."). After that, Ajantis will be too emotionally involved with Player1 to discuss any personal matter with her if the romance had stopped. This is also true for the case in which the romance stopped because Player1 insulted Ajantis. 
+
+The transition from the romance to the friendship path goes in such way that no dialogue topic gets repeated, i.e. if the romance stops at a later point (but before LT 10), not all the friendship dialogues will happen, and the first friendship dialogue will be on a topic that was not discussed before during the romance.
+
+In general, Player1 has the opportunity to contradict Ajantis, or even to insult him. The friendship dialogues will not stop, neither will Ajantis turn hostile. For an evil aligned Player1, there is an opportunity to start a fight with Ajantis in one of the later dialogues, but it is the choice of Player1 whether the fight will actually happen.
+
+In total, there are 14 sequential dialogues, one floater after rest, and 6 game-dependent dialogues.
+
+If a player regrets to have the mod installed, there are several possibilities to tell Ajantis to shut up forever in the early talks. This will result in all the sequential friendship dialogues stopping completely. There is no possibility to resume or to start over the friendship, though.
+
+Player-initiated dialogue options (PID):
+
+For original BG1, the PIDs will be installed by this mod. To activate them, select Ajantis and press "k". For Tutu, EasyTutu and BGT, the PID options will only be present if the BG1NPC Project and its  "Player-Initiated Dialogue component" are installed. If this component from the BG1NPC Project is not installed, Ajantis will not have any PIDs in Tutu/BGT.
+
+Reactions to Bhaal-heritage and to reputation:
+For original BG1, the reactions to the knowledge of the Player1's Bhaal-heritage and to reputation will be integrated by this mod.
+For Tutu, EasyTutu and BGT, reactions to Player1's Bhaal-heritage and to reputation will only be present if the BG1NPC Project and its component "Banters, Quests, and Interjections" is installed. If this component from the BG1NPC Project is not installed, Ajantis will not react to Player1's Bhaal-heritage and to reputation.
+
+FIRST LINE AND TALK NUMBERING SCHEME:
+
+FD stands for Friendship dialogue. 
+
+Sequential dialogues:
+FD 1: <CHARNAME>, we formed our alliance to fight the bandits threatening travelers in this area.
+
+FD 2: <CHARNAME>, I told you I am a squire paladin of the Most Holy Order of the Radiant Heart.
+
+FD 3: Being a paladin sometimes bares strange occurrences.
+
+FD 4: Look at all that is happening around us, <CHARNAME>. People feel nervous and insecure.
+
+FD 5: <CHARNAME>, we have combined our forces to bring criminals to justice.
+
+FD 6: My honor is my life, <CHARNAME>.
+
+FD 7: I would give my life if I could destroy all evil around us with one strike of my sword.
+
+FD 8: We talked about justice, honor, and about good and evil. Are you interested to hear how I felt my call to became a paladin?
+
+FD 9: <CHARNAME>, you may recall that I am from Waterdeep.
+
+FD 10: Tell me about your home,  <CHARNAME>. You grew up in Candlekeep?
+
+FD 11 (next REST after FD 10): Ah, you are awake, <CHARNAME>. I will be finished with this any minute...
+
+FD 12: <CHARNAME>, I would like to learn more about you and your home.
+
+FD 13: <CHARNAME>, as I have already told you, I am trying to win glory and honor to get knighted by the Order of the Most Radiant Heart.
+
+FD 14: Have a look at my sword, <CHARNAME>. It is maintained properly, as I take great care for it.
+
+FD 15 (no evil-aligned NPCs in party): I see no evil in our travel companions, and that is good.
+FD 15 (if at least one evil-aligned NPC in Party): <CHARNAME>, you surrounded yourself with evil travel companions... very much to my dislike.
+
+
+Game event-dependent dialogues:
+FD 16 (Player1 has more than 40100 XP): You have become powerful, <CHARNAME>... A mighty ally, and a dreaded enemy for others.
+
+FD 17 (after one of the later dreams, but not upon wake-up): How are you, <CHARNAME>? I noticed your sleep wasn't very pleasant the last days.
+
+FD 18 (before entering the bandit camp): Finally, we are nearer to find the bandit camp than ever.
+
+FD 19 (after defeating Davaeorn): (sigh) How complicated this is...
+
+FD 20 (after being arrested in Candlekeep): <CHARNAME>, this is outrageous! Our honor is stained...
+
+FD 21 (After entering the Undercity): What an evil place, full of the restless dead!

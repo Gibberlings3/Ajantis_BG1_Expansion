@@ -1,0 +1,14 @@
+@0    = ~Sir Raleo Windspear! I am delighted to see your travels have lead you here, my lord. How is your family?~
+@1    = ~Ah, the youngest Ilvastarr's offspring. You look impressive with all this armour and weapons.~
+@2    = ~Thank you, Lord Windspear.~
+@3    = ~The family is all right, at least when I left them. Eila is turning into a young lady now, Sir squire, you would be surprised if you would see her.~
+@4    = ~If you say so, my lord.~
+@5    = ~My apologies for this delay, <CHARNAME>. Lord Windspear is a friend of my parents. His brother, Lord of Windspear Hills in Amn, is a confidant of the Order of the Radiant Heart.~
+@6    = ~I am glad you and your family are allright. My greetings to them, when next you return home from your travels.~
+@7    = ~Indeed. That will be awhile, though. But now I am sure your friend has some questions about this town, hm?~
+@8    = ~Don't be shy, just ask away.~
+
+/* new for v13 */
+@9   = ~Mendas? Mendas from Warerdeep? I never... But I have been away from my home for quite a while... <CHARNAME>, as intriguing as this expedition does sound, we do not have time for this now. Leave this expedition to more experienced sailors.~
+@10  = ~This, I fear, settles it. <CHARNAME>, you do not consider stealing from the Merchant's League?~
+@11  = ~Ly... Lycantrophy? This is not compatible with my duties as a paladin. We need to find a cure, and quick!~

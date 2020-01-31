@@ -1,0 +1,12 @@
+IF
+	Global("bd_plot","global",26)
+	OR(2)
+		Dead("BDKORLAS")
+		Allegiance("BDKORLAS",ENEMY)
+	Global("C#Ajantis_BG1KorlaszTried","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Ajantis_BG1KorlaszTried","GLOBAL",1)
+		Continue()
+END
+	

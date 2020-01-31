@@ -1,0 +1,370 @@
+/* Set Up Ajantis recognises low rep of a freshly joined group - memory of rep > 11 by joining */
+IF 
+Global("X#AjantisNoBadRepJoinCheck","GLOBAL",0)
+Global("X#AjantisNoBadRepJoin","GLOBAL",0)
+ReputationGT(Player1,11)
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisNoBadRepJoin","GLOBAL",1)
+SetGlobal("X#AjantisNoBadRepJoinCheck","GLOBAL",1)
+END
+
+/* Activate bad rep join talk after joining a party with rep < 12 */
+IF 
+Global("X#AjantisNoBadRepJoin","GLOBAL",0)
+Global("X#AjantisBadRepJoinTalk","GLOBAL",0)
+ReputationLT(Player1,12)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadRepJoinTalk","GLOBAL",1)
+END
+
+/* Initiate bad rep join talk after joining a party with rep < 12 */
+IF 
+Global("X#AjantisBadRepJoinTalk","GLOBAL",1)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+Dialogue(Player1)
+END
+
+/* Set Up Reputation lower 12 - long bad rep talk delay for non-evil alignent PC ~and~ if chapter < 3 */
+IF 
+Global("X#AjantisBadRepTimer","GLOBAL",0)
+
+!Alignment(Player1,19)
+!Alignment(Player1,35)
+!Alignment(Player1,51)
+
+!Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+InParty(Myself)
+GlobalLT("Chapter","GLOBAL",%tutu_chapter_3%)
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",1)
+SetGlobalTimer("X#AjantisBadRepDelay","GLOBAL",FIVE_DAYS) // 
+END
+
+/*Set Up  short bad rep talk delay: chapter > 3 ~or~ for evil PC. Several blocks because of missing "OR()" trigger */
+
+IF 
+Global("X#AjantisBadRepTimer","GLOBAL",0)
+!Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+Alignment(Player1,19)
+InParty(Myself)
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",1)
+SetGlobalTimer("X#AjantisBadRepDelay","GLOBAL",TWO_DAYS) //30 min delay
+END
+
+IF 
+Global("X#AjantisBadRepTimer","GLOBAL",0)
+!Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+Alignment(Player1,35)
+InParty(Myself)
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",1)
+SetGlobalTimer("X#AjantisBadRepDelay","GLOBAL",TWO_DAYS) //30 min delay
+END
+
+IF 
+Global("X#AjantisBadRepTimer","GLOBAL",0)
+!Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+Alignment(Player1,51)
+InParty(Myself)
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",1)
+SetGlobalTimer("X#AjantisBadRepDelay","GLOBAL",TWO_DAYS) //30 min delay
+END
+
+IF 
+Global("X#AjantisBadRepTimer","GLOBAL",0)
+!Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+!Alignment(Player1,19)
+!Alignment(Player1,35)
+!Alignment(Player1,51)
+GlobalLT("Chapter","GLOBAL",%tutu_chapter_3%)
+InParty(Myself)
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",1)
+SetGlobalTimer("X#AjantisBadRepDelay","GLOBAL",TWO_DAYS) //30 min delay
+END
+
+
+/* Activate reputation < 12: Ajantis will warn PC. Several blocks because of missing "OR()" trigger */
+IF 
+ReputationLT(Player1,12)
+!Global("X#AjantisBadReputationWarning","GLOBAL",1)
+Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+!GlobalTimerExpired("X#AjantisBadRepDelay","GLOBAL")
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadReputationIncrease","GLOBAL",0)
+SetGlobal("X#AjantisNoBadRepJoin","GLOBAL",2)
+SetGlobal("X#AjantisBadReputationWarning","GLOBAL",1)
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",0)
+END
+
+
+IF 
+ReputationLT(Player1,12)
+!Global("X#AjantisBadReputationWarning","GLOBAL",1)
+!Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+GlobalTimerExpired("X#AjantisBadRepDelay","GLOBAL")
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadReputationIncrease","GLOBAL",0)
+SetGlobal("X#AjantisNoBadRepJoin","GLOBAL",2)
+SetGlobal("X#AjantisBadReputationWarning","GLOBAL",1)
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",0)
+END
+
+IF 
+ReputationLT(Player1,12)
+!Global("X#AjantisBadReputationWarning","GLOBAL",1)
+Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+GlobalTimerExpired("X#AjantisBadRepDelay","GLOBAL")
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadReputationIncrease","GLOBAL",0)
+SetGlobal("X#AjantisNoBadRepJoin","GLOBAL",2)
+SetGlobal("X#AjantisBadReputationWarning","GLOBAL",1)
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",0)
+END
+
+
+
+/* Initiate reputation < 12: Ajantis will warn PC */
+IF 
+Global("X#AjantisBadReputationWarning","GLOBAL",1)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+Dialogue(Player1)
+END
+
+/* Activate: Ajantis recognises rep increase after former bad rep talk. Several blocks because of missing "OR()" trigger */
+IF 
+ReputationGT(Player1,11)
+Global("X#AjantisBadRepJoinTalk","GLOBAL",2)
+Global("X#AjantisBadReputationWarning","GLOBAL",2)
+Global("X#AjantisBadReputationIncrease","GLOBAL",0)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobalTimer("X#AjantisBadRepDelay","GLOBAL",1)
+SetGlobal("X#AjantisBadRepJoinTalk","GLOBAL",3) //to prevent from looping
+SetGlobal("X#AjantisBadReputationIncrease","GLOBAL",1)
+END
+
+IF 
+ReputationGT(Player1,11)
+Global("X#AjantisBadRepJoinTalk","GLOBAL",2)
+!Global("X#AjantisBadReputationWarning","GLOBAL",2)
+Global("X#AjantisBadReputationIncrease","GLOBAL",0)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobalTimer("X#AjantisBadRepDelay","GLOBAL",1)
+SetGlobal("X#AjantisBadRepJoinTalk","GLOBAL",3) //to prevent from looping
+SetGlobal("X#AjantisBadReputationIncrease","GLOBAL",1)
+END
+
+IF 
+ReputationGT(Player1,11)
+!Global("X#AjantisBadRepJoinTalk","GLOBAL",2)
+Global("X#AjantisBadReputationWarning","GLOBAL",2)
+Global("X#AjantisBadReputationIncrease","GLOBAL",0)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobalTimer("X#AjantisBadRepDelay","GLOBAL",1)
+SetGlobal("X#AjantisBadRepJoinTalk","GLOBAL",3) //to prevent from looping
+SetGlobal("X#AjantisBadReputationIncrease","GLOBAL",1)
+END
+
+
+
+/* Initiate: Ajantis recognises rep increase after former bad rep talk */
+IF 
+Global("X#AjantisBadReputationIncrease","GLOBAL",1)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+Dialogue(Player1)
+END
+
+/* Activate Ajantis good rep talk for rep >17 */
+IF 
+Global("X#AjantisGoodReputationTalk","GLOBAL",0)
+ReputationGT(Player1,17)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisGoodReputationTalk","GLOBAL",1)
+END
+
+/* Activate Ajantis good rep talk for rep >17 */
+IF 
+Global("X#AjantisGoodReputationTalk","GLOBAL",1)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+Dialogue(Player1)
+END
+
+/* Activate reputation < 12: Ajantis will warn PC. Several blocks due to missing "OR()" trigger */
+IF 
+ReputationLT(Player1,12)
+!Global("X#AjantisBadReputationWarning","GLOBAL",1)
+Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+GlobalTimerExpired("X#AjantisBadRepDelay","GLOBAL")
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadReputationIncrease","GLOBAL",0)
+SetGlobal("X#AjantisNoBadRepJoin","GLOBAL",2)
+SetGlobal("X#AjantisBadReputationWarning","GLOBAL",1)
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",0)
+END 
+
+IF 
+ReputationLT(Player1,12)
+!Global("X#AjantisBadReputationWarning","GLOBAL",1)
+!Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+GlobalTimerExpired("X#AjantisBadRepDelay","GLOBAL")
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadReputationIncrease","GLOBAL",0)
+SetGlobal("X#AjantisNoBadRepJoin","GLOBAL",2)
+SetGlobal("X#AjantisBadReputationWarning","GLOBAL",1)
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",0)
+END 
+
+IF 
+ReputationLT(Player1,12)
+!Global("X#AjantisBadReputationWarning","GLOBAL",1)
+Global("X#AjantisNoBadRepJoin","GLOBAL",1)
+!GlobalTimerExpired("X#AjantisBadRepDelay","GLOBAL")
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBadReputationIncrease","GLOBAL",0)
+SetGlobal("X#AjantisNoBadRepJoin","GLOBAL",2)
+SetGlobal("X#AjantisBadReputationWarning","GLOBAL",1)
+SetGlobal("X#AjantisBadRepTimer","GLOBAL",0)
+END 
+
+//rep hits 20
+/* Activate Rep 20 */
+IF 
+Reputation(Player1,20)
+Global("X#AjantisBestReputationTalk","GLOBAL",0)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisBestReputationTalk","GLOBAL",1)
+END
+
+/* Initiate Rep 20 */
+IF 
+Global("X#AjantisBestReputationTalk","GLOBAL",1)
+InParty(Myself)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+Detect(Player1)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+!See([ENEMY])
+THEN
+RESPONSE #100
+Dialogue(Player1)
+END

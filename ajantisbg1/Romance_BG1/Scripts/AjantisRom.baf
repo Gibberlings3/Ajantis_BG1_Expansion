@@ -1,0 +1,1504 @@
+//Script file for Ajantis Romance 
+
+//RomanceMatch detection: in AjantisRomCheckMatch.BAF
+
+/* Romance shut down in case of hostile leave, triggered not by this mod: */
+IF
+	!InParty(Myself)
+	Allegiance(Myself,ENEMY)
+	!Global("X#AjantisRomanceActive","GLOBAL",0)
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetGlobal("X#AjantisRomanceActive","GLOBAL",3)
+END
+
+//RomanceTimer will be set the first time Ajantis joins the group
+IF
+  Global("X#AjantisRomanceJoin","GLOBAL",0)
+  Global("X#AjantisRomanceMatch","GLOBAL",1)
+  InParty(Myself)
+THEN  
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceJoin","GLOBAL",1)
+    SetGlobal("X#AjantisRomanceActive","GLOBAL",1)
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",1)
+    SetGlobalTimer("X#AjantisRomance","GLOBAL",ONE_DAY) //ONE_DAY
+END
+
+// Player-initiated dialogue
+IF
+InParty(Myself)
+HotKey(K)
+Detect(Player1)
+!StateCheck(Myself,CD_STATE_NOTVALID)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("C#AjantisPCIniFlirtTime","GLOBAL",1)
+Dialogue(Player1)
+END
+
+IF
+Global("C#AjantisPCIniFlirtTime","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("C#AjantisPCIniFlirtTime","GLOBAL",0)
+END
+
+
+//Bhaalcycle
+
+//PC has Gorion's letter
+IF
+	InParty(Myself)
+	PartyHasItem("SCRL2J")
+	Global("X#AjTamokoKnowBhaal","GLOBAL",0)
+THEN  
+  RESPONSE #100
+    SetGlobal("X#AjTamokoKnowBhaal","GLOBAL",2)
+END
+
+
+//Ajantis Bhaal talk 
+/* starts cycle: dialogue activation Global("X#AjTamokoKnowBhaal","GLOBAL",1) */
+IF
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+Global("X#AjTamokoKnowBhaal","GLOBAL",1)
+Global("X#AjantisKnowBhaalTalk","GLOBAL",0) 
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisKnowBhaalTalk","GLOBAL",1)
+END
+
+
+
+/* starts cycle: dialogue activation Global("X#AjTamokoKnowBhaal","GLOBAL",2) (PC found letter) */
+IF
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	Global("X#AjTamokoKnowBhaal","GLOBAL",2)
+	Global("X#AjantisKnowBhaalTalk","GLOBAL",0) 
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisKnowBhaalTalk","GLOBAL",1)
+END
+
+/* first knowbhaal-LT: dialogue triggering  */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisKnowBhaalTalk","GLOBAL",1)
+THEN
+  RESPONSE #100
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+//setting RomanceActive to 3 if Bhaalknow happens before marriage proposal
+IF
+  InParty(Myself)
+  Global("X#AjantisRomanceActive","GLOBAL",1)
+  GlobalGT("X#AjantisKnowBhaalTalk","GLOBAL",0)
+THEN  
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceActive","GLOBAL",3)
+    SetGlobal("X#AjantisRomanceBhaal","GLOBAL",1)
+END
+
+/* continuation of the Bhaal cycle */
+IF
+  InParty(Myself)
+  Global("X#AjantisRomanceActive","GLOBAL",2)
+  Global("X#AjantisKnowBhaalTalk","GLOBAL",2) 
+  Global("X#AjantisKnowBhaalCycle","GLOBAL",0) 
+THEN
+  RESPONSE #100
+   SetGlobal("X#AjantisKnowBhaalCycle","GLOBAL",1)
+   SetGlobalTimer("X#AjantisRomBhaalCycle","GLOBAL",ONE_DAY) // 
+END
+
+/* second knowbhaal-LT: dialogue triggering  */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+  GlobalTimerExpired("X#AjantisRomBhaalCycle","GLOBAL")
+    Global("X#AjantisKnowBhaalTalk","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisKnowBhaalTalk","GLOBAL",3)
+END
+
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisKnowBhaalTalk","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("X#AjantisRomBhaalCycle","GLOBAL",ONE_DAY) // 
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* third knowbhaal-LT: dialogue triggering  */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+  GlobalTimerExpired("X#AjantisRomBhaalCycle","GLOBAL")
+    Global("X#AjantisKnowBhaalTalk","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisKnowBhaalTalk","GLOBAL",5)
+END
+
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisKnowBhaalTalk","GLOBAL",5)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("X#AjantisRomBhaalCycle","GLOBAL",ONE_DAY) // 
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* 4th knowbhaal-LT: dialogue triggering  */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+  GlobalTimerExpired("X#AjantisRomBhaalCycle","GLOBAL")
+    Global("X#AjantisKnowBhaalTalk","GLOBAL",6)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("X#AjantisRomBhaalCycle","GLOBAL",ONE_DAY) // 
+    SetGlobal("X#AjantisKnowBhaalTalk","GLOBAL",7)
+END
+
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisKnowBhaalTalk","GLOBAL",7)
+THEN
+  RESPONSE #100
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+
+
+
+
+
+// Ajantis romance. 
+
+/* first lovetalk: dialogue activation  */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",2)
+END
+
+/* first lovetalk: dialogue triggering  */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",2)
+THEN
+  RESPONSE #100
+//PlaySong(0)
+//PlaySound("AJROM")
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* Gorion talk if PC didn't talk about Gorion in first LT: dialogue activation */
+
+IF
+   InParty(Myself)
+   Global("X#AjantisRomanceMatch","GLOBAL",1)
+   !Global("X#AjantisRomanceActive","GLOBAL",3)
+   Global("X#AjantisRomanceNoGorion","GLOBAL",1)
+	GlobalGT("X#AjantisRomanceRestCounter","GLOBAL",1)
+      GlobalTimerNotExpired("X#AjantisRomanceRestAfterTimer","GLOBAL")
+THEN
+   RESPONSE #100
+   SetGlobal("X#AjantisRomanceNoGorion","GLOBAL",2)
+   SetGlobalTimer("X#AjantisRomanceGorionTimer","GLOBAL",ONE_DAY) //
+END
+
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomanceGorionTimer","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisRomanceNoGorion","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceNoGorion","GLOBAL",3)
+END
+
+/* Gorion talk if PC didn't talk about Gorion in first LT: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceNoGorion","GLOBAL",3)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* second lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",4)
+END
+
+/* second lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",4)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* 3rd lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",5)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",6)
+END
+
+/* 3rd lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",6)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* 4th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",7)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",8)
+END
+
+/* 4th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",8)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* 5th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",9)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",10)
+END
+
+/* 5th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",10)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* 6th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",11)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",12)
+END
+
+/* 6th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",12)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* 7th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",13)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",14)
+END
+
+/* 7th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",14)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* 8th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",15)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",16)
+END
+
+/* 8th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",16)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* 9th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",17)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",18)
+END
+
+/* 9th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",18)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* 10th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",19)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",20)
+END
+
+/* 10th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",20)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",ONE_DAY)
+	Dialogue(Player1)
+END
+
+
+//11 th LT: looking at the stars... ("AjantisLoveTalk" 22)
+
+//areaType outdoor.
+
+IF //looking at the stars... Weather change (no weather)
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomanceRestAfterTimer","GLOBAL") //not after rest
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+  Global("X#AjantisLoveTalk","GLOBAL",21) 
+  Global("X#AjantisRomanceWeatherChange1","GLOBAL",0)
+	Global("Z!EmulAreaOutdoor","GLOBAL",1)
+    TimeOfDay(NIGHT)
+THEN
+ RESPONSE #100
+   SetGlobal("X#AjantisRomanceWeatherChange1","GLOBAL",1)
+   Weather(NOWEATHER)
+   SetGlobalTimer("X#AjantisRomanceWeatherTimer1","GLOBAL",5)
+   MoveToObject(Player1)
+END
+
+
+/* looking at the stars: dialogue activation */
+
+IF    
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("Z!EmulAreaOutdoor","GLOBAL",1)
+  TimeOfDay(NIGHT)
+  Global("X#AjantisRomanceWeatherChange1","GLOBAL",1)
+  GlobalTimerExpired("X#AjantisRomanceWeatherTimer1","GLOBAL")
+  Global("X#AjantisLoveTalk","GLOBAL",21) 
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceWeatherChange1","GLOBAL",2)
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",22)
+END
+
+/* looking at the stars: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",22)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("C#AjantisRomanceRepT","GLOBAL",ONE_DAY)
+	Dialogue(Player1)
+END
+
+
+/* morning dialogue after "looking at the stars". Activation from morning talk from dplayer3.bcs after rest: GlobalGT("X#AjantisRomanceRestCounter","GLOBAL",1)
+GlobalTimerNotExpired("X#AjantisRomanceRestAfterTimer","GLOBAL")
+ */
+
+/* dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	GlobalGT("X#AjantisRomanceRestCounter","GLOBAL",1)
+	GlobalTimerNotExpired("X#AjantisRomanceRestAfterTimer","GLOBAL") //
+	Global("X#AjantisRomanceStars","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceStars","GLOBAL",3)
+END
+
+/* dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceStars","GLOBAL",3)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	SetGlobalTimer("C#AjantisRomanceRepT","GLOBAL",ONE_DAY)
+	Dialogue(Player1)
+END
+
+
+
+
+//if rep < 16 for LT 22: Ajantis gives hint that rep should increase.
+
+IF   
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+  !Global("X#AjantisRomanceActive","GLOBAL",3)
+  Global("X#AjantisRomanceMatch","GLOBAL",1)
+  Global("X#AjantisRomanceRepFell","GLOBAL",0)
+	GlobalTimerExpired("C#AjantisRomanceRepT","GLOBAL")
+	!Global("X#AjantisRomanceStars","GLOBAL",1)
+  ReputationLT(Player1,16)
+  ReputationGT(Player1,11)
+  GlobalGT("X#AjantisLoveTalk","GLOBAL",22)
+  GlobalLT("X#AjantisLoveTalk","GLOBAL",32)
+  Global("X#AjantisRomanceNeedMoreRep","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceNeedMoreRep","GLOBAL",1)
+END
+
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceNeedMoreRep","GLOBAL",1)
+THEN
+  RESPONSE #100
+	Dialogue(Player1)
+END
+
+
+
+//from LT 13 (Global("X#AjantisLoveTalk","GLOBAL",24)): only for rep>= 16
+
+/* 13th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	ReputationGT(Player1,15)
+	Global("X#AjantisLoveTalk","GLOBAL",23)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",24)
+END
+
+/* 13th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",24)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* 14th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	ReputationGT(Player1,15)
+	Global("X#AjantisLoveTalk","GLOBAL",25)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",26)
+END
+
+/* 14th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",26)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* 15th lovetalk: outdoor. dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	ReputationGT(Player1,15)
+	Global("Z!EmulAreaOutdoor","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",27)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",28)
+END
+
+/* 15th lovetalk: outdoor. dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",28)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* 16th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	ReputationGT(Player1,15)
+	Global("X#AjantisLoveTalk","GLOBAL",29)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",30)
+END
+
+/* 16th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",30)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+//messenger, appears in city areas. (LT 17a)
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	ReputationGT(Player1,15)
+	Global("X#AjantisLoveTalk","GLOBAL",31) 	
+	Global("X#AjantisKnowBhaalTalk","GLOBAL",0)
+	Global("Z!EmulAreaCity","GLOBAL",1)
+	Global("X#AjantisHasRing","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisHasRing","GLOBAL",1)
+    CreateCreature("X#AJDOUG",[-1.-1]%FACE_0%) //Douglas
+END
+
+
+/* Confession LT 17 */
+IF 
+	Global("X#AjantisHasRing","GLOBAL",2)
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)	
+	Global("X#AjantisKnowBhaalTalk","GLOBAL",0)
+	ReputationGT(Player1,15)
+	Global("X#AjantisLoveTalk","GLOBAL",31) 
+THEN
+  RESPONSE #100
+  	SetGlobal("X#AjantisLoveTalk","GLOBAL",32)
+END
+
+/* 17th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",32)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	SetGlobalTimer("X#AjantisRomRep","GLOBAL",ONE_DAY)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* if rep < 16 for LT > 32 Ajantis complaints */
+IF
+
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	ReputationLT(Player1,16)
+	GlobalGT("X#AjantisLoveTalk","GLOBAL",32)
+	GlobalTimerExpired("X#AjantisRomRep","GLOBAL")
+	Global("X#AjantisRomanceLostRep","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceLostRep","GLOBAL",1)
+END
+
+/* dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceLostRep","GLOBAL",1)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* 18th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	ReputationGT(Player1,15)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",1)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",2)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",3)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",4)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",5)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",6)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",7)
+	Global("X#AjantisLoveTalk","GLOBAL",33) 
+THEN
+  RESPONSE #100
+  	SetGlobal("X#AjantisLoveTalk","GLOBAL",34)
+END
+
+/* 18th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",34)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",TWO_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* 19th lovetalk: dialogue activation 1: noweather */
+
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",35) 
+	ReputationGT(Player1,15)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",1)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",2)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",3)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",4)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",5)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",6)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",7)
+	Global("X#AjantisRomanceWChangeN1","GLOBAL",0)
+	Global("Z!EmulAreaOutdoor","GLOBAL",1)
+	TimeOfDay(NIGHT)
+THEN
+ RESPONSE #100
+   SetGlobal("X#AjantisRomanceWChangeN1","GLOBAL",1)
+   Weather(NOWEATHER)
+   SetGlobalTimer("X#AjantisRomanceWChangeNT1","GLOBAL",5)
+   MoveToObject(Player1)
+END
+
+/* 19th lovetalk: dialogue activation */
+IF    
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("Z!EmulAreaOutdoor","GLOBAL",1)
+	TimeOfDay(NIGHT)
+	Global("X#AjantisRomanceWChangeN1","GLOBAL",1)
+	GlobalTimerExpired("X#AjantisRomanceWChangeNT1","GLOBAL")
+	Global("X#AjantisLoveTalk","GLOBAL",35) 
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisRomanceWeatherChange1","GLOBAL",2)
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",36)
+END
+
+/* 19th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",36)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* 20th lovetalk (talk about intimacy): dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	ReputationGT(Player1,15)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",1)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",2)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",3)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",4)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",5)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",6)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",7)
+	Global("X#AjantisLoveTalk","GLOBAL",37) 
+THEN
+  RESPONSE #100
+  	SetGlobal("X#AjantisLoveTalk","GLOBAL",38)
+END
+
+/* 20th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",38)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* rest talk after LT 20 (LoveTalk=38) */
+/* GlobalGT("X#AjantisRomanceWantsInt","GLOBAL",0) 
+Global("X#AjantisReadyForNT1","GLOBAL",1) from tavern script*/
+
+
+/* rest talk after LT 38: preparation */
+	
+IF 
+	InParty(Myself)
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisReadyForNT1","GLOBAL",0)
+	GlobalGT("X#AjantisRomanceWantsInt","GLOBAL",0)
+	GlobalGT("X#AjantisLoveTalk","GLOBAL",38)
+	!GlobalTimerNotExpired("X#AjantisNT1Timer","GLOBAL")
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisReadyForNT1","GLOBAL",1)
+END
+
+
+/* rest talk after LT 20: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisReadyForNT1","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisReadyForNT1","GLOBAL",3)
+END
+
+/* rest talk after LT 20: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisReadyForNT1","GLOBAL",3)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+
+
+
+/* 21th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	ReputationGT(Player1,15)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",1)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",2)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",3)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",4)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",5)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",6)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",7)
+	Global("X#AjantisLoveTalk","GLOBAL",39) 
+THEN
+  RESPONSE #100
+  	SetGlobal("X#AjantisLoveTalk","GLOBAL",40)
+END
+
+/* 21th lovetalk: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",40)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* 22th lovetalk: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	ReputationGT(Player1,15)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",1)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",2)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",3)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",4)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",5)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",6)
+	!Global("X#AjantisKnowBhaalTalk","GLOBAL",7)
+	Global("X#AjantisLoveTalk","GLOBAL",41) 
+THEN
+  RESPONSE #100
+  	SetGlobal("X#AjantisLoveTalk","GLOBAL",42)
+END
+
+/* 22th lovetalk (last cycle talk): dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLoveTalk","GLOBAL",42)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* deactivation of dream talks if Ajantis was not in the party */
+
+
+IF
+!InParty(Myself) 
+Global("DREAM","Global",3)
+Global("X#AjantisDream1Without","GLOBAL",0)
+Global("X#AjantisRomanceMatch","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisDream1Without","GLOBAL",1)
+END
+
+IF
+!InParty(Myself) 
+Global("DREAM","Global",4)
+Global("X#AjantisDream2Without","GLOBAL",0)
+Global("X#AjantisRomanceMatch","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisDream2Without","GLOBAL",1)
+END
+
+IF
+!InParty(Myself) 
+Global("DREAM","Global",6)
+Global("X#AjantisDream4Without","GLOBAL",0)
+Global("X#AjantisRomanceMatch","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("X#AjantisDream4Without","GLOBAL",1)
+END
+
+
+/* Dream talks */
+/* first talk about PC's dream: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("DREAM","GLOBAL",3)
+	Global("X#AjantisRomanceDream1","GLOBAL",0)
+	Global("X#AjantisDream1Without","GLOBAL",0)
+THEN
+  RESPONSE #100
+  	SetGlobal("X#AjantisRomanceDream1","GLOBAL",1)
+END
+
+/* first talk about PC's dream: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceDream1","GLOBAL",1)
+THEN
+  RESPONSE #100
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+
+/* second talk about PC's dream: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("DREAM","GLOBAL",4)
+	Global("X#AjantisRomanceDream2","GLOBAL",0)
+	Global("X#AjantisDream2Without","GLOBAL",0)
+THEN
+  RESPONSE #100
+  	SetGlobal("X#AjantisRomanceDream2","GLOBAL",1)
+END
+
+/* second talk about PC's dream: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceDream2","GLOBAL",1)
+THEN
+  RESPONSE #100
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+/* third talk about PC's dream: dialogue activation */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("DREAM","GLOBAL",6)
+	Global("X#AjantisRomanceDream4","GLOBAL",0)
+	Global("X#AjantisDream4Without","GLOBAL",0)
+THEN
+  RESPONSE #100
+  	SetGlobal("X#AjantisRomanceDream4","GLOBAL",1)
+END
+
+/* third talk about PC's dream: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceDream4","GLOBAL",1)
+THEN
+  RESPONSE #100
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+//night talk in tavern
+/* activate the dialogue - triggering by tavern script */
+
+/* two blocks because of "OR()" */
+IF
+	InParty("ajantis")	
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisRomanceIntimacy","GLOBAL",1)
+	Global("X#AjantisLoveTalk","GLOBAL",43)
+	Global("X#AjantisReadyForNT","GLOBAL",0)
+THEN
+  RESPONSE #100	
+  SetGlobal("X#AjantisReadyForNT","GLOBAL",1)
+END
+
+IF
+	InParty("ajantis")
+	GlobalTimerExpired("X#AjantisRomance","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisRomanceWantsInt","GLOBAL",2)
+	Global("X#AjantisLoveTalk","GLOBAL",43)
+	Global("X#AjantisReadyForNT","GLOBAL",0)
+THEN
+  RESPONSE #100	
+  SetGlobal("X#AjantisReadyForNT","GLOBAL",1)
+END
+
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceNight3","GLOBAL",1)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+//Last LT before end fight
+
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("Z!EmulAreaCheck","GLOBAL",123)
+	Global("X#AjantisKnowBhaalTalk","GLOBAL",8) //after Bhaaltalk cycle
+    Global("X#AjantisLastLoveTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("X#AjantisLastLoveTalk","GLOBAL",1)
+    SetGlobal("X#AjantisLoveTalk","GLOBAL",45)
+END
+
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisLastLoveTalk","GLOBAL",1)
+THEN
+  RESPONSE #100
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+
+
+
+/* taken out: no interjections, therefore no "bad decision" monitoring
+
+/* too many bad decisions: first warning dialogue activation */
+IF
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	GlobalGT("X#AjantisRomanceBadDecision","GLOBAL",4)
+	Global("X#AjantisRomanceTooManyBD","GLOBAL",0)
+THEN
+   RESPONSE #100
+   SetGlobal("X#AjantisRomanceTooManyBD","GLOBAL",1)
+END
+
+/* too many bad decisions: first warning dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceTooManyBD","GLOBAL",1)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* too many bad decisions: second dialogue activation */
+IF
+	InParty(Myself)
+	!See([ENEMY])
+	See(Player1)
+   GlobalGT("X#AjantisRomanceBadDecision","GLOBAL",7)
+   Global("X#AjantisRomanceTooManyBD","GLOBAL",2)
+THEN
+   RESPONSE #100
+   SetGlobal("X#AjantisRomanceTooManyBD","GLOBAL",3)
+END
+
+/* too many bad decisions: second dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceTooManyBD","GLOBAL",3)
+THEN
+  RESPONSE #100
+	SetGlobalTimer("X#AjantisRomance","GLOBAL",FOUR_DAYS)
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+*/
+
+
+//Durlyle conflict 
+
+//Ajantis.baf
+//If "X#AjantisRomanceDurDirect" = 1, or "X#AjantisRomanceDurSweety" = 1
+
+/* "X#AjantisRomanceDurSweety" = 1: dialogue activation */
+IF
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisRomanceDurSweety","GLOBAL",1)
+THEN
+   RESPONSE #100
+   SetGlobal("X#AjantisRomanceDurSweety","GLOBAL",2)
+END
+
+/* "X#AjantisRomanceDurSweety" = 1: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceDurSweety","GLOBAL",2)
+THEN
+  RESPONSE #100
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+/* "X#AjantisRomanceDurDirect" = 1: dialogue activation */
+IF
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Detect(Player1)
+	!See([ENEMY])
+	GlobalTimerExpired("Z!EnemySeenPeriod60","GLOBAL")
+	!Global("X#AjantisRomanceActive","GLOBAL",3)
+	Global("X#AjantisRomanceMatch","GLOBAL",1)
+	Global("X#AjantisRomanceDurDirect","GLOBAL",1)
+THEN
+   RESPONSE #100
+   SetGlobal("X#AjantisRomanceDurDirect","GLOBAL",2)
+END
+
+/* "X#AjantisRomanceDurDirect" = 1: dialogue triggering */
+IF 
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceDurDirect","GLOBAL",2)
+THEN
+  RESPONSE #100
+	ActionOverride("ajantis",Dialogue(Player1))
+END
+
+
+
+
+

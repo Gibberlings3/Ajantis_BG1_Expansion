@@ -1,0 +1,24 @@
+/* 3rd letter: Messenger in great camp bd3000.are */
+
+IF 
+	!Dead("Ajantis")
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	GlobalLT("C#AjantisSoDLetter","GLOBAL",4)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#AjantisBG1LetterTimer","GLOBAL",120)
+		SetGlobal("C#AjantisSoDLetter","GLOBAL",4)
+END
+
+
+IF 
+	!Dead("Ajantis")
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	GlobalLT("C#AjantisSoDLetter","GLOBAL",5)
+	RealGlobalTimerExpired("C#AjantisBG1LetterTimer","GLOBAL")
+THEN
+	RESPONSE #100
+		CreateCreatureObject("C#AjSoD1",Player1,0,0,0)
+		SetGlobal("C#AjantisSoDLetter","GLOBAL",5)
+		ActionOverride("C#AjSoD1",StartDialogNoSet(Player1))
+END

@@ -1,0 +1,42 @@
+/* this script is used for the BG1 and BGII mods */
+
+/* bd0103.bcs */
+
+/* Ajantis in party but dead - resurrection */
+IF
+	InPartyAllowDead("ajantis")
+	GlobalLT("BD_PLOT","GLOBAL",51)
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjantisIsDeadBG1","GLOBAL",1)
+		ApplySpellRES("bdresurr","ajantis") 
+		Continue()
+END
+
+/* party has Ajantis' family shield, take it */
+
+IF
+	InMyArea("Ajantis")
+	GlobalLT("BD_PLOT","GLOBAL",51)
+	Global("SOD_fromimport","global",1)
+	PartyHasItem("x#ajshld")
+	!HasItem("x#ajshld","Ajantis")
+THEN
+	RESPONSE #100
+		ActionOverride("PlayerChest00",TakeCreatureItems("Ajantis",BACKPACK))
+		ActionOverride("Ajantis",TakePartyItem("x#ajshld"))
+		Continue()
+END
+
+
+IF
+	InMyArea("Ajantis")
+	GlobalLT("BD_PLOT","GLOBAL",51)
+	Global("SOD_fromimport","global",1)
+	HasItem("x#ajshld","Ajantis")
+THEN
+	RESPONSE #100
+		XEquipItem("x#ajshld","Ajantis",SLOT_SHIELD,EQUIP)
+		Continue()
+END
+

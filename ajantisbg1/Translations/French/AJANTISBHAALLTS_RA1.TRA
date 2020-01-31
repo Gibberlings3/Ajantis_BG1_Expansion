@@ -1,0 +1,78 @@
+@132 = ~<CHARNAME>, vous... vous êtes un rejeton de *Bhaal*, le Dieu du Meurtre ?!~
+@133 = ~Je ne le savais pas moi-même, Ajantis !~
+@134 = ~Il semblerait, en effet.~
+@135 = ~Vous dites cela comme si cette information ne vous faisait rien ! Le saviez-vous déjà ?~
+@136 = ~Non, je viens de l'apprendre, Ajantis.~
+@137 = ~En quoi cela te concerne-t-il, Ajantis ?~
+@138 = ~Vous ne le saviez pas vous-même... Oui, je vous crois. Quelle découverte étonnante ! Vous portez un tel héritage !~
+@139 = ~Eh bien, j'imagine que je dois vous croire. Quelle découverte étonnante ! Vos portez un tel héritage !~
+@140 = ~Répondez honnêtement à mes questions. Que cela signifie-t-il pour vous ? Comment allez-vous traiter cet héritage ?~
+@141 = ~Je déteste être un rejeton de Bhaal ! Le Mal n'aura pas sa chance avec moi. Je vais faire tout ce qui est en mon pouvoir pour ne pas continuer dans la voie qu'a tracée mon père.~
+@142 = ~Je ne sais pas... Tout arrive si vite. Je ne veux pas être impliqué dans ceci ! Si seulement ce n'était qu'une méprise !~
+       ~Je ne sais pas... Tout arrive si vite. Je ne veux pas être impliquée dans ceci ! Si seulement ce n'était qu'une méprise !~
+@143 = ~Hmm... Je dois y réfléchir. Cela m'apporte en réalité de nouvelles possibilités très intéressantes.~
+@144 = ~Je suis l'enfant d'un dieu, Ajantis. Je peux sentir ce pouvoir en moi ! Je dois l'utiliser. Toute autre décision serait mauvaise !~
+@145 = ~En quoi cela me concerne-t-il ?! Je suis un paladin de Heaum, et vous... un rejeton de Bhaal ! Je dois savoir comment vous allez gérer votre héritage !~
+@146 = ~En quoi cela me concerne-t-il ?! Mon amour, je suis un paladin de Heaum, et vous... un rejeton de Bhall ! Je... *dois* savoir comment vous allez gérer votre héritage !~
+@147 = ~Je suis très soulagé et heureux de l'entendre.~
+@148 = ~De grands mots, mais je doute que vous ayez la force et la volonté de les rendre réels.~
+@149 = ~Cela semble réel, donc vous devez le gérer ! Essayer de vous cacher de votre héritage divin ne fonctionnera pas, cela vous laissera simplement plus vulnérable en cas de besoin !~
+@150 = ~Des possibilités ?! Pensez-vous sérieusement à utiliser les pouvoirs de votre père sanglant à vos propres fins ?!~
+@151 = ~Non, je ne voulais pas dire ça. C'était juste une pensée générale.~
+@152 = ~En effet ! Je suis l'enfant d'un Dieu, Ajantis. Je peux sentir ce pouvoir en moi ! Je dois l'utiliser ! Tout autre chose serait mal !~
+@153 = ~De quoi parlez-vous ?! Bhaal était le dieu du meurtre et de la destruction ! Voulez-vous que ces pouvoirs maléfiques deviennent les *vôtres* ?~
+@154 = ~Bien sûr ! Une série de possibilités imprévues se présentent à moi... Plus j'y pense, plus l'idée me plaît.~
+@155 = ~Ai-je le choix ? Je connais les prophéties d'Alaundo. Je dois être le dernier, sinon je tomberai sous les coups de l'un de mes frères et soeurs.~
+       ~Ai-je le choix ? Je connais les prophéties d'Alaundo. Je dois être la dernière, sinon je tomberai sous les coups de l'un de mes frères et soeurs.~
+@156 = ~Pas les forces maléfiques, Ajantis. Je ne parle que des pouvoirs divins que j'ai en moi. Je les utiliserai à mes propres fins !~
+@157 = ~Vous connaissez les prophéties d'Alaundo. Les descendants de Bhaal se battront pour le trône de leur père, semant chaos et destruction tout autour d'eux. Où serez-vous quand cela se produira, <CHARNAME> ?~
+@158 = ~Tu bases tes paroles sur des traductions mortelles des prophéties. Je suis sûr que certains de ses descendants se battront pour le trône, mais je refuse de suivre une voie maléfique juste parce que ce... dieu a décidé d'imprégner ma mère. Et je serai où je dois être, de manière à le détruire... avant qu'il ne puisse me détruire.~
+       ~Tu bases tes paroles sur des traductions mortelles des prophéties. Je suis sûre que certains de ses descendants se battront pour le trône, mais je refuse de suivre une voie maléfique juste parce que ce... dieu a décidé d'imprégner ma mère. Et je serai où je dois être, de manière à le détruire... avant qu'il ne puisse me détruire.~
+@159 = ~Je ne peux pas accepter cette destinée ! Je ne veux pas me battre pour le trône de Bhaal, je ne veux pas répandre le chaos et la destruction ! Je resterai fidèle à ma voie, tâchant de faire le bien !~
+@160 = ~Eh bien, si c'est la volonté des dieux, j'ai peur que cela se passe de cette manière.~
+@161 = ~Je dois combattre ! C'est la seule manière pour moi d'obtenir l'héritage de mon père, qui m'appartient !~
+@162 = ~Etes-vous à ce point naïf que vous pensez pouvoir tromper la véritable nature de votre père et utiliser ses pouvoirs pour faire le bien ?~
+       ~Etes-vous à ce point naïve que vous pensez pouvoir tromper la véritable nature de votre père et utiliser ses pouvoirs pour faire le bien ?~
+@163 = ~Pourquoi cela serait-il impossible ? Je ne suis pas maléfique, Ajantis. Si mon destin est de prendre la place de mon père, pourquoi ne pas le faire à ma manière ?~
+@164 = ~Qui parle de faire le bien, Ajantis ? Une fois que j'aurai ses pouvoirs, je ferai tout ce que *je* veux !~
+@165 = ~Je ne peux pas croire que vous disiez une chose pareille. Restez loin de moi ! Je demeurerai avec vous, mais seulement pour vous surveiller. Heaum, dans sa puissance sacrée, m'aidera à vous combattre, si cela devenait nécessaire !~
+@166 = ~Que... que dites-vous, mon amour ! S'il vous plaît, dites-moi que vous ne le pensiez pas... pourtant, vous le pensiez sérieusement. Comment ai-je pu me tromper à ce point sur vous...~
+@167 = ~Ne vous approchez pas, <CHARNAME> ! J'ai des devoirs chevaleresques à honorer ! Je resterai avec vous, mais seulement pour vous surveiller. Heaum, dans sa puissance sacrée, m'aidera à vous combattre, si cela devenait nécessaire !~
+@168 = ~Alors, vous allez tuer vos frères et soeurs ? Vous allez répandre leur sang et celui des autres, sur la terre de votre pays ?~
+@169 = ~Je n'ai pas dit que c'était ce que *je* voulais ! Tout ce que je fais est d'accepter ma destinée. Et si c'est que les dieux me réservent, je jouerai leur jeu.~
+@170 = ~En effet ! Je ne vais pas m'asseoir et attendre jusqu'à ce que mes demi-frères et soeurs assoiffés de pouvoir passent me voir et essaient d'approcher le trône de notre père en me tuant !~
+@171 = ~Je vais barboter dans leur sang, et ça me fera sourire, Ajantis !~
+@172 = ~Parce que nous autres, mortels, ne sommes pas nés pour avoir et contrôler de tels pouvoirs, <CHARNAME> ! Bhaal lui-même était mortel, mais il était perverti et assoiffé de pouvoir, comme les pouvoirs divins qu'il a reçus. Ce dont vous parlez est d'utiliser et transformer ces pouvoirs maléfiques pour vous-même, pas pour des fins malveillantes ! Comment savez-vous que vous serez assez fort pour ça ?~
+       ~Parce que nous autres, mortels, ne sommes pas nés pour avoir et contrôler de tels pouvoirs, <CHARNAME> ! Bhaal lui-même était mortel, mais il était perverti et assoiffé de pouvoir, comme les pouvoirs divins qu'il a reçus. Ce dont vous parlez est d'utiliser et transformer ces pouvoirs maléfiques pour vous-même, pas pour des fins malveillantes ! Comment savez-vous que vous serez assez forte pour ça ?~
+@173 = ~Je ne sais pas, Ajantis, mais je ferai tout ce qui est en mon pouvoir pour que cela se réalise.~
+@174 = ~Bien sûr que je serai suffisamment fort ! N'ai-je pas déjà choisi la voie de la vertu, en dépit de mon héritage ?~
+       ~Bien sûr que je serai suffisamment forte ! N'ai-je pas déjà choisi la voie de la vertu, en dépit de mon héritage ?~
+@175 = ~Ah, balivernes ! Le temps nous le dira. Pourquoi s'en inquiéter aujourd'hui ?~
+@176 = ~Je ne peux pas croire que vous traitiez ceci avec autant de légèreté ! Soyez rationnel, <CHARNAME> ! C'est le pouvoir d'une divinité qui vous fait face. Il va vous transformer, pas l'inverse. Vous devez être ferme dans votre foi, solide et sans la moindre hésitation dans la voie de la vertu et de la droiture, et alors, peut-être aurez-vous une chance de réussir !~
+       ~Je ne peux pas croire que vous traitiez ceci avec autant de légèreté ! Soyez rationnelle, <CHARNAME> ! C'est le pouvoir d'une divinité qui vous fait face. Il va vous transformer, pas l'inverse. Vous devez être ferme dans votre foi, solide et sans la moindre hésitation dans la voie de la vertu et de la droiture, et alors, peut-être aurez-vous une chance de réussir !~
+@177 = ~Bien, vous êtes resté sur la bonne voie jusqu'à aujourd'hui... J'entrevois une chance pour vous d'atteindre votre objectif.~
+       ~Bien, vous êtes restée sur la bonne voie jusqu'à aujourd'hui... J'entrevois une chance pour vous d'atteindre votre objectif.~
+@178 = ~Vous allez échouer, <CHARNAME>. Vous avez déjà commis des actes maléfiques au cours de nos voyages. Vous n'êtes pas sur la bonne voie, et votre volonté n'est pas suffisamment forte ! Ces pouvoirs maléfiques vont vous dépasser !~
+@179 = ~Vous êtes réellement sur la voie de la vertu, et j'entrevois une chance pour vous de réussir.~
+@180 = ~Mais comment allez-vous réussir ? Vous connaissez les prophéties d'Alaundo. Les descendants de Bhaal se battront pour le trône de leur père, semant chaos et destruction tout autour d'eux. Où serez-vous quand cela se produira, <CHARNAME> ?~
+@181 = ~Je vais rester avec vous... mais seulement pour vous surveiller ! Heaum, dans sa puissance sacrée, me donnera la force de vous combattre, si cela devenait nécessaire !~
+@182 = ~Pardonnez-moi, mon amour. Je dois mettre fin à notre relation pour pouvoir me concentrer sur mes devoirs de paladin. Je vais rester avec vous... mais seulement pour vous surveiller ! Heaum, dans sa puissance sacrée, me donnera la force de vous combattre, si cela devenait nécessaire !~
+@183 = ~Vos mots font fondre mes doutes. Allons-y, et soyons vigilants. Je combattrai à vos côtés et vous assisterai dans votre noble plan, du mieux que je le pourrai.~
+@184 = ~Vous avez choisi de grands mots, mais ils ne peuvent dissiper mes doutes. Je combattrai à vos côtés et vous assisterai dans votre noble plan, aussi longtemps que vous resterez sur la bonne voie.~
+@185 = ~Vous avez choisi de grands mots, mon amour, mais ils ne correspondent pas à vos actions jusqu'ici. J'espérais pouvoir ne pas en tenir compte mais... la situation a changé...~
+@186 = ~Pardonnez-moi, mon amour. Je dois mettre fin à notre relation pour pouvoir me concentrer sur mes devoirs de paladin. Je resterai avec vous... mais seulement pour vous surveiller ! Je me battrai à vos côtés et vous assisterai dans votre noble plan, aussi longtemps que vous resterez sur la bonne voie.~
+@187 = ~Je vois. Allons-y et restons vigilants. Je me battrai à vos côtés et vous assisterai, aussi longtemps que vous resterez sur la bonne voie.~
+@188 = ~Mon amour, vos mots font disparaître mes doutes. Je suis... très heureux car cela signifie que je peux rester avec vous sans avoir à négliger mes devoirs de paladin...~
+@189 = ~Pourtant je tremble à l'idée de ce qui pourrait vous attendre dans le futur. Allons-y et restons vigilants. Je vous soutiendrai de toutes mes forces !~
+@190 = ~N'acceptez pas le destin comme s'il vous était imposé ! Rien n'est encore fait sur la manière dont les choses vont se produire. Vous pouvez influencer la voie qu'empruntera votre futur avec vos pouvoirs bienfaisants ! En tant que paladin, je dois savoir ce que vous déciderez, quand ce jour viendra.~
+@191 = ~Ajantis, j'essaierai de rester sur le chemin du Bien, quoi que m'apporte le futur. S'il te plaît, crois-moi !~
+@192 = ~Quand ce jour viendra, je ferai ce que le destin a préparé pour moi. Si cela signifie que je dois tuer d'autres enfants de Bhaal, ainsi soit-il.~
+@193 = ~Cela signifie que vous allez activement participer à la réalisation de la prophétie...~
+@194 = ~L'impatience apparente dans vos paroles me fait peur, mon amour. Et pourtant, vous avez le pouvoir de rester sur la bonne voie...~
+@195 = ~Je tremble à la pensée de ce qui pourrait vous attendre dans le futur. Allons-y et restons vigilants. Je vous assisterai, aussi longtemps que vous resterez sur le droit chemin.~
+@196 = ~L'impatience apparente dans vos paroles m'effraie. Et pourtant, vous avez le pouvoir de rester sur la bonne voie...~
+@197 = ~Allons-y et soyons vigilants. Je combattrai à vos côtés et vous aiderai aussi longtemps que vous resterez sur le droit chemin.~
+@198 = ~Mon coeur saigne d'avoir à y penser, mon amour. Vous avez déjà réalisé des actes maléfiques au cours de nos voyages. J'espérais pouvoir ne pas en tenir compte mais la situation a changé...~
+@199 = ~Mon coeur saigne d'avoir à y penser. Vous avez déjà réalisé des actes maléfiques au cours de vos voyages... Je dois me concentrer sur mes devoirs de paladin. Je garderai mes pensées pour moi, désormais.~
+@200 = ~Allons-y et restons vigilants, <CHARNAME>. Je combattrai à vos côtés et vous assisterai, aussi longtemps que vous resterez sur le droit chemin.~
+@201 = ~Créature démoniaque ! A présent vous révélez vos véritables intentions ! Levez votre arme, je ne vous laisserai pas aller plus loin !~ [AJANT31]

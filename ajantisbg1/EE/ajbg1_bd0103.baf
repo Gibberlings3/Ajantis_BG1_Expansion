@@ -1,0 +1,9 @@
+IF
+	!Dead("Ajantis")
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	Global("C#AjantisSoDLetter","GLOBAL",0)
+THEN
+	RESPONSE #100
+		GiveItemCreate("C#AJBG11",Player1,1,0,0)  // Ajantis' first letter
+		SetGlobal("C#AjantisSoDLetter","GLOBAL",1)
+END
