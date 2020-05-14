@@ -227,8 +227,7 @@ IF ~~ THEN BEGIN 147 // from: 145.0 144.0 143.0
   SAY #30951 /* ~Because you like me? Yet another reason why I am blessed to know someone like you.~ [RSR130] */
   IF ~~ THEN EXIT
 END
-Global("RASAAD_ROMANCE","GLOBAL",1)
-Global("RASAAD_ROMANCE","GLOBAL",2)
+GlobalGT("RASAAD_ROMANCE","GLOBAL",1)
 */
 
 CHAIN 

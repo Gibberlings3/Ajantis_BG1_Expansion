@@ -127,6 +127,7 @@ HISTORY
 
 Version 15:
 -Ajantis should start the friendship path from appropriate dialogue if BG1NPC Romance breaks (fixed variable transfer)
+-Ajantis should not talk about Rasaad's romantic interest before Rasaad started his LTs
 
 Version 14:
 + added after-Sarevok death dialogue which will only trigger if game remains in BG1 (BGT or EE with e.g. Endless BG1 Mod).

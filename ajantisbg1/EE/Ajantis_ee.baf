@@ -59,7 +59,7 @@ END
 /* dialogue activation */
 IF	%BGT_VAR% 
 //	%FP_TIMER_EXPIRED%
-	GlobalGT("RASAAD_ROMANCE","GLOBAL",0)
+	GlobalGT("RASAAD_ROMANCE","GLOBAL",1)
 	OR(2)
 		Global("X#AjantisRomanceActive","GLOBAL",1)
 		Global("X#AjantisRomanceActive","GLOBAL",2)
