@@ -1,7 +1,7 @@
 			Ajantis BG1 (Expansion Modification) 
 	für BG1 (mit oder ohne LdSk), BG1Tutu v4, EasyTutu, BGT, BG:EE und EET
 					von jastey 
-					Version 14
+
 
 Die Ajantis BG1 Erweiterungs-Modifikation ist für das normale BG1 (mit oder ohne der Legenden der Schwertküste), BG1Tutu v4, EasyTutu, BGT, BG:EE und EET. Es fügt zusätzlichen Inhalt (Dialoge) für den BioWare NHC Ajantis ein.
 
@@ -124,6 +124,9 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 =============================================================================
 
 HISTORY
+
+Version 15:
+-Ajantis should start the friendship path from appropriate dialogue if BG1NPC Romance breaks (fixed variable transfer)
 
 Version 14:
 + added after-Sarevok death dialogue which will only trigger if game remains in BG1 (BGT or EE with e.g. Endless BG1 Mod).
