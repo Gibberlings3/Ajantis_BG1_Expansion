@@ -1,7 +1,7 @@
 			Ajantis BG1 Expansion Modification 
 	for BG1 (with or without TotSC), BG1Tutu v4, EasyTutu, BGT and BG:EE
 					by jastey 
-					Version 14
+
 
 This is a mini-mod for original ("vanilla") Baldur’s Gate 1 game (with or without the add-on Tales of the Sword Coast), BG1Tutu v4, EasyTutu, Baldur’s Gate Trilogy (BGT), Baldur's Gate Enhanced Edition (BG:EE), and Enhanced Edition Trilogy (EET).
 
@@ -124,6 +124,10 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 =============================================================================
 
 HISTORY
+
+Version 15:
+-Ajantis should start the friendship path from appropriate dialogue if BG1NPC Romance breaks (fixed variable transfer)
+-Ajantis should not talk about Rasaad's romantic interest before Rasaad started his LTs
 
 Version 14:
 + added after-Sarevok death dialogue which will only trigger if game remains in BG1 (BGT or EE with e.g. Endless BG1 Mod).

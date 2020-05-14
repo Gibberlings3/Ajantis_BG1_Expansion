@@ -4,238 +4,233 @@
 
 	
 IF	%BGT_VAR%
+	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 	GlobalGT("X#AjantisLoveTalk","GLOBAL",21)
-	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjanFP_NoPCTalks","GLOBAL",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 	Global("X#AjantisRomanceInsult","GLOBAL",1)
-	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjanFP_NoPCTalks","GLOBAL",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 	Global("X#AjantisRomanceNoInterest","GLOBAL",1)
-	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjanFP_NoPCTalks","GLOBAL",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 	Global("X#AjantisRomanceShutUp","GLOBAL",1)
-	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjanFP_NoPCTalks","GLOBAL",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 	Global("X#AjantisRomanceOtherMan","GLOBAL",1)
-	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjanFP_NoPCTalks","GLOBAL",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
+	Global("C#AjanFP_NoPCTalks","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjantisPCTalk","GLOBAL",99)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
+END
+
+IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 	Global("X#AjantisRomanceThief","GLOBAL",1)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",13)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",13) //next dialogue: "evil"
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",1)
 	GlobalGT("X#AjantisLoveTalk","GLOBAL",7)
 	GlobalLT("X#AjantisLoveTalk","GLOBAL",10)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",13)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",13) //next dialogue: "evil"
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",1)
 	GlobalGT("X#AjantisLoveTalk","GLOBAL",9)
 	GlobalLT("X#AjantisLoveTalk","GLOBAL",12)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",15)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",15) //next dialogue: "Ajantis' call"
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
-	Global("X#AjantisRomanceInsult","GLOBAL",0)
-	Global("X#AjantisRomanceNoInterest","GLOBAL",0)
-	Global("X#AjantisRomanceShutUp","GLOBAL",0)
-	Global("X#AjantisRomanceOtherMan","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",0)
 	Global("X#AjantisRomanceActive","GLOBAL",3)
-	Global("C#AjantisPCTalk","GLOBAL",0)
-	GlobalLT("X#AjantisLoveTalk","GLOBAL",4)
+//	Global("C#AjantisPCTalk","GLOBAL",1)
+	GlobalLT("X#AjantisLoveTalk","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",1) 
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
-	Global("X#AjantisRomanceInsult","GLOBAL",0)
-	Global("X#AjantisRomanceNoInterest","GLOBAL",0)
-	Global("X#AjantisRomanceShutUp","GLOBAL",0)
-	Global("X#AjantisRomanceOtherMan","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",0)
 	Global("X#AjantisRomanceActive","GLOBAL",3)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",3)
 	Global("X#AjantisLoveTalk","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",3) 
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
-	Global("X#AjantisRomanceInsult","GLOBAL",0)
-	Global("X#AjantisRomanceNoInterest","GLOBAL",0)
-	Global("X#AjantisRomanceShutUp","GLOBAL",0)
-	Global("X#AjantisRomanceOtherMan","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",0)
 	Global("X#AjantisRomanceActive","GLOBAL",3)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",7)
 	Global("X#AjantisLoveTalk","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",7) 
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
-	Global("X#AjantisRomanceInsult","GLOBAL",0)
-	Global("X#AjantisRomanceNoInterest","GLOBAL",0)
-	Global("X#AjantisRomanceShutUp","GLOBAL",0)
-	Global("X#AjantisRomanceOtherMan","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",0)
 	Global("X#AjantisRomanceActive","GLOBAL",3)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",9)
 	Global("X#AjantisLoveTalk","GLOBAL",7)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",9) 
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
-	Global("X#AjantisRomanceInsult","GLOBAL",0)
-	Global("X#AjantisRomanceNoInterest","GLOBAL",0)
-	Global("X#AjantisRomanceShutUp","GLOBAL",0)
-	Global("X#AjantisRomanceOtherMan","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",0)
 	Global("X#AjantisRomanceActive","GLOBAL",3)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",13)
 	Global("X#AjantisLoveTalk","GLOBAL",9)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",13) 
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
-	Global("X#AjantisRomanceInsult","GLOBAL",0)
-	Global("X#AjantisRomanceNoInterest","GLOBAL",0)
-	Global("X#AjantisRomanceShutUp","GLOBAL",0)
-	Global("X#AjantisRomanceOtherMan","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",0)
 	Global("X#AjantisRomanceActive","GLOBAL",3)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",17)
 	Global("X#AjantisLoveTalk","GLOBAL",11)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",17) 
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
-	Global("X#AjantisRomanceInsult","GLOBAL",0)
-	Global("X#AjantisRomanceNoInterest","GLOBAL",0)
-	Global("X#AjantisRomanceShutUp","GLOBAL",0)
-	Global("X#AjantisRomanceOtherMan","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",0)
 	Global("X#AjantisRomanceActive","GLOBAL",3)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",21)
 	Global("X#AjantisLoveTalk","GLOBAL",13)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",21) 
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
-	Global("X#AjantisRomanceInsult","GLOBAL",0)
-	Global("X#AjantisRomanceNoInterest","GLOBAL",0)
-	Global("X#AjantisRomanceShutUp","GLOBAL",0)
-	Global("X#AjantisRomanceOtherMan","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",0)
 	Global("X#AjantisRomanceActive","GLOBAL",3)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",21)
 	Global("X#AjantisLoveTalk","GLOBAL",15)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",21) 
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
-	Global("X#AjantisRomanceInsult","GLOBAL",0)
-	Global("X#AjantisRomanceNoInterest","GLOBAL",0)
-	Global("X#AjantisRomanceShutUp","GLOBAL",0)
-	Global("X#AjantisRomanceOtherMan","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",0)
 	Global("X#AjantisRomanceActive","GLOBAL",3)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",23)
 	Global("X#AjantisLoveTalk","GLOBAL",17)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",23) 
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
 
 IF	%BGT_VAR%
+	Global("C#AjanFP_RomFPTransfer","LOCALS",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
-	Global("X#AjantisRomanceInsult","GLOBAL",0)
-	Global("X#AjantisRomanceNoInterest","GLOBAL",0)
-	Global("X#AjantisRomanceShutUp","GLOBAL",0)
-	Global("X#AjantisRomanceOtherMan","GLOBAL",0)
 	Global("X#AjantisRomanceShutUpLowRep","GLOBAL",0)
 	Global("X#AjantisRomanceActive","GLOBAL",3)
-	Global("C#AjantisPCTalk","GLOBAL",0)
+	GlobalLT("C#AjantisPCTalk","GLOBAL",25)
 	GlobalGT("X#AjantisLoveTalk","GLOBAL",18)
 	GlobalLT("X#AjantisLoveTalk","GLOBAL",22)
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisPCTalk","GLOBAL",25) 
 		SetGlobal("C#AjantisSetFPTimer","GLOBAL",1)
+		SetGlobal("C#AjanFP_RomFPTransfer","LOCALS",1)
 END
