@@ -44,7 +44,8 @@ END //APPEND
 Ajantis will comment but only leave if PC wants him to. */
 /* DO ~SetGlobal("#L_PKExitModded","LOCALS",0)~ */
 CHAIN
-IF ~Global("C#AjantisBG1_TransitionsKD","GLOBAL",1)~ THEN %AJANTIS_JOINED% post_korlasz
+IF WEIGHT #-1
+~Global("C#AjantisBG1_TransitionsKD","GLOBAL",1)~ THEN %AJANTIS_JOINED% post_korlasz
 @23 /* ~This is a glorious moment, <CHARNAME>. We achieved what I was sent to accomplish, and more.~ */
 DO ~SetGlobal("C#AjantisBG1_TransitionsKD","GLOBAL",2)~
 == %AJANTIS_JOINED% IF ~!Global("X#AjantisRomanceActive","GLOBAL",2)~ THEN @24 /* ~I am ready to set out to report to my Oder. This would mean farewell.~ */
@@ -84,7 +85,8 @@ IF ~Global("#L_StartBG2","GLOBAL",1)~ THEN DO ~SetGlobal("#L_BG2ExitModded","LOC
 */
 
 /* non-romance case */
-IF ~Global("C#AjantisBG1_TransitionsLeave","GLOBAL",1) !Global("X#AjantisRomanceActive","GLOBAL",2)~ THEN bg1_leave_nr
+IF WEIGHT #-1
+~Global("C#AjantisBG1_TransitionsLeave","GLOBAL",1) !Global("X#AjantisRomanceActive","GLOBAL",2)~ THEN bg1_leave_nr
 SAY @0 /* ~It was an honor to cleanse this place from the bandit threat and the rising war with you. My task here is done. I shall return home to call on the Order of the Radiant Heart. I will report the happenings and your part in it. I, ahem, will also mention my part in it, and hope I will be found worthy to receive knighthood. I thank you for combining forces with me. Farewell!~ */ 
 IF ~~ THEN DO ~SetGlobal("#L_SoDExitModded","LOCALS",0)
 SetGlobal("C#AjantisBG1_TransitionsLeave","GLOBAL",2)
@@ -103,7 +105,8 @@ EscapeArea()~ EXIT
 END
 
 /* romance case */
-IF ~Global("C#AjantisBG1_TransitionsLeave","GLOBAL",1) Global("X#AjantisRomanceActive","GLOBAL",2)~ THEN bg1_leave
+IF WEIGHT #-1
+~Global("C#AjantisBG1_TransitionsLeave","GLOBAL",1) Global("X#AjantisRomanceActive","GLOBAL",2)~ THEN bg1_leave
 SAY @1 /* ~<CHARNAME>, I fear time has come to say good bye. The war is stopped, Sarevok is defeated, the task the Order gave me is done. It is time for me to report back, but I will travel to Waterdeep first, as we already agreed upon. Nothing will detain me from seeking my parents' answer concerning our plans for marriage, now that our foe is defeated and peace has come back to the lands, at last. I am so looking foreward to talking to them, <CHARNAME>, my love. Talking to them and telling them of the love I hold for you.~ */
 IF ~~ THEN + bg1_leave_01
 END
