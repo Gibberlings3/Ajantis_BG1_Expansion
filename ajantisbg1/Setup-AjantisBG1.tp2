@@ -14,7 +14,7 @@ AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~15~ //
+VERSION ~16~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -48,12 +48,22 @@ ALWAYS
  ACTION_IF GAME_IS ~bgee~ THEN BEGIN
    INCLUDE ~AjantisBG1/lib/ajantis_bgee.tpa~
    INCLUDE ~AjantisBG1/lib/g3_bgee_cpmvars.tpa~
+  OUTER_SPRINT ~46137~ ~46137~
+  OUTER_SPRINT ~46138~ ~46138~
+  OUTER_SPRINT ~46139~ ~46139~
+  OUTER_SPRINT ~46140~ ~46140~
+  OUTER_SPRINT ~46145~ ~46145~
         PRINT @14
  END
 
  ACTION_IF GAME_IS ~eet~ THEN BEGIN
    INCLUDE ~AjantisBG1/lib/ajantis_eet.tpa~
       INCLUDE ~EET/other/cpmvars/eet_cpmvars.tpa~
+  OUTER_SPRINT ~46137~ ~246137~
+  OUTER_SPRINT ~46138~ ~246138~
+  OUTER_SPRINT ~46139~ ~246139~
+  OUTER_SPRINT ~46140~ ~246140~
+  OUTER_SPRINT ~46145~ ~246145~
         PRINT @15
  END
 
@@ -198,7 +208,13 @@ COMPILE EVALUATE_BUFFER ~AjantisBG1/BG1_end/ajantisbg1_sod_transition.d~ USING ~
 
 /* only install this if BGII mod isn't installed already */
 ACTION_IF NOT (MOD_IS_INSTALLED ~ajantisbg2/setup-ajantisbg2.TP2~ ~0~) THEN BEGIN
-  EXTEND_TOP ~BD0103.bcs~ ~AjantisBG1/ee/sod_transition.baf~ EVALUATE_BUFFER
+  EXTEND_TOP ~BD0103.bcs~ ~AjantisBG1/ee/sod_transition.baf~ 
+EVALUATE_BUFFER
+/* this is for the case that the player skips SoD in EET */
+  ACTION_IF GAME_IS ~eet~ THEN BEGIN
+    EXTEND_TOP ~K#TELBGT.bcs~ ~AjantisBG1/ee/eet_transition.baf~ 
+EVALUATE_BUFFER
+  END
 END
 
 /* romance reactions: add reply options so PC can shut down SoD romances */
@@ -551,6 +567,18 @@ END //BG1
 COMPILE EVALUATE_BUFFER ~AjantisBG1/crossmod/ntotsc.d~ USING ~AjantisBG1/translations/%LANGUAGE%/crossmod.tra~
 EXTEND_TOP ~%tutu_var%ajantis.bcs~ ~AjantisBG1/crossmod/ntotsc.baf~
 EVALUATE_BUFFER 
+
+/* crossmod for Transitions: good-bye dialogues */
+
+ACTION_IF ((MOD_IS_INSTALLED ~transitions/setup-transitions.tp2~ ~0~) OR (MOD_IS_INSTALLED ~transitions/setup-transitions.tp2~ ~1~) OR (MOD_IS_INSTALLED ~transitions/setup-transitions.tp2~ ~3~)) THEN BEGIN
+  PRINT @23
+  COMPILE EVALUATE_BUFFER ~ajantisbg1/crossmod/ajantis_transitions.d~
+	USING ~AjantisBG1/translations/%LANGUAGE%/AJANTISBG1_TRANSITION.TRA~
+  EXTEND_TOP ~ajantis.bcs~ ~ajantisbg1/crossmod/ajantis_transitions.baf~
+EVALUATE_BUFFER 
+  EXTEND_TOP ~ajantis.bcs~ ~ajantisbg1/BG1_end/c#ajan_bg1end_sod.baf~
+EVALUATE_BUFFER 
+END
 
 
 //////////////////////////////////////////////////////

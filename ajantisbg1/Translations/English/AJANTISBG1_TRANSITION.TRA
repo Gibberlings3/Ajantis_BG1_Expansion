@@ -23,3 +23,14 @@
 @20  = ~I will stay at your side as long as you still have need of me. I am looking forward to returning to my Order in Athkatla, though, as I fulfilled my quest to receive knighthood.~
 @21  = ~I will stay at your side as long as you still have need of me, and will treasure every moment of it. Still, it urges me to travel to my parents to seek their approval. I am also looking forward to returning to Athkatla to my Order, as I fulfilled my quest to receive knighthood.~
 @22  = ~Korlasz begged for her life before you killed her, <CHARNAME>.~
+
+/* new for v16 */
+@23  = ~This is a glorious moment, <CHARNAME>. We achieved what I was sent to accomplish, and more.~
+@24  = ~I am ready to set out to report to my Oder. This would mean farewell.~
+@25  = ~I am ready to set out to seek consent from my family and report to my Order. This would mean good bye.~
+@26  = ~I understand that you are eager to leave. Thank you for everything, I am sure we will meet again. Farewell.~
+@27  = ~I understand that you are eager to leave. Have a good trip, and I am looking foreward to our reunion.~ 
+@28  = ~I would have more need of you, Ajantis. Please let us continue our travels and follow up on some things we had to leave unfinished to pursue our main goal.~
+@29  = ~You might leave later, but not with this equipment.~
+@30  = ~I understand. I will enjoy travelling at your side some more.~
+@31  = ~I understand. I will stand ready to follow your orders some more.~

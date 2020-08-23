@@ -18,7 +18,7 @@ END
 IF
 	InMyArea("Ajantis")
 	GlobalLT("BD_PLOT","GLOBAL",51)
-	Global("SOD_fromimport","global",1)
+	GlobalGT("SOD_fromimport","global",0)
 	PartyHasItem("x#ajshld")
 	!HasItem("x#ajshld","Ajantis")
 THEN
@@ -32,7 +32,7 @@ END
 IF
 	InMyArea("Ajantis")
 	GlobalLT("BD_PLOT","GLOBAL",51)
-	Global("SOD_fromimport","global",1)
+	GlobalGT("SOD_fromimport","global",0)
 	HasItem("x#ajshld","Ajantis")
 THEN
 	RESPONSE #100

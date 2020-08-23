@@ -125,6 +125,9 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 
 HISTORY
 
+Version 16:
+-compatibility and crossmod content with Transitions
+
 Version 15:
 -Ajantis should start the friendship path from appropriate dialogue if BG1NPC Romance breaks (fixed variable transfer)
 -Ajantis should not talk about Rasaad's romantic interest before Rasaad started his LTs

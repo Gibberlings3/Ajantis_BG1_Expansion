@@ -68,6 +68,10 @@ The Order is in highest alert, we cannot let Caelar turn the land into a battle 
 Loving you, revering you, and missing you, your Ajantis.~
 
 
+/* new for v16 */
+@23  = ~Transitions Mod detected...~
+
+
 // WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"
 @-1001= "composants optionnels distincts.

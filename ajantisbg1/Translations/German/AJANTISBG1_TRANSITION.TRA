@@ -23,3 +23,14 @@
 @20  = ~Ich verbleibe an Eurer Seite, solange Ihr noch Verwendung für meine Dienste habt. Da ich aber nun die Voraussetzung für meinen Ritterschlag erfüllt habe, würde ich gerne so bald wie möglich nach Atkatla zu meinen Ordensbrüdern reisen.~
 @21  = ~Ich verbleibe an Eurer Seite, solange Ihr noch Verwendung für meine Dienste habt - und ich werde jeden Moment davon genießen. Es drängt mich jedoch, so bald wie möglich nach Tiefwasser zu reisen und mit meinen Eltern zu sprechen. Da ich aber nun die Voraussetzung für meinen Ritterschlag erfüllt habe, würde ich danach so bald wie möglich nach Atkatla zu meinen Ordensbrüdern reisen.~
 @22  = ~Korlasz hat um Gnade gebeten, aber Ihr habt sie trotzdem getötet, <CHARNAME>.~
+
+/* new for v16 */
+@23  = ~Dies ist ein glorreicher Moment, <CHARNAME>. Wie haben in die Tat umgesetzt, wofür ich auf diese Reise geschickt wurde, und noch weit mehr als das.~
+@24  = ~Ich bin nun bereit, zu meinem Orden zurückzukehren und von unserem Erfolg zu berichten. Dies würde bedeuten, dass wir uns hier lebewohl sagen.~
+@25  = ~Ich bin nun bereit, zu meinem Orden zurückzukehren und von unserem Erfolg zu berichten - und vorher das Einverständnis meiner Familie einzuholen. Dies würde bedeuten, dass wir uns hier auf Wiedersehen sagen.~
+@26  = ~Ich verstehe, dass Ihr das so schnell wie möglich tun wollt. Habt Dank für Eure Hilfe, und lebt wohl.~
+@27  = ~Ich verstehe, dass Ihr das so schnell wie möglich tun wollt. Habt Dank für Eure Hilfe, und ich freue mich auf unser Wiedersehen.~ 
+@28  = ~Ich bräuchte Eure Hilfe noch eine Weile länger, Ajantis. Lasst uns bitte die Reise noch etwas fortführen und die Dinge erledigen, die wir bisher wegen dringender Aufgaben aufschieben mussten.~
+@29  = ~Ihr könnt gerne gleich gehen, aber nicht bevor ich nicht noch einmal Eure Ausrüstung durchgegangen bin.~
+@30  = ~Ich verstehe. Ich werde die weitere Zeit an Eurer Seite zu schätzen wissen.~
+@31  = ~Ich verstehe. Ich bin bereit, Euch noch eine Weile länger zu folgen.~

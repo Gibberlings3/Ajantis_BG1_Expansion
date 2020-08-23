@@ -1,0 +1,32 @@
+/* this script is used for the BG1 and BGII mods */
+
+/* K#TELBGT.bcs */
+
+IF
+	Global("C#Ajantis_EETTransit","LOCALS",0)
+	InPartyAllowDead("ajantis")
+	
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)		
+		DisableAI("ajantis",FALSE)
+		SetGlobal("C#Ajantis_EETTransit","LOCALS",1)
+		ActionOverride("ajantis",MakeUnselectable(1))
+		ApplySpellRES("bdresurr","ajantis")
+		SmallWait(10)
+		ApplySpellRES("K#UNREST","ajantis")
+		SmallWait(10)
+		ApplySpellRES("bdrejuve","ajantis")
+		SmallWait(10)
+		ActionOverride("K#ImportContainer",TakeCreatureItems("ajantis",BACKPACK))
+		SmallWait(10)
+		ActionOverride("K#ImportContainer",DestroyItem("x#ajshld"))
+		SmallWait(10)
+		ActionOverride("Ajantis",TakePartyItem("x#ajshld"))
+		SmallWait(10)
+		ActionOverride("Ajantis",DestroyItem("x#ajshld"))
+		SmallWait(10)
+		ActionOverride("ajantis",ChangeAIScript("",DEFAULT))
+		SetInterrupt(TRUE)		
+		Continue()
+END
