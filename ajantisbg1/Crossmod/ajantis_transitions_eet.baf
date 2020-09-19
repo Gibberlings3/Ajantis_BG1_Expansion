@@ -1,0 +1,18 @@
+IF
+	Global("C#AjantisIsDeadBG1","GLOBAL",1)	
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		FadeToColor([30.0],0)	
+		SetGlobal("C#AjantisIsDeadBG1","GLOBAL",2)
+		ApplySpellRES("bdresurr","ajantis")
+		SmallWait(10)
+		ApplySpellRES("K#UNREST","ajantis")
+		SmallWait(10)
+		ApplySpellRES("bdrejuve","ajantis")
+		SmallWait(10)
+		ActionOverride("ajantis",ChangeAIScript("",DEFAULT))
+		SmallWait(10)
+		ActionOverride("ajantis",DestroySelf())
+		Continue()
+END

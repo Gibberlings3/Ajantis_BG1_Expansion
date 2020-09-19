@@ -14,7 +14,7 @@ AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~16~ //
+VERSION ~16pre~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -26,8 +26,6 @@ ALWAYS
  ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN
   FAIL ~Your SoD game needs to be modmerged before mods can be installed on this game. Check the readme for more information and a link to download the DLC Merger or Modmerge.~
  END
-
-
 
  ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN
     INCLUDE ~AjantisBG1/lib/ajantis_tutu.tpa~
@@ -216,6 +214,7 @@ EVALUATE_BUFFER
 EVALUATE_BUFFER
   END
 END
+
 
 /* romance reactions: add reply options so PC can shut down SoD romances */
 COMPILE EVALUATE_BUFFER ~AjantisBG1/ee/sod_romancereactions.d~ 
@@ -570,14 +569,17 @@ EVALUATE_BUFFER
 
 /* crossmod for Transitions: good-bye dialogues */
 
-ACTION_IF ((MOD_IS_INSTALLED ~transitions/setup-transitions.tp2~ ~0~) OR (MOD_IS_INSTALLED ~transitions/setup-transitions.tp2~ ~1~) OR (MOD_IS_INSTALLED ~transitions/setup-transitions.tp2~ ~3~)) THEN BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~transitions/setup-transitions.tp2~ ~0~) THEN BEGIN
   PRINT @23
   COMPILE EVALUATE_BUFFER ~ajantisbg1/crossmod/ajantis_transitions.d~
 	USING ~AjantisBG1/translations/%LANGUAGE%/AJANTISBG1_TRANSITION.TRA~
   EXTEND_TOP ~ajantis.bcs~ ~ajantisbg1/crossmod/ajantis_transitions.baf~
-EVALUATE_BUFFER 
+    EVALUATE_BUFFER 
   EXTEND_TOP ~ajantis.bcs~ ~ajantisbg1/BG1_end/c#ajan_bg1end_sod.baf~
-EVALUATE_BUFFER 
+    EVALUATE_BUFFER 
+/* Ajantis should not remain dead in case he was upon transition */
+  EXTEND_TOP ~#L_CUT09.bcs~ ~AjantisBG1/crossmod/ajantis_transitions_eet.baf~ 
+    EVALUATE_BUFFER
 END
 
 
