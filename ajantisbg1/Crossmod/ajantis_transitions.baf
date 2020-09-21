@@ -62,7 +62,7 @@ END
 IF
 	IfValidForPartyDialog(Myself)
 	Global("C#AjantisBG1_TransitionsLeave","GLOBAL",2)
-	RealGlobalTimerExpired("C#AjanBG1_TransitionsLeaveTmr","GLOBAL")
+	GlobalTimerExpired("C#AjanBG1_TransitionsLeaveTmr","GLOBAL")
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjantisBG1_TransitionsLeave","GLOBAL",3)

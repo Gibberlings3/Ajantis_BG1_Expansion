@@ -73,7 +73,7 @@ END
 IF ~~ THEN timered_leave
 SAY @33  /* ~I'll wait for a short moment so you can take your property from my backpack before I will leave you.~ */
 IF ~~ THEN DO ~SetGlobal("C#AjantisBG1_TransitionsLeave","GLOBAL",2)
-RealSetGlobalTimer("C#AjanBG1_TransitionsLeaveTmr","GLOBAL",5)~ EXIT
+SetGlobalTimer("C#AjanBG1_TransitionsLeaveTmr","GLOBAL",ONE_MINUTE)~ EXIT
 END
 
 /* Transitions. SoD AND direct BGII transition. Ajantis will leave. */
