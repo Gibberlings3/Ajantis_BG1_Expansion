@@ -12,6 +12,8 @@ Für Tutu, BGT, BG:EE und EET wird ein Freundschaftspfad und weiteren Inhalt für 
 Für die EE fügt die Mod mehrere Banter mit Rasaad und einen mit Baeloth ein, sowie einen Rasaad-Ajantis Romanzenkonflikt.
 
 Für SoD fügt die Mod einen Abschiedsdialog ein, bevor Ajantis die Gruppe verlässt. Im Romanzenfall erhält die HC drei Briefe von Ajantis während der SoD-Kampagne.
+Der originale Abschieds-"DisplayStringHead" von Ajantis in Korlasz' Crypta ist für den Fall, dass Ajantis mit der HC verlobt ist, deaktiviert.
+Für den nicht-Romanzenfall wurde seine Aussage, dass er zum Orden nach Tiefwasser reisen muss, auf Konsitenz mit BGII geändert: Ajantis spricht jetzt davon, nach Atkatla zu reisen. 
 
 
 Als zweite Installoption gibt es für BG:EE und EET die Möglichkeit, das in der EE vorhandene BAM für Ajantis Schild (grüner Drache auf goldenem Grund) im Spiel zu verwenden (sofern BG1NPC Projekt installiert ist).
@@ -126,7 +128,11 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 HISTORY
 
 Version 16:
--compatibility and crossmod content with Transitions
+-compatibility and crossmod content with Transitions Mod
+-(SoD) for romance case (romance from BG1NPC Project), Ajantis' Farewell DisplayStringHeads in Korlasz' Crypt will be disabled.
+-(SoD) Ajantis' DisplayStringHead Farewell phrase about going to Warerdeep will be changed to going to Athkatla.
+-Added Dynamic Install Order categories to support Project Infinity.
+-infer_charset corrected to infer_charsets in tp2.
 
 Version 15:
 -Ajantis should start the friendship path from appropriate dialogue if BG1NPC Romance breaks (fixed variable transfer)

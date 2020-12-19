@@ -12,6 +12,8 @@ For Tutu, BGT, BG:EE, and EET, the mod adds a friendship track and more romance 
 For EE, the mod also adds several banters with Rassad and one with Baeloth, as well as a Rasaad-Ajantis romance conflict.
 
 For SoD, the mod adds farewell dialogues before Ajantis leaves. In romance case the PC will get three letters from Ajantis along the SoD campaign.
+In romance case his original farewell "DisplayStringHead" lines in Korlasz' Crypt will be deactivated.
+For non-romance case his origial farewell lines "DisplayStringHead" about going to Waterdeep were tweaked in consistency with BGII: Ajantis will now say that he will travel to the Order in Athkatla.
 
 The BG1NPC project can be found at the Gibberlings Three site: http://www.gibberlings3.net/bg1npc/index.php
 
@@ -126,7 +128,11 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 HISTORY
 
 Version 16:
--compatibility and crossmod content with Transitions
+-compatibility and crossmod content with Transitions Mod
+-(SoD) for romance case (romance from BG1NPC Project), Ajantis' Farewell DisplayStringHeads in Korlasz' Crypt will be disabled.
+-(SoD) Ajantis' DisplayStringHead Farewell phrase about going to Warerdeep will be changed to going to Athkatla.
+-Added Dynamic Install Order categories to support Project Infinity.
+-infer_charset corrected to infer_charsets in tp2.
 
 Version 15:
 -Ajantis should start the friendship path from appropriate dialogue if BG1NPC Romance breaks (fixed variable transfer)
