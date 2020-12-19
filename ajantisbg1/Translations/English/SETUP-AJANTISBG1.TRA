@@ -65,3 +65,8 @@ What news reached us from Baldur's Gate. You are marching against this warlord, 
 The Order is in highest alert, we cannot let Caelar turn the land into a battle field! But even if we march, I will not be where you are, so many are the places where our help is needed. All I can do is wish you well, my love. May Helm protect you - may all the gods protect you, so I will have you back unharmed and in one piece!
 
 Loving you, revering you, and missing you, your Ajantis.~
+
+/* new for v16 */
+@23  = ~Transitions Mod detected...~
+//#57802 from SoD with "Athkatla" instead of "Waterdeep".
+@24  = ~Though it makes my heart heavy, I must soon return to Athkatla.~

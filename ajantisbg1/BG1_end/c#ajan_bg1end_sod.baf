@@ -1,5 +1,19 @@
 /* Committed Romance: Korlash is defeated */
 
+/* this scriptblock is only needed for Transitions Mod: prevent Ajantis from mentioning Korlasz if he wasn't in party when she was defeated */
+IF
+
+	!InParty("Ajantis")
+	OR(2)
+		GlobalGT("BD_KORLASZ_SURRENDER","GLOBAL",0)
+		Dead("BDKORLAS")
+	Global("C#Ajantis_BG1KorlaszDefeated","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Ajantis_BG1KorlaszKilled","GLOBAL",2)
+		SetGlobal("C#Ajantis_BG1KorlaszDefeated","GLOBAL",2)
+END
+
 IF
 
 	InParty("Ajantis")
@@ -10,7 +24,7 @@ IF
 	!Detect([EVILBUTBLUE])
 	CombatCounter(0)
 	AreaCheck("BD0130")  // 
-	%ENDOFBG1_1%  // BG1 is over, we are in SoD
+//	%ENDOFBG1_1%  // BG1 is over, we are in SoD
 	OR(2)
 		Global("BD_KORLASZ_SURRENDER","GLOBAL",1)
 		Dead("BDKORLAS")

@@ -26,6 +26,8 @@ IF
 	CombatCounter(0)
 	Dead("Sarevok")
 	!See("Sarevok")
+	!InMyArea("Sarevok")
+	!AreaCheck("%Undercity_TempleofBhaal%")
 	Global("C#Ajantis_BG1SarevokDefeated","GLOBAL",0)
 THEN
 	RESPONSE #100

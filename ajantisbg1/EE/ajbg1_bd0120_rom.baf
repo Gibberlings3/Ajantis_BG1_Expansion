@@ -1,0 +1,13 @@
+IF
+	Global("bd_leaving_ot_ajantis","global",0)
+	Global("bd_leaving2_ot_ajantis","global",0)
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("bd_leaving_ot_ajantis","global",1)
+		SetGlobal("bd_leaving2_ot_ajantis","global",1)
+		Continue()
+END
+
+
+	

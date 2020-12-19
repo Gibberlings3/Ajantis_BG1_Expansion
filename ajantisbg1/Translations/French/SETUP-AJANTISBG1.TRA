@@ -68,6 +68,12 @@ The Order is in highest alert, we cannot let Caelar turn the land into a battle 
 Loving you, revering you, and missing you, your Ajantis.~
 
 
+/* new for v16 */
+@23  = ~Transitions Mod detected...~
+//#57802 from SoD with "Athkatla" instead of "Waterdeep".
+@24  = ~Though it makes my heart heavy, I must soon return to Athkatla.~
+
+
 // WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"
 @-1001= "composants optionnels distincts.

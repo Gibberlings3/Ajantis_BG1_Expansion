@@ -1,0 +1,77 @@
+/* set variables for detection of mod-added content */
+IF	%BGT_VAR%
+	InParty(Myself)
+	!See([ENEMY])
+	%CombatCounter_0%
+	Global("#L_AjantisModded","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_PKExitModded","LOCALS",1)
+		SetGlobal("#L_SoDExitModded","LOCALS",1)
+		SetGlobal("#L_BG2ExitModded","LOCALS",1)
+		SetGlobal("#L_AjantisModded","GLOBAL",1)
+END
+
+/* Transitions. after all quests are done, post-Korlasz 
+Ajantis will comment but not leave yet. */
+IF	%BGT_VAR%
+	InParty(Myself)
+	IfValidForPartyDialog(Myself)
+	Global("#L_SarvQuests","GLOBAL",99) 
+	Global("C#AjantisBG1_TransitionsKD","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjantisBG1_TransitionsKD","GLOBAL",1)
+END
+
+IF
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	Global("C#AjantisBG1_TransitionsKD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(Player1)
+END
+
+/* Transitions. SoD AND direct BGII transition. Ajantis will leave. */
+
+IF	%BGT_VAR%
+	InParty(Myself)
+	IfValidForPartyDialog(Myself)
+	OR(4)
+		Global("#L_StartBG2","GLOBAL",1) 
+		Global("#L_StartCaelarAttack","GLOBAL",1) 
+		Global("#L_StartCaelarAttack","GLOBAL",2) 
+		Global("#L_StartCaelarAttack","GLOBAL",3) 
+	Global("C#AjantisBG1_TransitionsLeave","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjantisBG1_TransitionsLeave","GLOBAL",1)
+END
+
+IF
+	InParty(Myself)
+	IfValidForPartyDialog(Myself)
+	Global("C#AjantisBG1_TransitionsLeave","GLOBAL",1)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(Player1)
+END
+
+/* After timer run out, player had time to snatch some items */
+IF
+	IfValidForPartyDialog(Myself)
+	Global("C#AjantisBG1_TransitionsLeave","GLOBAL",2)
+	GlobalTimerExpired("C#AjanBG1_TransitionsLeaveTmr","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjantisBG1_TransitionsLeave","GLOBAL",3)
+END
+
+IF
+	IfValidForPartyDialog(Myself)
+	Global("C#AjantisBG1_TransitionsLeave","GLOBAL",3)
+THEN
+	RESPONSE #100
+		Dialog(Player1)
+END
