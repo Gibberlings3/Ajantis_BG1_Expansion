@@ -127,10 +127,15 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 
 HISTORY
 
+Version 17:
+-corrected direct transition to BGII in EET (if SoD is skipped by whatever means) for compatibility with Sir Ajantis for BGII mod.
+-added check to forbid installation after EET_End.
+-corrected entry for "Beregost_House08_L2" in cmpvars.tpa.
+
 Version 16:
 -compatibility and crossmod content with Transitions Mod
 -(SoD) for romance case (romance from BG1NPC Project), Ajantis' Farewell DisplayStringHeads in Korlasz' Crypt will be disabled.
--(SoD) Ajantis' DisplayStringHead Farewell phrase about going to Warerdeep will be changed to going to Athkatla.
+-(SoD) Ajantis' DisplayStringHead Farewell phrase about going to Waterdeep will be changed to going to Athkatla.
 -Added Dynamic Install Order categories to support Project Infinity.
 -infer_charset corrected to infer_charsets in tp2.
 
