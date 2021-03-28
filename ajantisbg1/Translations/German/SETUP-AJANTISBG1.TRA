@@ -73,3 +73,8 @@ Euer Euch liebender, Euch verehrender und Euch vermissender Ajantis.~
 /* new for v16 */
 @23  = ~Transitions Mod erkannt...~
 @24  = ~Auch wenn es mein Herz schwer macht, muss ich bald nach Atkatla zurückkehren.~
+
+
+/* new for v17 */
+@25  = ~Ajantis BG1 Expansion Mod ist nicht mit diesem Spiel kompatibel.~
+@26  = ~Die Mod muss vor EET_End installiert werden.~
