@@ -73,6 +73,9 @@ Loving you, revering you, and missing you, your Ajantis.~
 //#57802 from SoD with "Athkatla" instead of "Waterdeep".
 @24  = ~Though it makes my heart heavy, I must soon return to Athkatla.~
 
+/* new for v17 */
+@25  = ~This mod is not compatible with this game.~
+@26  = ~This mod needs to be installed before EET_End on your EET install.~
 
 // WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"

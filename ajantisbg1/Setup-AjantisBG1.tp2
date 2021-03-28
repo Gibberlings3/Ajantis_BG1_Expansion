@@ -14,7 +14,7 @@ AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~16~ //
+VERSION ~17~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -122,6 +122,9 @@ LANGUAGE ~Deutsch~
 
 
 BEGIN @0
+REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgt bgee eet~ @25
+FORBID_COMPONENT ~EET_end.tp2~ ~0~ @26
+FORBID_COMPONENT ~EET_end.tp2~ ~1~ @26
 
 
 
