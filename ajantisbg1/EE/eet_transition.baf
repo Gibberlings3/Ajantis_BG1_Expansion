@@ -5,6 +5,7 @@
 IF
 	Global("C#Ajantis_EETTransit","LOCALS",0)
 	InPartyAllowDead("ajantis")
+	Dead("ajantis")
 	
 THEN
 	RESPONSE #100
