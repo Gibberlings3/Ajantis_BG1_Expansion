@@ -74,3 +74,6 @@ Loving you, revering you, and missing you, your Ajantis.~
 /* new for v17 */
 @25  = ~This mod is not compatible with this game.~
 @26  = ~This mod needs to be installed before EET_End on your EET install.~
+
+/* new for v18 */
+@27  = ~EndlessBG1 detected: Installing crossmod...~

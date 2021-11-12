@@ -77,6 +77,9 @@ Loving you, revering you, and missing you, your Ajantis.~
 @25  = ~Ce mod n'est pas compatible avec ce jeu.~
 @26  = ~Ce mod doit être installé avant EET_End.~ 
 
+/* new for v18 */
+@27  = ~EndlessBG1 detected: Installing crossmod...~
+
 // WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"
 @-1001= "composants optionnels distincts.
