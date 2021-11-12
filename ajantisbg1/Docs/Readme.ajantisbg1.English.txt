@@ -127,6 +127,9 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 
 HISTORY
 
+Version 18:
+-more compatibility with Transitions and EndlessBG1: Ajantis should not say farewell after Korlasz' Dungeon if it was done in BG1.
+
 Version 17:
 -corrected direct transition to BGII in EET (if SoD is skipped by whatever means) for compatibility with Sir Ajantis for BGII mod.
 -added check to forbid installation after EET_End.
