@@ -14,7 +14,7 @@ AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~18~ //
+VERSION ~18.1~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -123,6 +123,8 @@ LANGUAGE ~Deutsch~
 
 BEGIN @0
 REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgt bgee eet~ @25
+DESIGNATED 0
+LABEL AjantisBG1Expansion-main
 FORBID_COMPONENT ~EET_end.tp2~ ~0~ @26
 FORBID_COMPONENT ~EET_end.tp2~ ~1~ @26
 
@@ -614,6 +616,9 @@ END /* EndlessBG1 */
 /* For EE, the Ajantis' family shield BAM can be used for the family shield: if BG1NPC is installed */
 
 BEGIN @16  /* ~Install the unique BG:EE BAM for Ajantis' Family Shield~ */
+
+DESIGNATED 1
+LABEL AjantisBG1Expansion-shieldBAM
 REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @17 /* ~This component is only available for the Enhanced Edition.~ */
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~override/x#ajshld.itm~) @18 /* ~Ajantis' shield from BG1NPC Project not installed.~ */
 
