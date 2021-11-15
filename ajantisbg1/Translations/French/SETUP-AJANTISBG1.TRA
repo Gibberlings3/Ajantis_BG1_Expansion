@@ -74,8 +74,11 @@ Loving you, revering you, and missing you, your Ajantis.~
 @24  = ~Though it makes my heart heavy, I must soon return to Athkatla.~
 
 /* new for v17 */
-@25  = ~This mod is not compatible with this game.~
-@26  = ~This mod needs to be installed before EET_End on your EET install.~
+@25  = ~Ce mod n'est pas compatible avec ce jeu.~
+@26  = ~Ce mod doit être installé avant EET_End.~ 
+
+/* new for v18 */
+@27  = ~EndlessBG1 detected: Installing crossmod...~
 
 // WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"

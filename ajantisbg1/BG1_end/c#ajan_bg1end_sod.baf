@@ -1,6 +1,6 @@
 /* Committed Romance: Korlash is defeated */
 
-/* this scriptblock is only needed for Transitions Mod: prevent Ajantis from mentioning Korlasz if he wasn't in party when she was defeated */
+/* this scriptblock is only needed for Transitions Mod & EndlessBG1 "Korlasz' Tomb in BG1": prevent Ajantis from mentioning Korlasz if he wasn't in party when she was defeated */
 IF
 
 	!InParty("Ajantis")

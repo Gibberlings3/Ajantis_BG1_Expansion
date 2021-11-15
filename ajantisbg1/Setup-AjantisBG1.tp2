@@ -14,7 +14,7 @@ AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~17~ //
+VERSION ~18~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -583,6 +583,8 @@ ACTION_IF (MOD_IS_INSTALLED ~transitions/setup-transitions.tp2~ ~0~) THEN BEGIN
   PRINT @23
   COMPILE EVALUATE_BUFFER ~ajantisbg1/crossmod/ajantis_transitions.d~
 	USING ~AjantisBG1/translations/%LANGUAGE%/AJANTISBG1_TRANSITION.TRA~
+  COMPILE EVALUATE_BUFFER ~ajantisbg1/crossmod/ajantis_transitions_endlessbg1_korlasz_tomb.d~
+	USING ~AjantisBG1/translations/%LANGUAGE%/AJANTISBG1_TRANSITION.TRA~
   EXTEND_TOP ~ajantis.bcs~ ~ajantisbg1/crossmod/ajantis_transitions.baf~
     EVALUATE_BUFFER 
   EXTEND_TOP ~ajantis.bcs~ ~ajantisbg1/BG1_end/c#ajan_bg1end_sod.baf~
@@ -592,6 +594,20 @@ ACTION_IF (MOD_IS_INSTALLED ~transitions/setup-transitions.tp2~ ~0~) THEN BEGIN
     EVALUATE_BUFFER
 END
 
+
+/* EndlessBG1 */
+ACTION_IF (GAME_INCLUDES ~sod~ AND FILE_EXISTS_IN_GAME ~c#stdstr.bcs~) THEN BEGIN 
+PRINT @27 /* ~EndlessBG1 detected: Installing crossmod...~ */
+
+/* Crossmod with EndlessBG1 "Korlasz Tomb in BG1 */
+ACTION_IF (MOD_IS_INSTALLED ~c#endlessbg1.tp2~ ~14~) BEGIN
+  COMPILE EVALUATE_BUFFER ~ajantisbg1/crossmod/ajantis_transitions_endlessbg1_korlasz_tomb.d~
+	USING ~AjantisBG1/translations/%LANGUAGE%/AJANTISBG1_TRANSITION.TRA~
+  EXTEND_TOP ~ajantis.bcs~ ~ajantisbg1/BG1_end/c#ajan_bg1end_sod.baf~
+    EVALUATE_BUFFER 
+END //~c#endlessbg1.tp2~ ~14~
+
+END /* EndlessBG1 */
 
 //////////////////////////////////////////////////////
 
