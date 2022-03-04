@@ -72,16 +72,16 @@ jastey
 CREDITS
 
 
-Ana Christina: beta tester (Tutu), proof-reading
+Ana Christina: beta tester (Tutu), proofreading
 Annalena: alpha tester (BG1:TotSC, Tutu)
 berelinde: ideas and general encouragement, custom portraits
-Catseye: proof reading
-hook71: proof reading
+Catseye: proofreading
+hook71: proofreading
 Leonardo Watson: beta tester (BGT)
 melkor_morgoth75: beta tester (BGT)
 Morywen: beta tester (SoD)
 Nanek: beta tester (BGT)
-Senka: beta-tester (BG1:TotSC)
+Senka: beta tester (BG1:TotSC)
 Sternenlicht: beta tester (BGT)
 Zed Nocear: creator of the "Trigger Simulations for BG1", without this the BG1 romance wouldn't be possible the way it is!
 
@@ -126,6 +126,10 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 =============================================================================
 
 HISTORY
+
+Version 18.2:
+-Crossmod with EndlessBG1: Ajantis will say farewell lines for direct BGII transition, too.
+-Adjusted check for EndlessBG1 so DEBUG file does not state crossmod was installed if EndlessBG1 "Koralsz Tomb in BG1" component is not installed.
 
 Version 18.1:
 -Added globally unique LABELs to support Project Infinity.
