@@ -127,6 +127,9 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 
 HISTORY
 
+Version 18.3:
+-Fixed install error if EndlessBG1 is not installed.
+
 Version 18.2:
 -Crossmod with EndlessBG1: Ajantis will say farewell lines for direct BGII transition, too.
 -Adjusted check for EndlessBG1 so DEBUG file does not state crossmod was installed if EndlessBG1 "Koralsz Tomb in BG1" component is not installed.
