@@ -14,7 +14,7 @@ AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~18.2~ //
+VERSION ~18.3~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -598,7 +598,7 @@ END
 
 
 /* EndlessBG1 */
-ACTION_IF (GAME_INCLUDES ~sod~ AND FILE_EXISTS_IN_GAME ~c#stdst2.bcs~) THEN BEGIN 
+ACTION_IF (GAME_INCLUDES ~sod~ AND MOD_IS_INSTALLED ~c#endlessbg1.tp2~ ~0~) THEN BEGIN 
 
 PRINT @27 /* ~EndlessBG1 detected: Installing crossmod...~ */
 
