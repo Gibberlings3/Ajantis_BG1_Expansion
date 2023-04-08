@@ -1,0 +1,11 @@
+/* bdcut61_patch.baf: Ajantis leaves the group after the murder accusations */
+IF
+	InParty("Ajantis")  
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+//		CutSceneId("Ajantis")
+		SetGlobal("C#AjSoD_party_epilogue","GLOBAL",1) 
+		ActionOverride("Ajantis",LeaveParty())
+		ActionOverride("Ajantis",DestroyAllFragileEquipment(ADAMANTINE)) //this destroys all drow equipment, just in case the NPC had any.
+END

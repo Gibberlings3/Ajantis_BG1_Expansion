@@ -1,0 +1,29 @@
+IF
+	InParty("Ajantis")
+	See(Player1)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck("Ajantis",CD_STATE_NOTVALID)
+	!StateCheck(PLAYER1,CD_STATE_NOTVALID)
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	Global("bd_plot","global",495)
+	GlobalLT("C#AjantisSoD_LoveTalk","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjantisSoD_LoveTalk","GLOBAL",3)
+END
+
+/* trigger */
+IF
+	InParty("Ajantis")
+	See(Player1)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck("Ajantis",CD_STATE_NOTVALID)
+	!StateCheck(PLAYER1,CD_STATE_NOTVALID)
+	Global("C#AjantisSoD_LoveTalk","GLOBAL",3)	
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#AjSoD_DialogReactionTimer","GLOBAL",1800)
+		ActionOverride("Ajantis",StartDialogNoSet(Player1))
+END

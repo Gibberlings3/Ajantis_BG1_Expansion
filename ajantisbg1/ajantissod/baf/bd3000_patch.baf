@@ -1,0 +1,26 @@
+/* (T1) bd3000_patch.baf Moves Ajantis into the Coalition Camp if he was not in party */
+
+/* Move him here, he was already spawned before or exists from BG1 */
+IF
+  Global("C#AjSoD_MoveCamp","MYAREA",0)
+  !Dead("Ajantis")
+  !InPartyAllowDead("Ajantis")
+THEN
+  RESPONSE #100
+    SetGlobal("C#AjSoD_MoveCamp","MYAREA",1)
+    MoveGlobal("bd3000","Ajantis",[1773.1725]) 
+    ActionOverride("Ajantis",Face(N))
+    ReallyForceSpellDeadRES("bdrejuve","Ajantis")
+    ChangeEnemyAlly("Ajantis",NEUTRAL)
+    ChangeSpecifics("Ajantis",ALLIES)
+    ActionOverride("Ajantis",SetGlobal("bd_joined","locals",0))
+    ActionOverride("Ajantis",SetGlobal("bd_retreat","locals",0))
+    ActionOverride("Ajantis",SaveObjectLocation("LOCALS","bd_default_loc",Myself))
+    ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))
+    ActionOverride("Ajantis",ChangeAIScript("bdasc3",CLASS))
+    ActionOverride("Ajantis",ChangeAIScript("BDSHOUT",RACE))
+    ActionOverride("Ajantis",ChangeAIScript("BDFIGH01",GENERAL))
+    ActionOverride("Ajantis",ChangeAIScript("",DEFAULT))
+    ActionOverride("Ajantis",SetDialogue("BDAJANTI")) 
+    Continue()
+END

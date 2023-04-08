@@ -1,0 +1,11 @@
+IF
+	Global("C#AjSoD_Greeting","GLOBAL",0)
+	Global("C#AjantisIsDeadBG1","GLOBAL",1)
+	!HasItem("x#ajshld",Myself)
+	Global("C#AjSoD_BG1NPC_Shield","LOCALS",0)
+THEN
+	RESPONSE #100
+		GiveItemCreate("x#ajshld",Myself,0,0,0)
+		SetGlobal("C#AjSoD_BG1NPC_Shield","LOCALS",1)
+		EquipItem("x#ajshld")
+END

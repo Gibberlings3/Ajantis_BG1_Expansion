@@ -11,4 +11,12 @@
 /* new for v13 */
 @9   = ~Mendas? Mendas aus Tiefwasser? Den Namen habe ich noch nie... Aber ich war nun schon recht lange von zu hause fort. <CHARNAME>, so reizvoll diese Expedition auch anmutet, wir haben nicht die Zeit für einen solchen Abstecher. Überlasst diese Reise erfahreneren Seeleuten.~
 @10  = ~Damit ist diese Sache ja wohl erledigt. Oder, <CHARNAME>? Ihr erwägt nicht etwa tatsächlich, die Händlerliga zu bestehlen?~
-@11  = ~Ly... Lykantropie? Das ist nicht mit meinen Palainpflichten zu vereinbaren. Wir müssen schnellstmöglich Heilung finden!~
+@11  = ~Ly... Lykantropie? Das ist nicht mit meinen Paladinpflichten zu vereinbaren. Wir müssen schnellstmöglich Heilung finden!~
+
+/* new for v# */
+@12  = ~By Helm! Eine abscheuliche Höllenkreatur ist uns entgangen!~
+@13  = ~[Ajantis]<CHARNAME> ist es vielleicht nicht bewusst, für wen Ihr arbeitet, Dieb, aber mir dafür umso mehr! Die Schattendiebe, ein Hort des Bösen und des Mordes!~
+@14  = ~[Husam]Eine Hort des Bösen und des Mordes, der zu seinem Wort steht und seine Kunden nicht betrügt, ja. Ich leugne das nicht, im Gegenteil, ich spreche es offen an, denn wir stehen vor einem drohenden Krieg, in dem keine Zeit für Spielchen ist.~
+@15  = ~[Ajantis]Guter Mann! Ich bin Knappe des Ordens des Strahlenden Herzens. Niemals würde ich mich mit Banditen zusammentun. Im Gegenteil, ich wurde geschickt, um die Bedrohung durch die Banditen zu untersuchen und ihr ein Ende zu setzen, wenn möglich!~
+@16  = ~[FLAM5 FF Mercenary]Nun, Ihr tragt eine glänzende Rüstung, das ist wahr. Der Rest ist nur Blabla.~
+@17  = ~[Ajantis]Was - was für dumme Narren! Sie greifen diejenigen an, die hier sind, um ihnen dabei zu helfen, die Bedrohung durch die Banditen zu stoppen - sie greifen *uns* an und zwingen uns, sie zu töten! Was für ein unglücklicher Verlauf der Ereignisse.~

@@ -1,44 +1,8 @@
 @0   = ~Installiert Ajantis BG1 Erweiterungen~
-@1   = ~Tutu erkannt. Ajantis' Freundschaftspfad wird installiert...~
-@2   = ~BGT erkannt. Ajantis' Freundschaftspfad wird installiert...~
+@1   = ~Tutu erkannt.~
+@2   = ~BGT erkannt.~
 @3   = ~Original BG1 erkannt. Installiere die BG1 Version (Romanze und Freundschaftspfad)...~
-@4   = ~Mittlerer Schild~
-@5   = ~Familienschild der Ilvastarrs~
-@6   = ~Dies ist Ajantis' Familienschild. Er zeigt das Hauswappen der adligen Familie Ilvastarr von Tiefwasser: einen metallgrünen Drachen mit orangenen Augen auf goldenem Grund.~
-@7   = ~Der mittlere Schild wird auf dieselbe Weise getragen wie der kleine Schild, ist jedoch so schwer, dass mit der Schildhand keine anderen Aktionen ausgeführt werden kann. Mittlere Schilde bestehen für gewöhnlich aus Metall und haben einen Durchmesser von 90 bis 120 cm. Es gibt sie in zahlreichen Formen; von rund über quadratisch bis zur Form der gespreizten Drachenflügel. Ein typischer mittlerer Schild ist dreieckig, wobei eine Spitze nach unten zeigt.
 
-Dieser spezielle Schild zeigt das Hauswappen der adligen Familie Ilvastarr von Tiefwasser: einen metallgrünen Drachen mit orangenen Augen auf goldenem Grund.
-
-EIGENSCHAFTEN:
-
-Gewährt einen Fertigkeitspunkt im Kampf "Schwert und Schild" wenn getragen.
-
-RK-Bonus: -1
-Gewicht: 7
-Kann nur verwendet werden von:
- Ajantis~
-@8   = ~Blumenanhänger~
-@9   = ~Verzauberter Blumenanhänger
-
-Dies ist der verzauberte Blumenanhänger, den Ajantis Euch gab.
-
-EIGENSCHAFTEN:
-
-Kann einmal täglich Schutz vor Bösem auf den Anwender wirken (fünf Ladungen).
-
-Kann nicht verwendet werden von:
- Wesen böser Gesinnung~
-@10   = ~Verzauberter Blumenanhänger
-
-Dies ist der verzauberte Blumenanhänger, den Ajantis Euch gab. Seine Ladungen sind verbraucht.
-
-Kann nicht verwendet werden von:
- Wesen böser Gesinnung~
-@11   = ~Ajantis' Verlobungsring~
-@12   = ~Verlobungsring
-
-Dies ist der Verlobungsring, den Ajantis Euch überreicht hat. Der Ring ist ein altes Familienerbstück der Ilvastarrs. Er ist schlicht gehalten, mit nur wenig aufwendigen Verzierungen rund um einen hellblauen Edelstein.~
-@13   = ~Douglas~
 
 @14   = ~Baldur's Gate Enhanced Edition erkannt.~
 
@@ -50,29 +14,8 @@ Dies ist der Verlobungsring, den Ajantis Euch überreicht hat. Der Ring ist ein a
 @17   = ~Diese Komponente gibt es nur fuer die Enhanced Edition.~
 @18  = ~Ajantis' Schild vom BG1NPC Project ist nicht installiert.~
 
-@19  = ~Brief von Ajantis~
-@20  = ~An <CHARNAME> von Kerzenburg, momentan in Baldurs Tor, Herzogspalast
-
-Liebste <CHARNAME>,
-Nun bin ich also auf dem Weg nach Tiefwasser, Liebste <CHARNAME>, zum Haus meiner Familie, wie wir es vor kurzem besprochen haben. Mein Herz ist voller Sorge, dass sie unserem Verlöbnis nicht zustimmen könnten... Werde ich ihnen Euer bezauberndes Wesen, Eure unbeirrbare Entschlossenheit, Eure beeindruckenden Fähigkeiten erklären können? Dass Ihr ohne zu zweifeln den Pfad des Guten geht? Ich kann nur hoffen, dass sie über das Stigma "Tochter von Bhaal" durch mein Herz die Frau sehen werden, die ich in Euch sehe, Liebste!
-
-Euer Euch liebender, Euch verehrender und Euch vermissender Ajantis.~
-@21  = ~Liebste <CHARNAME>,
-alles verläuft anders, als ich geplant hatte. Nachdem ich bereits auf dem Weg nach Tiefwasser durch meine kämpferischen Pflichten aufgehalten wurde (es gibt noch viele Gemeinden entlang der Küste, die unter dem verbliebenen Räubergesindel leiden), ereilte mich noch vor den Toren der Stadt eine Nachricht des Ordens, der mich zurück zu meinen Ordensbrüdern rief! Ihr wisst, warum - Baldurs Tor muss inzwischen voll sein von denen, die vor Caelar und ihrem Heer flüchten. Es bleibt mir nichts anderes übrig, als meinen Eltern nur eine kurze Mitteilung zu schicken, und mich direkt nach Süden zu begeben. Ich habe also noch nicht mit meinen Eltern über Euer Erbe gesprochen, Liebste. Verzeiht mir!
-Es treibt mich um, dass ich Euch verlassen habe, als ich es tat. Wie bedeutungslos die eigenen, persönlichen Ziele werden, wenn um einen alles im Chaos versinkt! Nun seid Ihr dort und ich bin hier, und ich kann nicht zu Euch kommen. Möge Helms Segen mit Euch sein!
-
-Euer Euch liebender, Euch verehrender und Euch vermissender Ajantis.~ 
-@22  = ~Liebste <CHARNAME>,
-welche Nachrichten haben uns von Baldurs Tor erreicht! Ihr zieht gegen die Kriegstfürstin. Ja, wer sollte es auch sonst sein außer Euch, Heldin von Baldurs Tor! Und keine Möglichkeit für mich, zu Euch zu stoßen. Die Straßen sind voll mit Flüchtlingen, mein Orden gebietet mir, hier zu helfen - und unsere Hilfe ist mehr als vonnöten. Ich habe Angst um Euch, Liebste. Ich weiß, dass Ihr auf Euch selbst aufpassen könnt, und dass Ihr tatkräftige Unterstützung habt, nun, da die Flammende Faust wieder zu den rechtschaffenen Kräften gehört. Selbst Tiefwasser hat Männer geschickt. Wie gerne wäre ich einer von ihnen! An Eurer Seite zu sein, an Eurer Seite zu kämpfen - Euch zu beschützen, so gut ich es könnte, danach steht mir der Sinn! 
-
-Der Orden ist in höchster Alarmbereitschaft. Wir können es nicht zulassen, dass Caelar die Lande in ein einziges Schlachtfeld verwandelt! Aber selbst wenn wir gegen sie ziehen sollten, wäre ich nicht dort, wo Ihr seid. Zu viele Orte brauchen unsere Hilfe! Es bleibt mir nichts anderes übrig, als Euch alles Gute zu wünschen, Liebste. Möge Helm Euch beschützen - mögen alle Götter Euch beschützen, und mir ermöglichen, Euch unversehrt wiederzusehen!
-
-Euer Euch liebender, Euch verehrender und Euch vermissender Ajantis.~
-
-
 /* new for v16 */
 @23  = ~Transitions Mod erkannt...~
-@24  = ~Auch wenn es mein Herz schwer macht, muss ich bald nach Atkatla zurückkehren.~
 
 
 /* new for v17 */
@@ -81,3 +24,11 @@ Euer Euch liebender, Euch verehrender und Euch vermissender Ajantis.~
 
 /* new for v18 */
 @27  = ~EndlessBG1 detected: Installing crossmod...~
+
+@90000  = ~SoD detektiert: Installiere Ajantis NPC fuer SoD~
+//@90001  = 
+@90002  = ~Imoen 4 Ever SoD component "Give Imoen dialogue content during chapters 8 to 12" detected.~ 
+@90003  = ~Ajantis main component needs to be installed for this.~
+@90004  = ~Ajantis SoD NPC: Crossmod Content~
+@90005  = ~The Boareskyr Bridge Scene mod detected.~
+@90006  = ~Another Fine Hell detected.~

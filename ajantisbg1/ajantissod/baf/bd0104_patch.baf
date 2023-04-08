@@ -1,0 +1,20 @@
+/* bd0104_patch.baf : Ajantis visits the PC in prison */
+
+/* Ajantis comes into the prison with romance) (after Corwin so the original order is preserved). */
+IF
+	Global("chapter","global",13)
+	GlobalTimerExpired("bd_jail_visitors_timer","bd0104")  // Flaming Fist HQ
+	Global("bd_jail_visitors","bd0104",4)  //This calls visits from NPCs 
+	Global("C#AjSoD_party_epilogue","GLOBAL",1) //Ajantis was present after the slayer dream scene
+	Global("C#AjSoD_jail_visitors","bd0104",0)
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	!Dead("Ajantis")  
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjSoD_jail_visitors","bd0104",1) //trigger variable for Ajantis's dialogue
+		SetGlobal("bd_jail_visitors","bd0104",5)  
+		SetGlobalTimer("bd_jail_visitors2_timer","bd0104",TEN_ROUNDS)  //timer  needed so some other stuff will wait
+		MoveGlobal("bd0104","Ajantis",[720.620])  //coordinates true for all visiting NPCs
+		ActionOverride("Ajantis",ChangeAIScript("bdvisit",OVERRIDE)) //this script will handle the "NPC walks up to the PC's prison door and initiates dialogue"
+		Continue()
+END

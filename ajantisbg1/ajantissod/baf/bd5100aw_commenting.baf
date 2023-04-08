@@ -1,0 +1,15 @@
+/* bd5100aw_commenting.baf */
+/* (T3) Comment before entering the Cave with the blind Wyrmlings (bd5100aw.bcs). Will only fire if no original NPC gives their line. */
+IF
+	OR(3)
+		Entered([GOODCUTOFF])
+		IsOverMe([GOODCUTOFF])
+		WalkedToTrigger([GOODCUTOFF])
+	Range([PC],20)
+	Global("C#AjSoD_BD_SDD317_WYRMS","BD5100",0)  
+	IfValidForPartyDialog("Ajantis")  
+THEN
+	RESPONSE #100
+	    SetGlobal("C#AjSoD_BD_SDD317_WYRMS","BD5100",1)  
+		ActionOverride("Ajantis",StartDialogNoSet(Player1))
+END

@@ -1,0 +1,65 @@
+/* (T1) bd0101_patch.baf // Ducal Palace, Leaving BG */
+
+/* Close the spawning/moving variable in case Ajantis is already in party */
+IF
+  Global("C#AjSoD_MoveCamp","MYAREA",0)  
+  OR(2)
+    InPartyAllowDead("Ajantis")  
+    Dead("Ajantis")
+THEN
+  RESPONSE #100
+    SetGlobal("C#AjSoD_MoveCamp","MYAREA",1)  
+    Continue()
+END
+
+/* 1. Ajantis needs to be spawned anew */
+IF
+  !Dead("Ajantis")
+  Global("SOD_fromimport","GLOBAL",0)
+  !BeenInParty("Ajantis") //Ajantis was never in party
+  Global("C#AjSoD_Spawn","GLOBAL",0) //Ajantis wasn't spawned in SoD before
+  Global("C#AjSoD_MoveCamp","MYAREA",0) 
+THEN
+  RESPONSE #100
+    SetGlobal("C#AjSoD_MoveCamp","MYAREA",1)
+    SetGlobal("C#AjSoD_Spawn","GLOBAL",1) //Ajantis was spawned in SoD
+    CreateCreature("c#ajsod6",[612.635],S)  
+    ActionOverride("Ajantis",MakeGlobalOverride())
+    ChangeSpecifics("Ajantis",ALLIES)
+    ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE)) 
+    ActionOverride("Ajantis",ChangeAIScript("",CLASS))
+    ActionOverride("Ajantis",ChangeAIScript("BDSHOUT",RACE))
+    ActionOverride("Ajantis",ChangeAIScript("BDFIGH01",GENERAL))  
+    ActionOverride("Ajantis",ChangeAIScript("",DEFAULT))
+    ActionOverride("Ajantis",SetDialog("C#AjSoDG")  //greeting dialogue in SoD 
+    Continue()
+END
+
+/* 2+3: Ajantis needs to be moved here: he was either in party before (e.g. as a BG:EE NPC or in SoD beginning) OR he was spawned in SoD before */
+IF
+  !Dead("Ajantis")
+  !InPartyAllowDead("Ajantis")
+  OR(2) 
+	BeenInParty("Ajantis") 
+	Global("C#AjSoD_Spawn","GLOBAL",1) //this is true if he was already spawned in bd0010.are
+  Global("C#AjSoD_MoveCamp","MYAREA",0)  
+THEN
+  RESPONSE #100
+    SetGlobal("C#AjSoD_MoveCamp","MYAREA",1)
+    SetGlobal("C#AjSoD_Spawn","GLOBAL",1) 
+    MoveGlobal("bd0101","Ajantis",[612.635])
+    ActionOverride("Ajantis",Face(S))    
+    ApplySpellRES("bdrejuve","Ajantis")  //completely heals and removes all spell effects
+    ChangeEnemyAlly("Ajantis",NEUTRAL)
+    ChangeSpecifics("Ajantis",ALLIES)
+    ActionOverride("Ajantis",SetGlobal("bd_joined","locals",0))  
+    ActionOverride("Ajantis",SetGlobal("bd_retreat","locals",0)) 
+    ActionOverride("Ajantis",SaveObjectLocation("LOCALS","bd_default_loc",Myself))
+    ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE)) 
+    ActionOverride("Ajantis",ChangeAIScript("",CLASS))
+    ActionOverride("Ajantis",ChangeAIScript("BDSHOUT",RACE))
+    ActionOverride("Ajantis",ChangeAIScript("BDFIGH01",GENERAL)) 
+    ActionOverride("Ajantis",ChangeAIScript("",DEFAULT))
+    ActionOverride("Ajantis",SetDialog("C#AjSoDG")  //greeting dialogue in SoD
+    Continue()
+END

@@ -1,0 +1,12 @@
+/* bdvaultd_patch.baf */
+/* (T3) Comment on closed vault door (to portal) in Dragonspear Castle Interior */
+IF
+	Global("C#AjSoD_bd_MDD893a_ot","bd4300",0)  
+	GlobalLT("bd_plot","global",400)
+	CombatCounter(0)
+	Range("Ajantis",25)  
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjSoD_bd_MDD893a_ot","bd4300",1)  
+		DisplayStringHead("Ajantis",@122)  
+END

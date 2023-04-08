@@ -307,3 +307,20 @@ See("baeloth")
 == ~%AJANTIS_BANTER%~ @94
 == ~BAELOTHJ~ @95
 EXIT
+
+/* add a choice to reject Dorn to Ajantis - Dorn conflict */
+/* AJANTJ
+IF ~~ THEN BEGIN 4 // from:
+  SAY #28325 /* ~No! This cannot stand! <CHARNAME>, I will not remain with you if you accept the offer of this... this... beast!~ */
+  IF ~~ THEN REPLY #28326 /* ~Have you become so blinded by your ideals that you can't see an incredible opportunity when it presents itself?~ */ GOTO 5
+  IF ~~ THEN REPLY #28327 /* ~Surely we can come to some compromise.~ */ GOTO 6
+  IF ~~ THEN REPLY #28328 /* ~Fine. Get out of here.~ */ GOTO 7
+END
+*/
+EXTEND_BOTTOM AJANTJ 3
+++ @97 /* ~Can't we work this out?~ */ DO ~SetGlobal("AjantisLikeNotDorn","GLOBAL",2)~ + 4
+++ @98 /* ~You are right, what was I thinking. Dorn, you need to leave.~ */ DO ~SetGlobal("AjantisLikeNotDorn","GLOBAL",2)~ EXTERN DORNJ 268
+END
+EXTEND_BOTTOM AJANTJ 4 
+++ @99 /* ~Dorn, in that case I chose Ajantis. You need to leave.~ */ EXTERN DORNJ 268
+END

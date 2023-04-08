@@ -96,3 +96,8 @@
 @95   = ~Oh, *now* I feel insulted, paladin.~
 
 @96   = ~Good day, ma'am, here is a letter for you.~
+
+/* new for v19 */
+@97   = ~[PC Reply]Can't we work this out?~
+@98   = ~[PC Reply]You are right, what was I thinking. Dorn, you need to leave.~
+@99   = ~[PC Reply]Dorn, in that case I chose Ajantis. You need to leave.~

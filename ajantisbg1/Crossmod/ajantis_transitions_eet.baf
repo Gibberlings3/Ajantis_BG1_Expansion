@@ -1,5 +1,6 @@
+/* Ajantis in party but dead - resurrection */
 IF
-	Global("C#AjantisIsDeadBG1","GLOBAL",1)	
+	InPartyAllowDead("ajantis")
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)

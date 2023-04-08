@@ -1,0 +1,94 @@
+/* ALL numbers up to @27 not used here are used in setup.tra! */
+@4   = ~Medium Shield~
+@5   = ~Ilvastarr Family Shield~
+@6   = ~This is Ajantis' family shield. It shows the coat of arms of the noble Ilvastarr family of Waterdeep: a metallic green dragon with orange eyes on a golden field.~
+@7   = ~A medium shield is carried in the same manner as a small shield.  Its weight prevents the character from using his shield hand for anything other than carrying the medium shield.  Medium shields are usually made of metal, range from 3'-4' in diameter, and can be of any shape, from round to square to a spread dragon's wings.  A typical medieval shield resembles a triangle with one point facing downward.
+
+This particular shield bears the coat of arms of the noble Ilvastarr family of Waterdeep: a metallic green dragon with orange eyes on a golden field.
+
+STATISTICS:
+
+Armor Class Bonus: 1
+Weight: 7
+Only Usable By:
+ Ajantis~
+@8   = ~Flower pendant~
+@9   = ~Enchanted flower pendant
+
+This is the enchanted pendant Ajantis gave to you.
+
+STATISTICS:
+
+Can cast Protection from Evil on the carrier (five charges).
+
+Cannot be used by:
+ Creatures of evil alignment~
+@10   = ~Enchanted flower pendant
+
+This is the enchanted pendant Ajantis gave to you. All charges are used up.
+
+Cannot be used by:
+ Creatures of evil alignment~
+@11   = ~Ajantis' engagement ring~
+@12   = ~Engagement ring
+
+This is your engagement ring that Ajantis gave to you. The ring is an Ilvastarr family treasure. It is ornamented in a rather plain way, with only a few elaborate decorations around a light-blue gem.~
+@13   = ~Douglas~
+
+
+@19  = ~Letter from Ajantis~
+@20  = ~To Lady <CHARNAME> of Candlekeep, currently residing in Baldur's Gate City, Ducal Palace
+
+Beloved <CHARNAME>,
+now I am on the way to Waterdeep, to the home of my family as we have recently discussed. My heart is full of worry that my parents may not agree to our betrothal... Will I be able to help them see your charm, your imperturbable determination, your impressive talents? That you walk the path of good without the slightest doubt? I can only hope that they will see past the stigma of 'daughter of Bhaal' into my heart and the woman whom I see in you, beloved!
+
+Loving you, revering you, and missing you, your Ajantis.~
+//@21  = 
+//@22  = 
+
+/* SoD lines */
+//#57802 from SoD with "Athkatla" instead of "Waterdeep".
+@24  = ~Though it makes my heart heavy, I must soon return to Athkatla.~
+
+@100 = ~Such divine power sweeping us from our feet - Helm, have mercy!~
+@101 = ~This place is ideal for an ambush. We should be vigilant.~
+@102 = ~Duty is calling us.~
+@103 = ~We will march on to bring justice to the crusaders!~
+@104 = ~This feels almost like marching with a greater delegation of my Order brethren.~
+@105 = ~What a huge specimen of Rhinoceros Beetle! Everyone, brace yourselves!~
+@106 = ~Caelar is a very charismatic leader. I start to understand how she can manipulate so many followers.~
+@107 = ~We will not feel intimidated neither by the size of this dungeon nor the ferocity of our foes. The days of Sarevok's followers is over!~
+@108 = ~How... how *could* you, <CHARNAME>! We were supposed to fight for justice!~
+@109 = ~The enemy noticed us. Everyone, brace yourself!~
+@110 = ~Your blood opened the gates to hell - blood of a Bhaalchild. We need to do what we can to prevent the worst!~
+@111 = ~These crusaders do not see the light. They are blinded and chose to follow the darkness.~
+@112 = ~The fiends and demons are pooring out of the portal! We need to stop this - if I only knew how.~
+@113 = ~The portal is closed! We stopped the evil threat! I need to tell my Order brethren about what happened here.~
+@114 = ~Could this... could this be true? Did I join forces with a murderer?~
+@115 = ~No - this cannot be! <CHARNAME>, what happened here?~
+@116 = ~This passage is... demanding to our endurance, both mentally and physically. Helm, give us strength!~
+@117 = ~I warned you, <CHARNAME>! I will not accept this monster walking free!~
+@118 = ~<CHARNAME>, I will not betray these dwarves to do a Lich's bidding!~
+@119 = ~The... the bridge is *down*!~
+@120 = ~Using this trap was inherently evil, <CHARNAME>! They were defenseless!~
+@121 = ~This dragon skelleton gives an idea about the fierce fight that took place here at that time.~
+@122 = ~The... the evil that is radiating from these doors is breathtaking. What in Helm's name lies behind these doors?!~
+@123 = ~Rickon~
+@124 = ~Haiva~
+@125 = ~Gauntlets of Eyes of Truth~
+@126 = ~These Gauntlets are normal gauntlets of weapon expertise, but some admirer of Babette Maelestrom enchanted them with an additional ability to grant infravision upon its wearer.
+
+STATISTICS:
+
+Equipped abilities:
+– THAC0: +1
+– Damage: +2
+– Infravision up to 120 ft.
+
+Weight: 1~
+@127 = ~I will not wear this for long, <CHARNAME>. This... "helmet" is a disgrace to any skillful warrior's pride.~
+/*
+@128 = 
+@129 = 
+@130 = 
+*/

@@ -12,3 +12,11 @@
 @9   = ~Mendas? Mendas from Warerdeep? I never... But I have been away from my home for quite a while... <CHARNAME>, as intriguing as this expedition does sound, we do not have time for this now. Leave this expedition to more experienced sailors.~
 @10  = ~This, I fear, settles it. <CHARNAME>, you do not consider stealing from the Merchant's League?~
 @11  = ~Ly... Lycantrophy? This is not compatible with my duties as a paladin. We need to find a cure, and quick!~
+
+/* new for v19 */
+@12  = ~[Ajantis]By Helm! A creature from the hells slipped us by!~
+@13  = ~[Ajantis]<CHARNAME> might not, but I am very well aware of who you work for, thief! The Shadow Thieves, a den of evil and murder!~
+@14  = ~[Husam]A den of evil and murder who sticks to their word and do not betray their clients, yes. I do not deny it, on the contrary, I am open about it, because we are facing the threat of war where there is no time for petty games.~
+@15  = ~[Ajantis]Good man! I am squire to the Order of the Most Radiant Heart. Never would I combine forces with bandits. On the contrary, I was send to investigate the bandit threat and put and end to it, if possible!~
+@16  = ~[FLAM5 FF Mercenary]Well, you do have a shiny armor on, that's true. The rest is just blahblah.~
+@17  = ~[Ajantis]What - what stupid fools! They attack those who are here to help them stop the bandit threat - they attack *us* and force us to kill them! What an unfortunate turn of events.~

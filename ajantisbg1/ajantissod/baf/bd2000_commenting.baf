@@ -1,0 +1,14 @@
+/* bd2000_commenting.baf */
+/* (T3) Battle at Bridgefort starts */
+IF
+	Global("bd_plot","global",250)
+	!GlobalTimerNotExpired("bd_mdd410z_ot_timer","bd2000")  
+	Global("C#AjSoD_bd_ot","bd2000",0)  
+	IfValidForPartyDialog("Ajantis")  
+	TriggerOverride("Ajantis",Range([ENEMY.0.0.0.CRUSADERS],30))
+THEN
+	RESPONSE #100
+		SetGlobalTimer("bd_mdd410z_ot_timer","bd2000",THREE_MINUTES)  
+		SetGlobal("C#AjSoD_bd_ot","bd2000",1)  
+		DisplayStringHead("Ajantis",#%2%3504)  //For the glory of Helm!
+END

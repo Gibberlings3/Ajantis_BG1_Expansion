@@ -1,0 +1,14 @@
+/* spawn quest cres in camp */
+
+IF
+	InMyArea("ajantis")
+	CombatCounter(0)
+	Global("C#AJ_SoDQuestCreSpwn","MYAREA",0)
+THEN
+	RESPONSE #100
+		CreateCreature("c#ajsq01",[1020.888],NE)
+		CreateCreature("c#ajsq02",[1066.881],SW)
+		SetGlobal("C#AJ_SoDQuestCreSpwn","MYAREA",1)
+		Continue()
+END
+	

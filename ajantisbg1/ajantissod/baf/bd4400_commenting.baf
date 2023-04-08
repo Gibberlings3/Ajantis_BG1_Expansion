@@ -1,0 +1,14 @@
+/* bd4400_commenting.baf */
+/* (T3) Comment upon entering Avernus */
+IF
+	GlobalLT("bd_plot","global",505)
+	IfValidForPartyDialog("Ajantis")  
+	Global("C#AjSoD_bd_avernus_bark","bd4400",0) 
+THEN
+	RESPONSE #50  //Remove this if your NPC should say their line always
+		Continue() //Remove this if your NPC should say their line always
+	RESPONSE #50 //change to #100 if your NPC should say their line always
+		DisplayStringWait("Ajantis",~So this... this is Avernus. Helm, protect us!~) 
+	    SetGlobal("C#AjSoD_bd_avernus_bark","bd4400",1)  
+		SmallWait(8)
+END
