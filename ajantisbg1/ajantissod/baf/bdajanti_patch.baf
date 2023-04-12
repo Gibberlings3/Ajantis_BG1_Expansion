@@ -303,7 +303,7 @@ IF
 	!StateCheck(Myself,CD_STATE_NOTVALID)
 	!StateCheck(PLAYER1,CD_STATE_NOTVALID)
 	OR(2) 
-	/* Ajantis was chosen and the PC accepted it, but either won the game [will be addressed in Biff's dialogue] or tried to fight the demon off after losing. */
+	/* Ajantis was chosen and the PC accepted it, but either won the game [will be addressed in dialogue] or tried to fight the demon off after losing. */
 		Global("C#AjSoD_Thrix","GLOBAL",1)
 	/* Ajantis was chosen before the riddle and the PC sent him off to Thrix (verbally) after losing. */
 		Global("C#AjSoD_Thrix","GLOBAL",4)

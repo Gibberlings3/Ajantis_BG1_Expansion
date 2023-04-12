@@ -193,15 +193,15 @@ ADD_TRANS_TRIGGER BDTHRIX 13 ~!IsValidForPartyDialogue("Ajantis")~ DO 2 IF ~!Is?
 
 
 /* Thrix' game: add Ajantis for certain randomness to the blocks of 4 dialogue states each */
-/* 1st states of 4 state blocks: add Biff to the end */
+/* 1st states of 4 state blocks: add to the end */
 EXTEND_BOTTOM BDTHRIX 21 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90
 IF ~Global("C#AjSoD_Thrix","GLOBAL",0) IsValidForPartyDialogue("Ajantis")~ THEN + C#AjSoD_thrix
 END
-/* 2nd states of 4 state blocks: add Biff at the top, i.e. position "1" as "0" is in case there is no more NPC available */
+/* 2nd states of 4 state blocks: add at the top, i.e. position "1" as "0" is in case there is no more NPC available */
 EXTEND_TOP BDTHRIX 22 27 31 35 39 43 47 51 55 59 63 67 71 75 79 83 87 91 #1
 IF ~Global("C#AjSoD_Thrix","GLOBAL",0) IsValidForPartyDialogue("Ajantis")~ THEN + C#AjSoD_thrix
 END
-/* 3rd states of 4 state blocks: add Biff at position 10 */
+/* 3rd states of 4 state blocks: add at position 10 */
 EXTEND_TOP BDTHRIX 23 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 #10
 IF ~Global("C#AjSoD_Thrix","GLOBAL",0) IsValidForPartyDialogue("Ajantis")~ THEN + C#AjSoD_thrix
 END
