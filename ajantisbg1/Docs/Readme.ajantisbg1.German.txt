@@ -26,6 +26,8 @@ Hinweis: Die alternativen Ajantisportraits sind nun in die Modifikation "Ajantis
 
 Das BG1NPC Projekt befindet sich bei den Gibberlings Three: http://www.gibberlings3.net/bg1npc/index.php
 
+Bitte beachten: damit Ajantis in SoD entsprechend auf die Spielereignisse reagiert, muss die Hauptkomponente (2. Komponente, das "Trackingsystem") der Mod "Road to Discovery" installiert sein.
+
 
 GENERAL INFORMATION 
 
@@ -65,6 +67,8 @@ COMPATIBILITY
 The Ajantis BG1 Expansion Mod is coded using WeiDU, and it does not overwrite any files. The BG1 version patches all area scripts. It should be compatible with most other (WeiDU) mods. 
 
 Install order is after BG1NPC Project.
+
+Bitte beachten: damit Ajantis in SoD entsprechend auf die Spielereignisse reagiert, muss die Hauptkomponente (2. Komponente, das "Trackingsystem") der Mod "Road to Discovery" installiert sein.
 
 Ich danke allen, die mir beim Erstellen dieser Modifikation geholfen haben.
 
@@ -110,7 +114,11 @@ Pocket Plane Group			https://www.pocketplane.net/
 Spellhold Studios			http://www.shsforums.net/
 
 Further Links:
-DLC Merger 				https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
+Road to Discovery:
+https://www.gibberlings3.net/mods/other/road_to_discovery/
+
+DLC Merger: 				https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
+
 
 LEGAL INFORMATION
 
@@ -129,6 +137,7 @@ Version 19:
 -Ajantis as a joinable NPC for SoD added.
 -Some more interjections in BG1.
 -Added line to original Ajantis-Dorn conflict with the possibility to keep Ajantis and reject Dorn.
+-Ajantis BG1 friendship track should not trigger for romanceable PC if rep is too low.
 
 Version 18.3:
 -Fixed install error if EndlessBG1 is not installed.
