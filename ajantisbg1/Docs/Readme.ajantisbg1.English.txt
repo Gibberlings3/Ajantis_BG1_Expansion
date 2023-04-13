@@ -1,3 +1,4 @@
+
 			Ajantis BG1 Expansion Modification 
 	for BG1 (with or without TotSC), BG1Tutu v4, EasyTutu, BGT and BG:EE
 					by jastey 
@@ -11,13 +12,14 @@ For Tutu, BGT, BG:EE, and EET, the mod adds a friendship track and more romance 
 
 For EE, the mod also adds several banters with Rassad and one with Baeloth, as well as a Rasaad-Ajantis romance conflict.
 
-For SoD, the mod adds farewell dialogues before Ajantis leaves. In romance case the PC will get three letters from Ajantis along the SoD campaign.
-In romance case his original farewell "DisplayStringHead" lines in Korlasz' Crypt will be deactivated.
-For non-romance case his origial farewell lines "DisplayStringHead" about going to Waterdeep were tweaked in consistency with BGII: Ajantis will now say that he will travel to the Order in Athkatla.
+For SoD, the mod adds Ajantis as a joinable NPC to the campaign. He will be in front of the Palace.
+For non-romance case his origial farewell lines in Korlasz Dungeon about going to Waterdeep were tweaked in consistency with BGII: Ajantis will now say that he will travel to the Order in Athkatla.
 
 The BG1NPC project can be found at the Gibberlings Three site: http://www.gibberlings3.net/bg1npc/index.php
 
-For BG:EE and EET there will be a second install option to use the existent BAM for Ajantis' shield (green dragon on golden back), if BG1NPC is installed.
+For BG:EE and EET there will be a second, optional component to use the existent BAM for Ajantis' shield (green dragon on golden back), if BG1NPC is installed.
+
+For BG:SoD and EET, the third, optional component contains crossmod content for Ajantis' SoD content.
 
 
 NOTE: The alternate portrait choices are now in a separate modification: Ajantis' Portrait Pack. 
@@ -40,6 +42,10 @@ WARNING for original BG1 and BG1:TotSC players: *after* installing the Ajantis f
 For more information, please have a look at the files "BG1_Romance_Guide" (for the BG1 romance) and "Friendship Path Guide" (for the friendship path); both files are located in the folder "AjantisBG1/install".
 
 The file Translation_Guide.txt gives a list about which text lines are the same in BG1NPC Project, hopefully to save some translation time for the one mod or the other.
+
+
+Please note: For Ajantis to react to game events in SoD accordingly, the main component (Tracking System, 2nd component) of "Road to Discovery" needs to be installed.
+
 
 INSTALLATION
  
@@ -67,6 +73,8 @@ COMPATIBILITY
 
 The Ajantis BG1 Expansion Mod is coded using WeiDU, and it does not overwrite any files. The BG1 version patches all area scripts. It should be compatible with most other (WeiDU) mods.
 Install order is after BG1NPC Project.
+
+Please note: For Ajantis to react to game events in SoD accordingly, the main component (Tracking System, 2nd component) of "Road to Discovery" needs to be installed.
 
 
 I want to thank all who have helped me making this mod.
@@ -98,21 +106,26 @@ German by the BG1NPC Übersetzungsteam (of Kerzenburgforum) & Leo
 
 TOOLS USED
 
-The Ajantis BG1 Expansion Mod was created using the resources provided by the IESDP (http://iesdp.gibberlings3.net/) and with the following software:
+The Ajantis BG1 Expansion Mod was created using the resources provided by the IESDP (https://gibberlings3.github.io/iesdp/index.htm) and with the following software:
 
 Infinity Explorer			http://infexp.sourceforge.net
-Near Infinity				http://www.idi.ntnu.no/~joh/ni
+Near Infinity				https://forums.beamdog.com/discussion/30593/new-versions-of-nearinfinity-available/p1
 WeiDU					https://github.com/WeiDUorg/weidu/releases/latest
  					(formerly: http://www.weidu.org)
-http://forums.pocketplane.net/index.php?board=44.0
 BAM Workshop			http://wwww.teambg.eu/?page=tools&cat=32
 
 Modding communities, tutorials and technical assistance:
 
-Kerzenburgforum				http://kerzenburg.baldurs-gate.eu/index.php
-The Gibberlings Three		        http://gibberlings3.net
-Pocket Plane Group			http://pocketplane.net
+Kerzenburgforum				https://baldurs-gate.de/index.php
+The Gibberlings Three		        https://www.gibberlings3.net/
+Pocket Plane Group			https://www.pocketplane.net/
 Spellhold Studios			http://www.shsforums.net/
+
+Further Links:
+Road to Discovery:
+https://www.gibberlings3.net/mods/other/road_to_discovery/
+
+DLC Merger: 				https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
 
 LEGAL INFORMATION
 
@@ -126,6 +139,12 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 =============================================================================
 
 HISTORY
+
+Version 19:
+-Ajantis as a joinable NPC for SoD added.
+-Some more interjections in BG1.
+-Added line to original Ajantis-Dorn conflict with the possibility to keep Ajantis and reject Dorn.
+-Ajantis BG1 friendship track should not trigger for romanceable PC if rep is too low.
 
 Version 18.3:
 -Fixed install error if EndlessBG1 is not installed.

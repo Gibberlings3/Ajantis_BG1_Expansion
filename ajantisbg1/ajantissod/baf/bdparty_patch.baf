@@ -1,0 +1,39 @@
+/* bdparty_patch.baf:
+Addition to bdparty.bcs to toggle moving back to the current camp if kicked out of party. */
+/* we do not add "Continue()" here as it might leads to bugs for our mod - this is an exception */
+
+IF
+  Global("bd_npc_camp","locals",1)  //this is set via the kickout dialogue BDAJANTI.dlg
+  Name("Ajantis",Myself)
+  Switch("bd_npc_camp_chapter","global")  //this makes sure the NPC goes back to the correct camp along SoD's campaign
+  OR(2)
+    !Range("ff_camp",999) //"Name" of a trigger which detects the camps
+    !TriggerOverride("ff_camp",IsOverMe("Ajantis"))
+THEN
+  RESPONSE #2
+    EscapeAreaMove("bd1000",855,3672,N) //coordinates as used in bd1000_patch.baf
+  RESPONSE #3
+    EscapeAreaMove("bd7100",929,3368,S) //coordinates as used in bd7100_patch.baf
+  RESPONSE #4
+    EscapeAreaMove("bd3000",1773,1725,N) //coordinates as used in bd3000_patch.baf
+END
+
+/* this sets the "bd_npc_camp" variable to "2" as soon as Ajantis is in one of the camps again: bg1000.are, bg7100.are, bd3000.are – and will make bdparty.bcs set the correct fighting script etc. */
+IF
+  GlobalLT("bd_npc_camp","locals",2)
+  Global("bd_joined","locals",0)
+  Name("Ajantis",Myself)
+  TriggerOverride("ff_camp",IsOverMe("Ajantis"))
+  Switch("bd_npc_camp_chapter","global")
+THEN
+  RESPONSE #2
+    SetGlobal("bd_npc_camp","locals",2)
+    SaveLocation("LOCALS","bd_default_loc",[855.3672]) //coordinates as used in bd1000_patch.baf
+  RESPONSE #3
+    SetGlobal("bd_npc_camp","locals",2)
+    SaveLocation("LOCALS","bd_default_loc",[929.3368]) //coordinates as used in bd7100_patch.baf
+  RESPONSE #4
+    SetGlobal("bd_npc_camp","locals",2)
+    SaveLocation("LOCALS","bd_default_loc",[1773.1725]) //coordinates as used in bd3000_patch.baf
+    ChangeAIScript("bdasc3",CLASS)
+END

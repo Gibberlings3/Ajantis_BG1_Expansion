@@ -1,0 +1,143 @@
+
+/* lines up to @339 taken from "X#AJPCFL_TMP.TRA" from bg1npc */
+@3    = ~How are you, Ajantis?~
+@4    = ~*Take a close look at Ajantis.*~
+@5    = ~*You smile at Ajantis.*~
+
+@24   = ~I would like to kiss you, Ajantis...~
+@25   = ~I would like to give you a hug, Ajantis...~
+@26   = ~*Take his hand into yours.*~
+@27   = ~I love you, Ajantis.~
+@28   = ~My body is hurting from all this walking with heavy equipment...~
+
+
+@99   = ~*Ajantis' attention is on his surroundings, so you can examine his appearance for a moment.*~
+@100  = ~*You take a close look at his face.*~
+@101  = ~*You take a close look at Ajantis' arms and shoulders.*~
+@102  = ~*You take a close look at Ajantis' hands.*~
+@103  = ~*You study Ajantis' appearance as a whole.*~
+@104  = ~*You do not look at Ajantis any further.*~
+
+@107  = ~*Ajantis' hands are big, yet not clumsy. Their skin is tanned, the fingernails cut short and clean. As usual, one of his hands rests on a weapon's handle, ready to draw it with a firm grip, if necessary.*~
+
+@111  = ~*Ajantis doesn't seem to notice your attention, leaving you a quiet moment for examination.*~
+@112  = ~*Ajantis is near you now.*~
+
+@143  = ~Well, my neck is somewhat tense...~
+
+@145  = ~Ah, don't worry it's not that bad.~
+
+@165  = ~*Ajantis starts to massage your neck with firm and steady hands. You have the impression that his vigilance stays with the surroundings, though.*~
+
+@183  = ~*Ajantis gives the hurting part of your body a firm, yet pleasant massage. It takes only a few minutes, but he seems to know what he is doing, as you actually feel the pain lessen.*~
+
+@230  = ~*As usual, Ajantis' face wears a stern expression of concentration, vigilance, and loyality. His frown seems to have vanished, though.*~
+@231  = ~*The outline of Ajantis' armor and clothes suggest muscular shoulders and arms. His frame is not the bulky sort, yet it is big enough to demonstrate the strength gained by years of hard fighting and training.*~
+@232  = ~*Ajantis' armor and clothes are in good condition, proving his effort in taking care of them. On his cloak, the Ilvastarr's family coat of arms is shown: A metallic green dragon with orange eyes on a gold background. Ajantis is standing upright, his expression radiating vigilance and loyality. The hint of nervosity you noticed earlier seems to be gone.*~
+@233  = ~*Ajantis notices your attention and gives you a smile.* I cannot help feeling watched, my love.~
+@234  = ~*Ajantis notices your attention and turns to you.* Is something wrong, my love?~
+@235  = ~*Ajantis smiles back at you.* Where did that ray of sunlight come from, that just warmed my heart?~
+@236  = ~*Ajantis replies with a tender smile before he turns his eyes away.*~
+@237  = ~*Ajantis smiles and gives you an encouraging nod.*~
+@238  = ~*Ajantis smiles back, but his vigilance remains focused on the surroundings.*~
+@239  = ~*You reach for Ajantis' cheek and place a soft kiss on it.*~
+@240  = ~I'd be ready for a real kiss, Ajantis...~
+@241  = ~*You take Ajantis' hand and place a kiss on its back.*~
+@242  = ~*You change your mind and leave it at that.*~
+@243  = ~*Ajantis leans over to receive your kiss and turns away, smiling.*~
+@244  = ~Do not neglect the other side, please. My beard might grow quicker now after it was touched so tenderly.~
+@245  = ~*After receiving the kiss Ajantis smiles slightly without looking at you. You assume he enjoyed it but he won't take his vigilance from the surroundings.*~
+@246  = ~*Ajantis frowns slightly and gives you a short kiss.* I am sorry, my love. But while on guard against danger, I do not always seem to be ready for your sweet kisses.~
+@247  = ~My love, although these moments are most appreciated, it might be more appropriate to share them in more ...privacy.~
+@248  = ~*This time, you found the right moment. Despite any dangers that might await you, Ajantis seizes the opportunity for a long and intense kiss.* Your lips are sweeter than honey, my love. I never understood this saying better than now.~
+@249  = ~Do not think I do not... appreciate this kind of caressing, my love, but there is always a right time for everything.~
+@250  = ~Here? Now? If... you wish, my love.~
+@251  = ~*You exchange a kiss, but you feel Ajantis' tension and uneasiness.*~
+@252  = ~*You exchange a kiss... which turns out to be longer than you expected... After finishing, Ajantis looks into your eyes and you have the impression that his pupils are wider than they were before.*~
+@253  = ~*Ajantis seems a bit surprised by your action, but he smiles slightly, giving your hand a soft squeeze before letting it go.*~
+@254  = ~Is this not something I should do, fair lady? *Ajantis draws your hand to his lips and gives it a soft kiss.*~
+@255  = ~*Smiles* Next time I'll remove my gloves for your honey lips, my love.~
+@256  = ~*You place yourself side by side with Ajantis and put your arm around his waist.*~
+@257  = ~*You approach Ajantis from the front and hug him with both your arms, your face on his shoulder.*~
+@258  = ~*You hug Ajantis from the back, putting your arms around his waist.*~
+@259  = ~*You throw your arms around him while more or less jumping on him.*~
+@260  = ~*Ajantis starts to smile, and gives you a brief one-armed hug across your shoulder.* Let us move on, my love.~
+@261  = ~*Ajantis puts his arm around your shoulder, holding you for a moment.*~
+@262  = ~*Ajantis puts both arms around you, holding you tenderly.* If this puts you at ease, I am sure there is time for it, my love.~
+@263  = ~*Ajantis puts both arms around you, but he seems to not be at ease.* I am sorry, but we should not forget to be vigilant, my love.~
+@264  = ~*Ajantis stands still while you hug him. After releasing you, he smiles at you, but you are not sure whether he really enjoyed the caress.*~
+@265  = ~*Ajantis puts his hands on yours in front of him and holds them while you hug him.*~
+@266  = ~Do not think I do not appreciate your caress, my love, but if we were attacked now I wouldn't know how to defend you.~
+@267  = ~*Ajantis catches you, smiling.* It seems you are enjoying this, <CHARNAME>.~
+@268  = ~*Ajantis keeps his balance, making a faint grunting sound.* Don't hurt yourself on my weapons, my love. It would be a shame if you were wounded in an act of such childishness.~
+@269  = ~*Ajantis keeps his balance, making a faint grunting sound.* By Helm, <CHARNAME>! Do you want to knock me off my feet?~
+@270  = ~*Ajantis hugs you but you feel his tension and uneasiness.* Maybe it is not the right time now, <CHARNAME>.~
+@271  = ~*Ajantis gives your hand a slight squeeze and lets it go again.* I prefer to have my hands ready for any fighting that might arise, my love.~
+@272  = ~*Ajantis smiles at you, but releases your hand soon.* I surely wish we could walk hand in hand like lovers do, my love. Alas, our lifestyle leaves little room for this.~
+@273  = ~*Ajantis takes your hand and holds it for a while, but you can sense his uneasiness about the situation.*~
+@274  = ~My love, you frown, and you do indeed look tense... What, exactly, is hurting you?~
+@275  = ~My feet... Ajantis, I would be so happy if you could give me one of those foot massages.~
+@276  = ~Well, my neck is somehow tense... Would you give me a massage, please?~
+@277  = ~My back is hurting from all the heavy equipment... Would you give me a massage, please?~
+@278  = ~I guess we can spare a short moment, if we continue to be watchful. *Ajantis carefully takes off your boots and gives your feet a reviving massage.*~
+@279  = ~As you wish, my love. *Ajantis carefully takes off your boots and gives your feet a reviving massage.*~
+@280  = ~*Ajantis carefully takes off your boots and gives your feet a reviving massage.* I hope I can ease your pain, my love.~
+@281  = ~*Ajantis takes your words as an invitation to feel the muscles on your neck.* It is very tense indeed, my love. Do you want me to give you a massage?~
+@282  = ~That would be great.~
+@283  = ~No, thank you, Ajantis.~
+@284  = ~*Ajantis gives your tense neck a massage with firm fingers.* Do you feel better now, my love? We should not stay here longer than necessary.~
+@285  = ~*Ajantis starts to massage your neck with firm and steady hands and ends it with a kiss on your neck's hairline.* If I had known I'd need this here and now, I would have been more motivated in the training.~
+@286  = ~*Ajantis helps you take off your backpack and massages your shoulders and back firmly.* As you wish, my love. Where is it hurting, here?~
+@287  = ~*Ajantis helps you take off your backpack and massages your shoulders and back firmly.* Let me do this in silence, my love. Try to relax for this brief moment. I will keep my vigilance.~
+@288  = ~*Ajantis helps you take off your backpack and massages your shoulders and back firmly.* Your back is so slender and graceful, and yet so strong... I am sure you will feel better in a moment.~
+@289  = ~And I love you, <CHARNAME>.~
+@290  = ~*Ajantis serious expression gives way to a more affectionate look.* I love you, too. Your words make me very happy, <CHARNAME>.~
+@291  = ~I love you, too. Do not ever stop saying that, <CHARNAME>.~
+
+
+@338  = ~I hear your words... You sound very determined. I will accept your decision, although it makes my heart bleed.~
+@339  = ~By Helm! So let us end our deep personal bond and return to being nothing but fighting comrades. *sighs* I will stay at your side and support you in our current fight.~
+
+
+
+
+
+/* new lines not from BG1NPC */
+@1000 = ~[Ajantis]Yes, <CHARNAME>?~
+@1001 = ~[PC Reply]I'm glad to have you as a comrade in this endeavor, Ajantis.~
+@1002 = ~[PC Reply]How did you fare after we parted ways?~
+@1003 = ~[PC Reply]So, it already started to be a problem even before we get married - you having to follow your order's calls, despite our private plans.~
+@1004 = ~[PC Reply]When do you think will be the next possibility to meet your parents?~
+@1005 = ~[PC Reply]Haiva and Rickon are serving together - as a couple.~
+@1006 = ~[PC Reply]How come the order sent you here? I thought they do not interfere in local politics.~
+@1007 = ~[PC Reply]You are one squire - why didn't the Order of the Radiant Heart send more knights as reincorcements against Caelar?~
+@1008 = ~[PC Reply]Something on your mind?~
+@1009 = ~[Ajantis]It seems the gods did not grant you much rest after defeating your half brother, love. Great is the heritage you carry, and great is the battles the gods want you to fight. Let us turn this one into a victory of righteousness!~
+@1010 = ~[Ajantis]I fared well, but I did not reach my planned destination. I was called back due to the rising crusade by the order. A lot of knights and squires are on mission to help stabilizing the situations on cities and villages across the Sword Coast, and even more are on dispatch in case the violence will spread. I was assigned to support the coalition as soon as the order got my message that I am free again.~
+@1011 = ~[Ajantis]It is special times, love. A warlady raised an army of mercenaries, destabilizing widespread parts of the Sword Coast... I am sure our time together will not always be like this.~
+@1012 = ~[Ajantis]Unfortunately, not only do I have duties to follow, but my parents have many obligations that can take one of them away from home for weeks. Your godly heritage is a delicate matter - I am not ready to turn to either of my parents alone, nor do I think we should reveal it in a profane way, like a letter.~
+@1013 = ~[Ajantis]Do not give up hope, my love. It was naive of me to think that I would have the time to travel to Waterdeep to speak to them - even without Caelar's crusade, my obligations lie within Athkatla and my goal to become a knight and full-fledged member of the order. If I do not find the time to travel to them, my parents will come to me when I call them, you can be sure of that.~
+@1014 = ~[Ajantis]They are, and they seem quite content with it. Are you raising the topic because of our conversations about how I... imagined my future wife? I told you, it was what I was expecting, but not what I am anticipating. I love you, and I will be happy if circumstances will allow us to spend as much time together as possible.~
+@1015 = ~[Ajantis]We do not, but the Order of the Radiant Heart is a strong force if it comes to stabilizing the lands. What happens currently is pure chaos, we are all in high alert. Even if only few knights will engage against Caelar's crusade directly, we are working to help the people across the lands as much as possible and to relieve the local authorities and cities.~
+@1016 = ~[Ajantis]The Order of the Most Radiant Heart does not engage themselves into power struggles directly. Nevertheles,, we do help stabilizing the situation at many places that are not the direct war zones. Once we understand what threat Caelar really poses, the knights of the Order will be ready to prevent the worst.~
+@1017 = ~[Ajantis]I would appreciate healing for my wounds.~
+@1018 = ~[Ajantis]I definitely need healing for my wounds, <CHARNAME>. In the state I am in, I will not be able to stand against evil with all my might.~
+@1019 = ~[Ajantis]I am poisoned! Evil is trying to harm me by spreading its venom through my blood... It shall never succeed!~
+@1020 = ~[Ajantis]I am... wounded and *cough* poisoned! I need healing, <CHARNAME>, quick!~
+@1021 = ~[Ajantis]Evil forces are weakening my prowess! I have to be more careful next time.~
+@1022 = ~[Ajantis]I am exhausted... We should take a small rest to gather our strength.~
+@1023 = ~[Ajantis]I am tired. We should take the time to rest, or evil will find us unprepared.~
+@1024 = ~[Ajantis]I am tired. It has been a long day, and we are exhausted. Let us rest, and prepare for tomorrow.~
+@1025 = ~[Ajantis]I am tired, and it is a dark night. We should take the time to rest or evil will find us weak.~
+@1026 = ~[Ajantis]I am tired, love. I cannot wait to rest and cuddle up to you... if you wish so, of course.~
+@1027 = ~[Ajantis]Thank you for asking. I cannot wait to fight any evil that is coming our way!~
+@1028 = ~[Ajantis]As ever, ready to fight any evil that we might chance upon.~
+@1029 = ~[Ajantis]I am eagerly anticipating our next battle against evil!~
+@1030 = ~[Ajantis]Vigilant and eager to fight the villain behind all of this!~
+@1031 = ~[Ajantis]Thank you for asking, my love. I cannot wait to fight any evil that is coming our way!~
+@1032 = ~[Ajantis]As ever, ready to fight any evil that we might encounter, my love.~
+@1033 = ~Thank you for asking, my love. I am happy to be at your side!~
+@1034 = ~[Ajantis]I thank you for the kind words, <CHARNAME>.~
+@1035 = ~[Ajantis]I am also very happy to be by your side again, love.~
+
+

@@ -11,17 +11,22 @@ Für Tutu, BGT, BG:EE und EET wird ein Freundschaftspfad und weiteren Inhalt für 
 
 Für die EE fügt die Mod mehrere Banter mit Rasaad und einen mit Baeloth ein, sowie einen Rasaad-Ajantis Romanzenkonflikt.
 
-Für SoD fügt die Mod einen Abschiedsdialog ein, bevor Ajantis die Gruppe verlässt. Im Romanzenfall erhält die HC drei Briefe von Ajantis während der SoD-Kampagne.
+Für SoD fügt die Mod Ajantis als aufnehmbaren NPC ein. Er wartet direkt vor dem Palast.
 Der originale Abschieds-"DisplayStringHead" von Ajantis in Korlasz' Crypta ist für den Fall, dass Ajantis mit der HC verlobt ist, deaktiviert.
 Für den nicht-Romanzenfall wurde seine Aussage, dass er zum Orden nach Tiefwasser reisen muss, auf Konsitenz mit BGII geändert: Ajantis spricht jetzt davon, nach Atkatla zu reisen. 
 
 
-Als zweite Installoption gibt es für BG:EE und EET die Möglichkeit, das in der EE vorhandene BAM für Ajantis Schild (grüner Drache auf goldenem Grund) im Spiel zu verwenden (sofern BG1NPC Projekt installiert ist).
+Als zweite, optionale Komponente gibt es für BG:EE und EET die Möglichkeit, das in der EE vorhandene BAM für Ajantis Schild (grüner Drache auf goldenem Grund) im Spiel zu verwenden (sofern BG1NPC Projekt installiert ist).
+
+
+Als dritte, optionale Komponente enthält Crossmod für den SoD-Teil der Mod. 
 
 
 Hinweis: Die alternativen Ajantisportraits sind nun in die Modifikation "Ajantis Portrait Pack" ausgegliedert. 
 
 Das BG1NPC Projekt befindet sich bei den Gibberlings Three: http://www.gibberlings3.net/bg1npc/index.php
+
+Bitte beachten: damit Ajantis in SoD entsprechend auf die Spielereignisse reagiert, muss die Hauptkomponente (2. Komponente, das "Trackingsystem") der Mod "Road to Discovery" installiert sein.
 
 
 GENERAL INFORMATION 
@@ -63,6 +68,8 @@ The Ajantis BG1 Expansion Mod is coded using WeiDU, and it does not overwrite an
 
 Install order is after BG1NPC Project.
 
+Bitte beachten: damit Ajantis in SoD entsprechend auf die Spielereignisse reagiert, muss die Hauptkomponente (2. Komponente, das "Trackingsystem") der Mod "Road to Discovery" installiert sein.
+
 Ich danke allen, die mir beim Erstellen dieser Modifikation geholfen haben.
 
 Viel Spaß beim Spielen!
@@ -91,28 +98,27 @@ French by Galathée (of the d'Oghmatiques)
 German by the BG1NPC Übersetzungsteam (of Kerzenburgforum) & Leo
 
 
-TOOLS USED
+The Ajantis BG1 Expansion Mod was created using the resources provided by the IESDP (https://gibberlings3.github.io/iesdp/index.htm) and with the following software:
 
 Infinity Explorer			http://infexp.sourceforge.net
-IESDP					https://gibberlings3.github.io/iesdp/index.htm
 Near Infinity				https://forums.beamdog.com/discussion/30593/new-versions-of-nearinfinity-available/p1
 WeiDU					https://github.com/WeiDUorg/weidu/releases/latest
  					(formerly: http://www.weidu.org)
-BAM Workshop				http://wwww.teambg.eu/?page=tools&cat=32
-
-grepWin					http://tools.stefankueng.com/grepWin.html
-WinMerge				http://winmerge.org/
+BAM Workshop			http://wwww.teambg.eu/?page=tools&cat=32
 
 Modding communities, tutorials and technical assistance:
 
-The Gibberlings Three			https://www.gibberlings3.net/
-Pocket Plane Group			http://pocketplane.net
+Kerzenburgforum				https://baldurs-gate.de/index.php
+The Gibberlings Three		        https://www.gibberlings3.net/
+Pocket Plane Group			https://www.pocketplane.net/
 Spellhold Studios			http://www.shsforums.net/
-Kerzenburgforum (German)		https://www.baldurs-gate.de/index.php
-The Black Wyrm's Lair			http://blackwyrmlair.net
 
 Further Links:
-DLC Merger 				https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
+Road to Discovery:
+https://www.gibberlings3.net/mods/other/road_to_discovery/
+
+DLC Merger: 				https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
+
 
 LEGAL INFORMATION
 
@@ -126,6 +132,12 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 =============================================================================
 
 HISTORY
+
+Version 19:
+-Ajantis as a joinable NPC for SoD added.
+-Some more interjections in BG1.
+-Added line to original Ajantis-Dorn conflict with the possibility to keep Ajantis and reject Dorn.
+-Ajantis BG1 friendship track should not trigger for romanceable PC if rep is too low.
 
 Version 18.3:
 -Fixed install error if EndlessBG1 is not installed.

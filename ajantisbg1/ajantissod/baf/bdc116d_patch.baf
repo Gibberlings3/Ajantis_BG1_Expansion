@@ -1,0 +1,21 @@
+/* bdc116d_patch.baf */
+/* (T3) Move the PC in the cutscene of the plotting nobles in Three Old Kegs (bdc116d.bcs) */
+IF
+	Global("bd_uncovered_seditious_plot","BD0108",1)  
+	InParty("Ajantis")  
+THEN
+	RESPONSE #100
+		CutSceneId("Ajantis")  
+		JumpToPoint([343.291]) 
+		Face(E) //adjust facing position accordingly, so the NPC looks into the room
+END
+
+IF
+	Global("bd_uncovered_seditious_plot","BD0108",2)  
+	InParty("Ajantis")  
+THEN
+	RESPONSE #100
+		CutSceneId("Ajantis")  
+		JumpToPoint([509.270]) 
+		Face(E) //adjust facing position accordingly, so the NPC looks into the room
+END

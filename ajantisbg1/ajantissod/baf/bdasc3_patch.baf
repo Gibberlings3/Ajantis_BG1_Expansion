@@ -1,0 +1,15 @@
+/* bdasc3_patch.baf */
+/* Move NPC to entrance of the Allied Siege Camp (Crusade battle) */
+IF
+	Global("bd_battle","global",1)
+	Global("bd_move_npcs","bd3000",1)  // Allied Siege Camp
+	Global("bd_move_to_entrance","locals",0)
+	Name("Ajantis",Myself)  
+	Global("C#AjSoD_MoveCamp","MYAREA",1)  
+THEN
+	RESPONSE #100
+		SetGlobal("bd_move_to_entrance","locals",1)
+		JumpToPoint([1566.407]) 
+		Face(N)
+		SaveObjectLocation("LOCALS","bd_default_loc",Myself)
+END

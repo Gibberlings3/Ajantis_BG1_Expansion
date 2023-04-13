@@ -1,0 +1,13 @@
+/* bdbark01_commenting.baf */
+/* (T3) Comment in Dragonspear Castle Exterior */
+IF
+	Name("bark_mdd1246a",Myself)
+	Global("C#AjSoD_bd_mdd1246a_ot","bd4000",0)  
+	Range("Ajantis",35)  
+	Global("chapter","global",11)
+	IfValidForPartyDialog("Ajantis")  
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjSoD_bd_mdd1246a_ot","bd4000",1)  
+		DisplayStringHead("Ajantis",@121)
+END

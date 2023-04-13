@@ -14,7 +14,7 @@ AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~18.3~ //
+VERSION ~19~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -24,7 +24,7 @@ ALWAYS
 /* check for a ready SoD */
 
  ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN
-  FAIL ~Your SoD game needs to be modmerged before mods can be installed on this game. Check the readme for more information and a link to download the DLC Merger or Modmerge.~
+  FAIL ~Your SoD game needs to be modmerged before mods can be installed on this game. Check the readme for more information and a link to download the DLC Merger.~
  END
 
  ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN
@@ -67,11 +67,44 @@ ALWAYS
         PRINT @15
  END
 
+/* (T3) Define a variable to account for the differences in string ref numbers between BG:SoD and EET. - Works for string references in d- or baf-files. */
+  ACTION_IF GAME_IS ~bgee~ BEGIN
+    OUTER_SPRINT ~2~ ~~
+  END
 
+  ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SPRINT ~2~ ~2~
+  END
+
+/* (T1) Definition of variables to distinguish between SoD and BG1 (for banters or script blocks) */
+  ACTION_IF (GAME_IS ~bgee~) THEN BEGIN
+    ACTION_IF (MOD_IS_INSTALLED ~c#endlessbg1.tp2~ ~14~) BEGIN
+      OUTER_SPRINT ~BG1_BEFORE_TRANSITION~ ~GlobalLT("BD_PLOT","GLOBAL",41)~
+      OUTER_SPRINT ~IT_IS_SOD~ ~GlobalGT("bd_plot","global",40)~
+    END ELSE ACTION_IF (MOD_IS_INSTALLED ~transitions.tp2~ ~0~) BEGIN
+      OUTER_SPRINT ~BG1_BEFORE_TRANSITION~ ~GlobalLT("BD_PLOT","GLOBAL",41)~
+      OUTER_SPRINT ~IT_IS_SOD~ ~GlobalGT("bd_plot","global",40)~
+    END ELSE BEGIN
+      OUTER_SPRINT ~BG1_BEFORE_TRANSITION~ ~Global("BD_PLOT","GLOBAL",0)~
+      OUTER_SPRINT ~IT_IS_SOD~ ~GlobalGT("bd_plot","global",0)~
+    END
+  END
+  ACTION_IF GAME_IS ~eet~ THEN BEGIN
+    ACTION_IF (MOD_IS_INSTALLED ~c#endlessbg1.tp2~ ~14~) BEGIN
+      OUTER_SPRINT ~BG1_BEFORE_TRANSITION~ ~OR(2) Global("ENDOFBG1","GLOBAL",0) GlobalLT("BD_PLOT","GLOBAL",41)~
+      OUTER_SPRINT ~IT_IS_SOD~ ~Global("ENDOFBG1","GLOBAL",1) GlobalGT("bd_plot","global",40)~
+    END ELSE ACTION_IF (MOD_IS_INSTALLED ~transitions.tp2~ ~0~) BEGIN
+      OUTER_SPRINT ~BG1_BEFORE_TRANSITION~ ~OR(2) Global("ENDOFBG1","GLOBAL",0) GlobalLT("BD_PLOT","GLOBAL",41)~
+      OUTER_SPRINT ~IT_IS_SOD~ ~Global("ENDOFBG1","GLOBAL",1) GlobalGT("bd_plot","global",40)~
+    END ELSE BEGIN
+      OUTER_SPRINT ~BG1_BEFORE_TRANSITION~ ~Global("ENDOFBG1","GLOBAL",0)~
+      OUTER_SPRINT ~IT_IS_SOD~ ~Global("ENDOFBG1","GLOBAL",1)~
+    END
+  END
 
  ACTION_DEFINE_ARRAY fl#noconvert BEGIN AJANTIS_MESSENGER.TRA AJANTIS_REPREACTIONS.TRA AJANTISBHAALLTS.TRA AJANTISBHAALLTS_RA1.TRA AJANTISDREAMLTS.TRA AJANTISINIFLIRTS_D.TRA AJANTISLTS.TRA AJANTISLTS_ADD.TRA AJANTISPC_PID.TRA AJANTISPCINIFLIRTS.TRA AJANTISROMNPC_TALKS.TRA ROM_INTERJECTIONS.TRA END
 
- ACTION_DEFINE_ARRAY fl#reload BEGIN SETUP-AJANTISBG1.TRA END
+ ACTION_DEFINE_ARRAY fl#reload BEGIN game journal END
 
   LAF HANDLE_CHARSETS
     INT_VAR
@@ -98,9 +131,10 @@ PRINT @3
    END
 END 
 
-
+/*
     //TRAs declared in LANGUAGE must be reloaded
-  LOAD_TRA ~AjantisBG1/Translations/%LANGUAGE%/Setup-AjantisBG1.tra~
+  LOAD_TRA ~AjantisBG1/Translations/%LANGUAGE%/game.tra~
+*/
 
 END
 
@@ -111,14 +145,20 @@ AUTO_TRA ~AjantisBG1/Translations/%s~
 LANGUAGE ~English~
          ~English~
          ~AjantisBG1/Translations/English/Setup-AjantisBG1.tra~
+         ~AjantisBG1/Translations/English/game.tra~
+         ~AjantisBG1/Translations/English/journal.tra~
 
 LANGUAGE ~Francais~
          ~French~
          ~AjantisBG1/Translations/French/Setup-AjantisBG1.tra~
+         ~AjantisBG1/Translations/French/game.tra~
+         ~AjantisBG1/Translations/French/journal.tra~
 
 LANGUAGE ~Deutsch~
          ~German~
          ~AjantisBG1/Translations/German/Setup-AjantisBG1.tra~
+         ~AjantisBG1/Translations/German/game.tra~
+         ~AjantisBG1/Translations/German/journal.tra~
 
 
 BEGIN @0
@@ -158,8 +198,19 @@ END
 
 ACTION_IF GAME_IS ~tutu tutu_totsc bgt bgee eet~ THEN BEGIN
 
+/* give DV to cre */
+ACTION_IF GAME_IS ~tutu tutu_totsc bgt~ THEN BEGIN
+  /* Give FLAM5.cre a unique DV */
+  COPY_EXISTING ~%tutu_var%FLAM5.CRE~ ~override~
+    WRITE_EVALUATED_ASCII 0x280 ~FLAM5~ #32 // script name / DV
+END
+
 COMPILE EVALUATE_BUFFER ~AjantisBG1/Friendship/Tutu_Interjections.d~
-USING ~AjantisBG1/translations/%LANGUAGE%/BG_Interjections.tra~
+  USING ~AjantisBG1/translations/%LANGUAGE%/BG_Interjections.tra~
+EXTEND_BOTTOM ~%tutu_var%ajantis.bcs~ ~AjantisBG1/Friendship/Tutu_Interjections.baf~
+EVALUATE_BUFFER 
+  USING ~AjantisBG1/translations/%LANGUAGE%/BG_Interjections.tra~
+
 
 END
 
@@ -188,102 +239,12 @@ ACTION_IF GAME_IS ~bgt~ THEN BEGIN
 COMPILE EVALUATE_BUFFER ~AjantisBG1/BG1_end/ajantisbg1_bgt_transition.d~ USING ~AjantisBG1/translations/%LANGUAGE%/ajantisbg1_transition.tra~
 END
 
-/* comment after Korlasz is defeated */
-ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
-
-COPY_EXISTING ~bdintro.bcs~ ~override~
-DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
-~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
-END
-BUT_ONLY_IF_IT_CHANGES
-
-/* make sure Ajantis only complains about Korlasz' death if she actually tried to surrender */
-EXTEND_TOP ~BD0130.bcs~ ~AjantisBG1/ee/ajbg1_bd0130.baf~ EVALUATE_BUFFER
-
-/* mute Ajantis' Farewell-DisplayStringHeads in case of romance */
-EXTEND_TOP ~BD0120.bcs~ ~AjantisBG1/ee/ajbg1_bd0120_rom.baf~ EVALUATE_BUFFER
-EXTEND_TOP ~BD0130.bcs~ ~AjantisBG1/ee/ajbg1_bd0120_rom.baf~ EVALUATE_BUFFER
-
-/* correct his farewell DisplayStringHead: "Athkatla" instead of "Waterdeep". There is no Order of the Radiant Heart in Waterdeep.
-#57802  // Though it makes my heart heavy, I must soon return to Waterdeep. */
-STRING_SET %57802% @24 /* ~Though it makes my heart heavy, I must soon return to Athkatla.~ */
-
-EXTEND_TOP ~BDAJANTI.bcs~ ~AjantisBG1/BG1_end/c#ajan_bg1end_sod.baf~
-EVALUATE_BUFFER 
-COMPILE EVALUATE_BUFFER ~AjantisBG1/BG1_end/c#ajan_bg1end_sod.d~ USING ~AjantisBG1/translations/%LANGUAGE%/ajantisbg1_transition.tra~
-COMPILE EVALUATE_BUFFER ~AjantisBG1/BG1_end/ajantisbg1_sod_transition.d~ USING ~AjantisBG1/translations/%LANGUAGE%/ajantisbg1_transition.tra~
-
-/* transition from BG1 to SoD: in case Ajantis was in party but dead, he will be silently revived */
-
-/* only install this if BGII mod isn't installed already */
-ACTION_IF NOT (MOD_IS_INSTALLED ~ajantisbg2/setup-ajantisbg2.TP2~ ~0~) THEN BEGIN
-  EXTEND_TOP ~BD0103.bcs~ ~AjantisBG1/ee/sod_transition.baf~ 
-EVALUATE_BUFFER
-/* this is for the case that the player skips SoD in EET */
-  ACTION_IF GAME_IS ~eet~ THEN BEGIN
-    EXTEND_TOP ~K#TELBGT.bcs~ ~AjantisBG1/ee/eet_transition.baf~ 
-EVALUATE_BUFFER
-  END
-END
-
-
-/* romance reactions: add reply options so PC can shut down SoD romances */
-COMPILE EVALUATE_BUFFER ~AjantisBG1/ee/sod_romancereactions.d~ 
-
-/* SoD "content" for romance case: Ajantis will write letters */
-
-/* first letter */
-  COPY ~AjantisBG1/ee/C#AJBG11.itm~ ~override/C#AJBG11.itm~
-    SAY NAME1 @19
-    SAY NAME2 @19
-    SAY DESC @20
-
-/* second letter */
-  COPY ~AjantisBG1/ee/C#AJBG11.itm~ ~override/C#AJBG12.itm~
-    SAY NAME1 @19
-    SAY NAME2 @19
-    SAY DESC @21
-
-/* third letter */
-  COPY ~AjantisBG1/ee/C#AJBG11.itm~ ~override/C#AJBG13.itm~
-    SAY NAME1 @19
-    SAY NAME2 @19
-    SAY DESC @22
-
-/* messenger */
-  COPY_EXISTING ~bdtsmess.cre~ ~override/C#AjSoD1.cre~
-WRITE_ASCII 0x2cc ~C#AjSoD1~  #8  // dialogue
-WRITE_ASCII 0x280 ~C#AjSoD1~ #32  // death variable
-WRITE_ASCII 0x280 ~C#AjSoD1~ #32  // Override script
-WRITE_BYTE 0x2c 27 // Metal color
-WRITE_BYTE 0x2d 66 // Minor color
-WRITE_BYTE 0x2e 59 // Major color
-WRITE_BYTE 0x2f 12 // Skin color
-WRITE_BYTE 0x30 16 // Leather color
-WRITE_BYTE 0x31 30 // Armor color
-WRITE_BYTE 0x32 41 // Hair color
-
-
-/* first letter */
-EXTEND_BOTTOM ~BD0103.bcs~ ~AjantisBG1/ee/ajbg1_bd0103.baf~ EVALUATE_BUFFER
-/* second letter */
-EXTEND_BOTTOM ~BD0010.bcs~ ~AjantisBG1/ee/ajbg1_BD0010.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BD0020.bcs~ ~AjantisBG1/ee/ajbg1_BD0010.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BD0030.bcs~ ~AjantisBG1/ee/ajbg1_BD0010.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BD0040.bcs~ ~AjantisBG1/ee/ajbg1_BD0010.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BD0050.bcs~ ~AjantisBG1/ee/ajbg1_BD0010.baf~ EVALUATE_BUFFER
-/* third letter */
-EXTEND_BOTTOM ~BD3000.bcs~ ~AjantisBG1/ee/ajbg1_BD3000.baf~ EVALUATE_BUFFER
-
-COMPILE EVALUATE_BUFFER ~AjantisBG1/ee/ajantis_sod_letters.d~ USING ~AjantisBG1/translations/%LANGUAGE%/AJANTIS_EE.TRA~
-
-END
 
 
 
 
 
+//////////////////////////////////////////////////////////////////////////////
 /* content for original BG1 game */
 
 ACTION_IF GAME_IS ~bg1 totsc~ THEN BEGIN
@@ -644,13 +605,462 @@ USING ~AjantisBG1/translations/%LANGUAGE%/ajantisbg1_transition.tra~
 
 /* Crossmod with EndlessBG1 "Korlasz Tomb in BG1 */
 ACTION_IF (MOD_IS_INSTALLED ~c#endlessbg1.tp2~ ~14~) BEGIN
-  COMPILE EVALUATE_BUFFER ~ajantisbg1/crossmod/ajantis_transitions_endlessbg1_korlasz_tomb.d~
-	USING ~AjantisBG1/translations/%LANGUAGE%/AJANTISBG1_TRANSITION.TRA~
-  EXTEND_TOP ~ajantis.bcs~ ~ajantisbg1/BG1_end/c#ajan_bg1end_sod.baf~
-    EVALUATE_BUFFER 
+
+/* make sure Ajantis' SoD override script is used in Korlasz' Crypt */
+COPY_EXISTING ~bd0120.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
+~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+END
+BUT_ONLY_IF_IT_CHANGES
+COPY_EXISTING ~bd0130.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
+~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+END
+BUT_ONLY_IF_IT_CHANGES
+COPY_EXISTING ~c#st2bc.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
+~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+END
+BUT_ONLY_IF_IT_CHANGES
+
 END //~c#endlessbg1.tp2~ ~14~
 
 END /* EndlessBG1 */
+
+/* transition from BG1 to SoD: in case Ajantis was in party but dead, he will be silently revived */
+
+/* only install this if it isn't installed already */
+ACTION_IF NOT (MOD_IS_INSTALLED ~ajantisbg2/setup-ajantisbg2.TP2~ ~0~) THEN BEGIN
+  EXTEND_TOP ~BD0103.bcs~ ~AjantisBG1/ee/sod_transition.baf~ 
+EVALUATE_BUFFER
+/* this is for the case that the player skips SoD in EET */
+  ACTION_IF GAME_IS ~eet~ THEN BEGIN
+    EXTEND_TOP ~K#TELBGT.bcs~ ~AjantisBG1/ee/eet_transition.baf~ 
+EVALUATE_BUFFER
+  END
+END
+
+
+///////////////////////////////////////////////////////////
+// ~Ajantis NPC for SoD~ 
+
+ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+PRINT @90000 /* Detecting SoD: Installing Ajantis NPC for SoD */
+
+ADD_JOURNAL TITLE (@100004) @100000 @100001 @100002 @100003
+
+/* Ajantis's SoD cre file */
+
+COPY_EXISTING ~ajanti6.cre~ ~override/c#ajsod6.cre~ 
+//SAY NAME1 #6131 
+//SAY NAME2 #6131
+//WRITE_EVALUATED_ASCII 0x280 ~Ajantis~ #32 // script name / DV
+WRITE_EVALUATED_ASCII 0x2cc ~C#AjSoDG~ #8 //greetings dialogue
+WRITE_EVALUATED_ASCII 0x248 ~BDAJANTI~ #8   // Override script
+WRITE_EVALUATED_ASCII 0x250 ~BDAJANTC~ #8   // Class script
+//WRITE_EVALUATED_ASCII 0x258 ~~ #8   // Race script
+//WRITE_EVALUATED_ASCII 0x260 ~~ #8   // General script
+//WRITE_EVALUATED_ASCII 0x268 ~~ #8   // Default script
+    ADD_CRE_ITEM ~SW1H02~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~ EQUIP
+    ADD_CRE_ITEM ~PLAT10~ #0 #0 #0 ~IDENTIFIED~ ~ARMOR~ 
+
+
+/* Content for Korlasz' Crypt */
+/* comment after Korlasz is defeated */
+
+COPY_EXISTING ~bdintro.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
+~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+END
+BUT_ONLY_IF_IT_CHANGES
+
+/* make sure Ajantis only complains about Korlasz' death if she actually tried to surrender */
+EXTEND_TOP ~BD0130.bcs~ ~AjantisBG1/ee/ajbg1_bd0130.baf~ EVALUATE_BUFFER
+
+/* mute Ajantis' Farewell-DisplayStringHeads in case of romance */
+EXTEND_TOP ~BD0120.bcs~ ~AjantisBG1/ee/ajbg1_bd0120_rom.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~BD0130.bcs~ ~AjantisBG1/ee/ajbg1_bd0120_rom.baf~ EVALUATE_BUFFER
+
+/* correct his farewell DisplayStringHead: "Athkatla" instead of "Waterdeep". There is no Order of the Radiant Heart in Waterdeep.
+#57802  // Though it makes my heart heavy, I must soon return to Waterdeep. */
+STRING_SET %57802% @24 /* ~Though it makes my heart heavy, I must soon return to Athkatla.~ */
+
+EXTEND_TOP ~BDAJANTI.bcs~ ~AjantisBG1/BG1_end/c#ajan_bg1end_sod.baf~
+EVALUATE_BUFFER 
+COMPILE EVALUATE_BUFFER ~AjantisBG1/BG1_end/c#ajan_bg1end_sod.d~ USING ~AjantisBG1/translations/%LANGUAGE%/ajantisbg1_transition.tra~
+COMPILE EVALUATE_BUFFER ~AjantisBG1/BG1_end/ajantisbg1_sod_transition.d~ USING ~AjantisBG1/translations/%LANGUAGE%/ajantisbg1_transition.tra~
+
+
+/* Ajantis's dialogues */
+
+/* (T1) SoD greeting dialogue */
+COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/dialogue/greetingsdialogue.d~
+
+/* (T1) SoD kickout dialogue */
+COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/dialogue/kickoutdialogue.d~ USING ~AjantisBG1/translations/%LANGUAGE%/greetingsdialogue.tra~
+
+/* (T2/T3)) Ajantis's comments on SoD events */
+COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/dialogue/sod_event_comments.d~
+
+/* Ajantis's reactions to important knowledge about Caelar's plans. Works best with Road to Discovery installed. */
+COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/dialogue/sod_important_reactions_dialogues.d~
+
+/* Ajantis' SoD Lovetalk(s) */
+COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/dialogue/dialogues_sod.d~
+
+/* quest dialogues */
+COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/dialogue/sod_quest.d~
+
+
+/* script compilation */
+
+/* Ajantis's reactions to important knowledge about Caelar's plans. Works best with Road to Discovery installed. */
+EXTEND_BOTTOM ~BDAJANTI.bcs~ ~ajantisbg1/ajantissod/baf/sod_important_reactions_scripts.baf~
+  EVALUATE_BUFFER	
+EXTEND_BOTTOM ~BDAJANTI.bcs~ ~ajantisbg1/ajantissod/baf/bdajanti_patch.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~BDAJANTI.bcs~ ~ajantisbg1/ajantissod/baf/general_script_additions.baf~
+  EVALUATE_BUFFER
+/*
+EXTEND_BOTTOM ~BDAJANTI.bcs~ ~ajantisbg1/ajantissod/baf/bdajanti_patch_quest.baf~
+  EVALUATE_BUFFER
+*/
+
+/* empty Timer setting */
+
+<<<<<<<< ...inlined/C#AjSoD_timer.baf
+/* make sure this is at the END of all script blocks using this timer or any script block using this timer elsewhere will never trigger! */
+IF
+	InParty("Ajantis")
+	CombatCounter(0)
+	!See([ENEMY])
+	ActionListEmpty()
+	!RealGlobalTimerNotExpired("C#AjSoD_DialogReactionTimer","GLOBAL")
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#AjSoD_DialogReactionTimer","GLOBAL",900)
+END
+>>>>>>>>
+EXTEND_BOTTOM ~BDAJANTI.bcs~ ~...inlined/C#AjSoD_timer.baf~
+
+
+/* script compilation: modify existing game scripts. In alphabetical order with regard to ingame scripts. */
+
+/* (T1) let Ajantis (re)appear in front of the Duchal Palace */
+EXTEND_BOTTOM ~bd0010.bcs~ ~ajantisbg1/ajantissod/baf/bd0010_patch.baf~ EVALUATE_BUFFER
+
+/* (T3) Comment in random area (Canyon Ambush) bd0063.are */
+EXTEND_BOTTOM ~bd0063.bcs~ ~ajantisbg1/ajantissod/baf/bd0063_commenting.baf~
+EVALUATE_BUFFER
+
+/* (T3) Waiting to march out of BG city: make Ajantis comment while waiting to leave */
+EXTEND_TOP ~bd0101.bcs~ ~ajantisbg1/ajantissod/baf/bd0101_commenting_et.baf~
+  EVALUATE_BUFFER
+
+/* (T1) Ajantis is in front of Ducal Palace if told to wait - or Player marches onto the battle without recruiting NPCs in Baldur' Gate: Ajantis will be in front of the palace, too */
+EXTEND_BOTTOM ~bd0101.bcs~ ~ajantisbg1/ajantissod/baf/bd0101_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T3) In case Ajantis is in party the last night the PC slept in Ducal Palace - comment after Skie is gone */
+EXTEND_TOP ~bd0103.bcs~   ~ajantisbg1/ajantissod/baf/bd0103_commenting_et.baf~  
+  EVALUATE_BUFFER
+
+/* (T1) after Korlasz is defeated: PC is moved to Ducal Palace. Joined NPCs leave -> handled by game or by BG1 part */
+
+/* (T2) Ajantis visits PC in Prison */
+EXTEND_TOP ~bd0104.bcs~ ~ajantisbg1/ajantissod/baf/bd0104_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T3) Comment after killing the blind Wyrmlings in Cave (bd0113.bcs) */
+EXTEND_BOTTOM ~bd0113.bcs~ ~ajantisbg1/ajantissod/baf/bd0113_commenting.baf~
+EVALUATE_BUFFER
+
+/* (T3) Comment after killing the Rhinoceros Beetle in bd0114.are */
+EXTEND_BOTTOM ~bd0114.bcs~ ~ajantisbg1/ajantissod/baf/bd0114_commenting.baf~
+EVALUATE_BUFFER
+
+/* (T3) comment after defeating the first enemies in Korlasz' Crypt */
+EXTEND_TOP ~bd0120.bcs~ ~ajantisbg1/ajantissod/baf/bd0120_commenting_et.baf~
+  EVALUATE_BUFFER
+
+/* (T1) Ajantis moves to war camp in bd1000.are */
+EXTEND_TOP ~bd1000.bcs~ ~ajantisbg1/ajantissod/baf/bd1000_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T3) Reaction to Caelar's first appearance on bridge */
+EXTEND_BOTTOM ~bd1000.bcs~ ~ajantisbg1/ajantissod/baf/bd1000_commenting.baf~
+  EVALUATE_BUFFER
+
+/* (T1) Patch your NPC's "Move Camp" variable to the original game's script block (bd1000.bcs) */
+COPY_EXISTING ~bd1000.BCS~ ~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(SetGlobal("bd_move_npcs","bd1000",1)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~\1 SetGlobal("C#AjSoD_MoveCamp","MYAREA",1)~ 
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
+	END
+BUT_ONLY
+
+/* (T3) Battle at Bridgefort starts */
+EXTEND_BOTTOM ~bd2000.bcs~ ~ajantisbg1/ajantissod/baf/bd2000_commenting.baf~
+  EVALUATE_BUFFER
+
+/* (T3) PC gave Bridgefort Castle to the crusaders */
+EXTEND_TOP ~bd2000.bcs~ ~ajantisbg1/ajantissod/baf/bd2000_commenting_et.baf~
+  EVALUATE_BUFFER
+
+/* (T1) Last camp is in bd3000.are. In case Ajantis was never in party or kicked out to wait somewhere else, he will also be back in the (new) camp. */
+EXTEND_TOP ~bd3000.bcs~ ~ajantisbg1/ajantissod/baf/bd3000_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T1) Patch your NPC's "Move Camp" variable to the original game's script block (bd3000.bcs) */
+COPY_EXISTING ~bd3000.BCS~ ~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(SetGlobal("bd_move_npcs","bd3000",1)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~\1 SetGlobal("C#AjSoD_MoveCamp","MYAREA",1)~ 
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
+	END
+BUT_ONLY
+
+/* (T1) Patch your NPC's "Move Camp" variable to the original game's script block (bd3000.bcs)  to call back NPC when battle starts */
+COPY_EXISTING ~bd3000.BCS~ ~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(SetGlobal("bd_move_voghiln","bd3000",0)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~\1 SetGlobal("C#AjSoD_MoveCamp","MYAREA",0)~ 
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
+	END
+BUT_ONLY
+
+/* (T2) Ajantis comments on murder accusation */
+EXTEND_TOP ~bd4100.bcs~ ~ajantisbg1/ajantissod/baf/bd4100_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T3) Comments in bd4300.are (Bridgefort Castle interior and Avernus portal) */
+EXTEND_TOP ~bd4300.bcs~ ~ajantisbg1/ajantissod/baf/bd4300_commenting_et.baf~
+EVALUATE_BUFFER	
+
+/* (T3) Comment upon entering Avernus */
+EXTEND_BOTTOM ~bd4400.bcs~ ~ajantisbg1/ajantissod/baf/bd4400_commenting.baf~
+EVALUATE_BUFFER
+
+/* (T3) Comment in the Avernus Elevator */
+EXTEND_BOTTOM ~bd4601.bcs~ ~ajantisbg1/ajantissod/baf/bd4601_commenting.baf~
+EVALUATE_BUFFER
+
+/* (T3) Comment before entering the Cave with the blind Wyrmlings (bd5100aw.bcs) */
+EXTEND_BOTTOM ~bd5100aw.bcs~ ~ajantisbg1/ajantissod/baf/bd5100aw_commenting.baf~
+EVALUATE_BUFFER
+
+/* (T3) Comment when battle starts in Kanaglym (bd5300.are, Underground River) */
+EXTEND_BOTTOM ~bd5300.bcs~ ~ajantisbg1/ajantissod/baf/bd5300_commenting.baf~
+EVALUATE_BUFFER
+
+/* (T1) and the same for the next camp in bd7100.are: */
+EXTEND_BOTTOM ~bd7100.bcs~ ~ajantisbg1/ajantissod/baf/bd7100_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T1) Patch your NPC's "Move Camp" variable to the original game's script block (bd7100.bcs) */
+COPY_EXISTING ~bd7100.BCS~ ~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(SetGlobal("bd_move_npcs","bd7100",1)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~\1 SetGlobal("C#AjSoD_MoveCamp","MYAREA",1)~ 
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
+	END
+BUT_ONLY
+
+/* (T1) Move NPC to entrance of the Allied Siege Camp (Crusade battle) */
+EXTEND_BOTTOM ~bdasc3.bcs~ ~ajantisbg1/ajantissod/baf/bdasc3_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T3) Comment in Dragonspear Castle Exterior */
+EXTEND_BOTTOM ~bdbark01.bcs~ ~ajantisbg1/ajantissod/baf/bdbark01_commenting.baf~
+EVALUATE_BUFFER
+
+/* (T3) Move the PC in the cutscene of the plotting nobles in Three Old Kegs (bdc116d.bcs) */
+EXTEND_TOP ~bdc116d.bcs~ ~ajantisbg1/ajantissod/baf/bdc116d_patch.baf~
+EVALUATE_BUFFER
+
+/*  (T3) March out of BG city: make Ajantis move when the coalition start marching out of BG city */
+EXTEND_TOP ~bdcut08.bcs~ ~ajantisbg1/ajantissod/baf/bdcut08_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T1) Ajantis is kicked in hell dimension - teleport to last hell area bd4400.are */
+EXTEND_TOP ~bdcut58.bcs~ ~ajantisbg1/ajantissod/baf/bdcut58_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T1) Ajantis is kicked in hell dimension or was waiting elsewhere- teleport to Dragonspear Castle interior (bd4300.are) after PC returns from Avernus */
+EXTEND_TOP ~bdcut59b.bcs~ ~ajantisbg1/ajantissod/baf/bdcut59b_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T2) after PC gets arrested for murder: Ajantis leaves party */
+EXTEND_TOP ~bdcut61.bcs~ ~ajantisbg1/ajantissod/baf/bdcut61_patch.baf~
+  EVALUATE_BUFFER
+
+/* (T3) React in case crusaders in cages are killed by spikes (bd7230.are) */
+/* Patch bdlever2.bcs */
+COPY_EXISTING ~bdlever2.BCS~ ~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(Kill("bdkharmy")\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~SetGlobal("C#AjSoD_UsedSpikes","GLOBAL",1) \1~ 
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
+		SPRINT textToReplace ~\(ActionOverride(Player1,RemovePaladinHood())\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~SetGlobal("C#AjSoD_SpikeTrapFall","GLOBAL",1) \1~ 
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
+		SPRINT textToReplace ~\(ActionOverride(Player1,RemoveRangerHood())\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~SetGlobal("C#AjSoD_SpikeTrapFall","GLOBAL",1) \1~ 
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
+	END
+BUT_ONLY
+
+/* (T1) return to camp if kicked out */
+EXTEND_TOP ~bdparty.bcs~ ~ajantisbg1/ajantissod/baf/bdparty_patch.baf~
+  EVALUATE_BUFFER
+
+/* last romance dialogue before going down the portal */
+EXTEND_TOP ~bdport01.bcs~ ~ajantisbg1/ajantissod/baf/bdport01_patch_et.baf~
+  EVALUATE_BUFFER
+
+/* (T3) Comment on closed vault door (to portal) in Dragonspear Castle Interior */
+EXTEND_BOTTOM ~bdvaultd.bcs~ ~ajantisbg1/ajantissod/baf/bdvaultd_patch.baf~
+EVALUATE_BUFFER
+
+
+/* romance reactions: add reply options so PC can shut down SoD romances */
+COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/dialogue/sod_romancereactions.d~ 
+
+/* SoD "content" for romance case: Ajantis will write letters */
+
+/* first letter */
+  COPY ~ajantisbg1/ajantissod/item/C#AJBG11.itm~ ~override/C#AJBG11.itm~
+    SAY NAME1 @19
+    SAY NAME2 @19
+    SAY DESC @20
+
+/* first letter */
+EXTEND_BOTTOM ~BD0103.bcs~ ~ajantisbg1/ajantissod/baf/ajbg1_bd0103.baf~ EVALUATE_BUFFER
+
+/* sod quest: everything except Ajantis' script and dialogue */
+
+EXTEND_TOP ~bd3000.bcs~ ~ajantisbg1/ajantissod/baf/bd3000_quest.baf~
+  EVALUATE_BUFFER
+
+/* Rickon */
+COPY_EXISTING ~BDWTR50.cre~ ~override/c#ajsq01.cre~ EVALUATE_BUFFER 
+	SAY NAME1 @123 /* ~Rickon~ */
+	SAY NAME2 @123 /* ~Rickon~ */
+    WRITE_ASCII 0x280 ~c#ajsq01~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#ajsq01~ #8 // set dialogue file
+WRITE_EVALUATED_ASCII 0x248 ~c#ajsq01~ #8   // Override script
+WRITE_EVALUATED_ASCII 0x250 ~BDASC2~ #8   // Class script
+WRITE_EVALUATED_ASCII 0x268 ~BDSHOUT~ #8   // Default script
+
+/* Haiva */
+COPY_EXISTING ~BDWTR41.cre~ ~override/c#ajsq02.cre~ EVALUATE_BUFFER 
+	SAY NAME1 @124 /* ~Haiva~ */
+	SAY NAME2 @124 /* ~Haiva~ */
+    WRITE_ASCII 0x280 ~c#ajsq02~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#ajsq02~ #8 // set dialogue file
+WRITE_EVALUATED_ASCII 0x248 ~c#ajsq02~ #8   // Override script
+WRITE_EVALUATED_ASCII 0x250 ~BDASC2~ #8   // Class script
+WRITE_EVALUATED_ASCII 0x268 ~BDSHOUT~ #8   // Default script
+
+COPY ~ajantisbg1/ajantissod/item/c#ajsq01.itm~ ~override~
+SAY NAME1 @125 /* ~Gauntlets of Eyes of Truth~ */
+SAY NAME2 @125 /* ~Gauntlets of Eyes of Truth~ */
+SAY UNIDENTIFIED_DESC @126 /* ~These Gauntlets are normal gauntlets of weapon expertise, but some admirer of Babette Maelestrom enchanted them with an additional ability to grant infravision upon its wearer.
+
+STATISTICS:
+
+Equipped abilities:
+– THAC0: +1
+– Damage: +2
+– Infravision up to 120 ft.
+
+Weight: 1~ */
+SAY IDENTIFIED_DESC @126
+
+
+/* transition from BG1 to SoD: in case Ajantis was in party but dead, he will be silently revived - above */
+
+/* bddialog.2da patching - not necessary */
+/* (T1) EET compatibility: LAF ~EET_NPC_TRANSITION~ - not necessary */
+
+
+/* (T4) SoD bdbanter.2da - create if not present and patch with Ajantis's entry */
+ACTION_IF !(FILE_EXISTS_IN_GAME ~BDBANTER.2DA~) BEGIN
+  COPY ~ajantisbg1/ajantissod/2da/BDBANTER.2DA~ ~override~ 
+END
+ACTION_IF (FILE_EXISTS_IN_GAME ~BDBANTER.2DA~) BEGIN
+  APPEND ~bdbanter.2da~
+	~Ajantis 	BDAJANTB~ 
+  UNLESS ~Ajantis~        
+END
+
+/* (T4) Create NPCs' Banter files if not present */
+COPY ~ajantisbg1/ajantissod/2da/BDBANTER.2DA~ ~ajantisbg1/ajantissod/install~
+	COUNT_2DA_COLS cols
+	COUNT_2DA_ROWS cols rows
+	FOR ( row = 2 ; row < rows ; row = row + 1 ) BEGIN
+		READ_2DA_ENTRY %row% 0 2 npc_dv
+    	READ_2DA_ENTRY %row% 1 2 banterfile
+      	INNER_ACTION BEGIN
+		ACTION_IF NOT FILE_EXISTS_IN_GAME ~%banterfile%.dlg~ THEN BEGIN
+		<<<<<<<< .../banterfiles-inlined/%banterfile%.d
+		 BEGIN %banterfile%
+		>>>>>>>>
+		COMPILE EVALUATE_BUFFER ~.../banterfiles-inlined/%banterfile%.d~ 
+		END
+      	END
+	END
+BUT_ONLY
+
+/* (T4) Compile the banters in d-file */
+COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/dialogue/banter_sod.d~
+
+
+
+/* PIDs - last dialogue file */
+COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/dialogue/sod_pid.d~
+
+END //SoD
+
 
 
 //////////////////////////////////////////////////////
@@ -667,5 +1077,47 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~override/x#ajshld.itm~) @18 /* ~Ajantis'
 COPY_EXISTING ~x#ajshld.itm~ ~override~
 WRITE_ASCII 0x3a ~1SHLDAJ~ #8
 
+
+
+
+///////////////////////////////////////////////////////////////
+/* Crossmod */
+//////////////////////////////////////////////////////////////
+
+BEGIN @90004 /* ~Ajantis SoD NPC: Crossmod Content~ */  
+DESIGNATED 30 
+LABEL C#Ajantis_SoD_NPC-crossmod_content 
+/* make sure the component can only be installed if the main component is installed */
+REQUIRE_COMPONENT ~ajantisbg1.tp2~ ~0~  @90003 /* ~Ajantis NPC for SoD component needs to be installed.~ */
+
+/* Another fine Hell */
+WITH_TRA ~ajantisbg1/translations/%LANGUAGE%/crossmod_another_fine_hell.tra~ BEGIN
+  INCLUDE ~ajantisbg1/ajantissod/crossmod/crossmod_another_fine_hell.tpa~
+END
+
+/* BG1NPC: shield */
+ACTION_IF (FILE_EXISTS_IN_GAME ~override/x#ajshld.itm~) THEN BEGIN
+  EXTEND_BOTTOM ~BDAJANTI.bcs~ ~ajantisbg1/ajantissod/baf/bg1npc_shield.baf~ EVALUATE_BUFFER
+END
+
+
+/* The Boareskyr Bridge Scene */
+ACTION_IF (MOD_IS_INSTALLED ~c#sodboabri/setup-c#sodboabri.tp2~ ~0~) THEN BEGIN
+PRINT @90005 /* The Boareskyr Bridge Scene mod detected. */
+
+// Get state for c#stff24 %after_incident_at_bridge_10% (in c#sodboabri/dialogues/bhaalheritage_boareskyr_bridge.d)
+/* @76  = ~[FF Healer (female)]Everyone saw the sign of Bhaal painting itself on the ground around you. I fear what happened here will be the source of much speculation and rumors. Let us move on and leave this place.~
+*/
+OUTER_SET after_incident_at_bridge_10 = STATE_WHICH_SAYS 76 IN ~c#sodboabri/translations/autotra/%s/dialogues.tra~ FROM ~c#stff24~
+  COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/crossmod/crossmod_boareskyrbridge.d~ 
+     USING ~ajantisbg1/translations/%LANGUAGE%/game.TRA~
+END
+
+
+/* Imoen 4 Ever SoD component "Give Imoen dialogue content during chapters 8 to 12" */
+ACTION_IF FILE_EXISTS_IN_GAME ~c#imback.bcs~ THEN BEGIN
+PRINT @90002 /* ~Imoen 4 Ever SoD component "Give Imoen dialogue content during chapters 8 to 12" detected.~ */
+  COMPILE EVALUATE_BUFFER ~ajantisbg1/ajantissod/crossmod/crossmod_i4e_sod.d~
+END //I4E
 
 

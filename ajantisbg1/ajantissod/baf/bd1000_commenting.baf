@@ -1,0 +1,15 @@
+/* (T3) bd1000_commenting.baf: 
+Reaction to Caelar */
+
+IF
+	Global("bd_plot","global",170) //after talking to Bence, this will be at Global("bd_plot","global",175) 
+	Global("C#AjSoD_bd_mdd016b","bd1000",0)
+	!GlobalTimerNotExpired("bd_mdd016b_timer","bd1000") //timer to space the NPC comments
+	IsValidForPartyDialog("Ajantis")  
+	TriggerOverride("Ajantis",Detect(Player1))
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjSoD_bd_mdd016b","bd1000",1)
+		SetGlobalTimer("bd_mdd016b_timer","bd1000",ONE_ROUND)
+		DisplayStringHead("Ajantis",@106)  
+END

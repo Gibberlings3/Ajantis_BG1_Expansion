@@ -2,41 +2,7 @@
 @1   = ~Tutu detecte. Installation de la voie d amitie d'Ajantis...~
 @2   = ~BGT detecte. Installation de la voie d amitie d'Ajantis...~
 @3   = ~BG1 original detecte. Installation de la version BG1...~
-@4   = ~Bouclier moyen~
-@5   = ~Bouclier de la Famille Ilvastarr~
-@6   = ~C'est le bouclier de famille d'Ajantis. Il arbore le blason de la noble famille Ilvastarr d'Eauprofonde : un dragon vert métallique avec des yeux oranges sur un champ doré.~
-@7   = ~Un bouclier moyen se porte de la même manière qu'un petit bouclier. Son poids empêche le personnage d'utiliser la main dévolue au bouclier à quoi que ce soit d'autre que son maniement. Les boucliers moyens sont généralement faits de métal, mesurent trois à quatre pieds de diamètre, et peuvent être de n'importe quelle forme, de rond à carré en passant par la silhouette d'ailes de dragon déployées. Un bouclier médiéval typique ressemble à un triangle dont une pointe est tournée vers le bas.
 
-Ce bouclier en particulier porte le blason de la noble famille Ilvastarr d'Eauprofonde : un dragon vert métallique avec des yeux oranges sur un champ doré.
-
-PARAMETRES :
-
-Bonus de Classe d'Armure : 1
-Poids : 7
-Utilisable seulement par :
- Ajantis~
-@8   = ~Pendentif floral~
-@9   = ~Pendentif floral enchanté
-
-C'est le pendentif enchanté qu'Ajantis vous a donné.
-
-PARAMETRES :
-
-Peut lancer Protection contre le Mal sur le porteur (cinq charges).
-
-Ne peut pas être utilisé par :
- Créatures d'alignement mauvais~
-@10   = ~Pendentif floral enchanté
-
-C'est le pendentif enchanté qu'Ajantis vous a donné. Toutes les charges ont été utilisées.
-
-Ne peut pas être utilisé par :
- Créatures d'alignement mauvais~
-@11   = ~Bague de fiançailles d'Ajantis~
-@12   = ~Bague de fiançailles
-
-C'est la bague de fiançailles qu'Ajantis vous a donnée. Cet anneau est un trésor de famille Ilvastarr. Il est orné d'une manière plutôt simple, avec seulement quelques décorations élaborées autour d'une pierre bleu clair.~
-@13   = ~Douglas~
 
 @14   = ~Baldur's Gate Enhanced Edition detecte.~
 
@@ -48,30 +14,13 @@ C'est la bague de fiançailles qu'Ajantis vous a donnée. Cet anneau est un trésor
 @17   = ~This component is only available for the Enhanced Edition.~
 @18  = ~Ajantis' shield from BG1NPC Project not installed.~
 
-@19  = ~Letter from Ajantis~
-@20  = ~To Lady <CHARNAME> of Candlekeep, currently residing in Baldur's Gate City, Ducal Palace
-
-Beloved <CHARNAME>,
-now I am on the way to Waterdeep, to the home of my family as we have recently discussed. My heart is full of worry that my parents may not agree to our betrothal... Will I be able to help them see your charm, your imperturbable determination, your impressive talents? That you walk the path of good without the slightest doubt? I can only hope that they will see past the stigma of 'daughter of Bhaal' into my heart and the woman whom I see in you, beloved!
-
-Loving you, revering you, and missing you, your Ajantis.~
-@21  = ~Beloved <CHARNAME>, 
-Everything has turned out differently than I had planned. After I was detained on the way to Waterdeep by my martial duties (there are still many municipalities along the coast which suffer from the remaining bandit rabble), a message from the Order calling me to my brethren overtook me before the gates of the city! You know why - Baldur's Gate must be full of refugees by now, driven away by Caelar and her men. I am left with no other option than to send one short letter to my parents, and then go directly south. I have not spoken yet with my parents about your heritage, beloved. Forgive me!
-I am painstricken I left you when I did. What importance do my personal aims have in times like these? Now you are there and I am here, and I cannot come near you. Be Helms blessing with you!
-
-Loving you, revering you, and missing you, your Ajantis.~ 
-@22  = ~Beloved <CHARNAME>, 
-What news reached us from Baldur's Gate. You are marching against this warlord, love. Yes, I guess it would have to be you, heroine of Baldur's Gate! And still no possibility for me to return to you, the streets are full with refugees, and I am ordered to help here - we Order brethren are needed here, and much so. I am scared about your well-being, love. I know you are able to handle danger, probably better than I can. And you are in good hands, with the Flaming Fist now back to representing a force of good, and also Waterhavian forces supposed to help in the upcoming battle. How I wished to be one of them! To be at your side, to fight at your side - to protect you, as good as I could.
-
-The Order is in highest alert, we cannot let Caelar turn the land into a battle field! But even if we march, I will not be where you are, so many are the places where our help is needed. All I can do is wish you well, my love. May Helm protect you - may all the gods protect you, so I will have you back unharmed and in one piece!
-
-Loving you, revering you, and missing you, your Ajantis.~
-
 
 /* new for v16 */
 @23  = ~Transitions Mod detected...~
 //#57802 from SoD with "Athkatla" instead of "Waterdeep".
 @24  = ~Though it makes my heart heavy, I must soon return to Athkatla.~
+
+
 
 /* new for v17 */
 @25  = ~Ce mod n'est pas compatible avec ce jeu.~
@@ -79,6 +28,15 @@ Loving you, revering you, and missing you, your Ajantis.~
 
 /* new for v18 */
 @27  = ~EndlessBG1 detected: Installing crossmod...~
+
+/* new for v19 */
+@90000  = ~Detecting SoD: Installing Ajantis NPC for SoD~
+//@90001  = 
+@90002  = ~Imoen 4 Ever SoD component "Give Imoen dialogue content during chapters 8 to 12" detected.~
+@90003  = ~Ajantis NPC for SoD component needs to be installed.~
+@90004  = ~Ajantis SoD NPC: Crossmod Content~
+@90005  = ~The Boareskyr Bridge Scene mod detected.~
+@90006  = ~Another Fine Hell mod detected.~
 
 // WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"

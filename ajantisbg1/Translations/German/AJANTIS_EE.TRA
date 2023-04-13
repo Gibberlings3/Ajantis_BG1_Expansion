@@ -95,3 +95,8 @@
 @94   = ~Ich versuche nicht... (knirscht mit den Zähnen) Euer Sinn für "Humor" ist unerträglich!~
 @95   = ~Oh, *jetzt* habt Ihr mich beleidigt, Paladin.~
 @96   = ~Guten Tag, verehrte Dame, hier ist ein Brief für Euch.~
+
+/* new for v19 */
+@97   = ~[PC Reply]Finden wir eine Lösung für dieses Problem?~
+@98   = ~[PC Reply]Ihr habt Recht, ich habe nicht nachgedacht. Dorn, Ihr müsst wieder gehen.~
+@99   = ~[PC Reply]Dorn, in dem Fall entscheide ich mich für Ajantis. Ihr müsst wieder gehen.~

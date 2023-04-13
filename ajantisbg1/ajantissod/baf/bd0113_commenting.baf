@@ -1,0 +1,12 @@
+/* bd0113_commenting.baf */
+/* (T3) Comment after killing the blind Wyrmlings in Cave (bd0113.bcs) */
+IF
+	StateCheck("BDWYRMLI",STATE_REALLY_DEAD)  // Blind Albino Wyrmling
+	NumDeadGT("BDWYRML1",2)  // Blind Albino Wyrmling
+	GlobalLT("C#AjSoD_BD_SDD317_WYRMS","BD5100",3)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjSoD_BD_SDD317_WYRMS","BD5100",3)
+		ActionOverride("Ajantis",StartDialogNoSet(Player1))
+END

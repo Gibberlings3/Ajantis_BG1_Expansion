@@ -1,0 +1,25 @@
+/* bdcut59b_patch.baf */
+
+/* Global("C#AjSoD_kicked_bd4700","global",1): Ajantis was left standing in hell dimension - make sure he's coming back to the castle, too */
+IF
+  Global("C#AjSoD_kicked_bd4700","global",1) //set in BDAJANTI.dlg
+  !Dead("Ajantis")
+  !InParty("Ajantis")
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+    MoveGlobal("bd4300","Ajantis",[680.276]) 
+    ActionOverride("Ajantis",Face(S))
+END
+
+/* This moves Ajantis into the castle in case he was left standing somewhere else (not in hell dimension) because the other areas cannot be visited again (for plain SoD) */
+IF
+  Global("C#AjSoD_kicked_bd4700","global",0)
+  !Dead("Ajantis")
+  !InParty("Ajantis")
+THEN
+  RESPONSE #100
+  CutSceneId(Player1)
+  MoveGlobal("bd4300","Ajantis",[1613.1192]) 
+  ActionOverride("Ajantis",Face(SW))
+END

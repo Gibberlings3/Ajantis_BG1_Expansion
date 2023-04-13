@@ -1,0 +1,18 @@
+/* bd0120_commenting_et.baf */
+/* This is a comment in bd0120.are (Korlasz' Crypt) after defeating the first enemies.
+Some NPCs commment on the fight, some on the dungeon. */
+/* This will be patched to bd0120.bcs via EXTEND_TOP. Originally, only three NPCs will comment. Ajantis will comment in addition. */
+IF
+	Global("bd_plot","global",10)
+	GlobalGT("bd_mdd000te_ot","bd0120",0)
+	Global("C#AjSoD_bd_mdd000te_ot","bd0120",0) //this variable is similar to the ones used in SoD. I don't know what it means! :-)
+	IsValidForPartyDialogue("Ajantis")  
+THEN
+	RESPONSE #200
+		Continue()
+	RESPONSE #100
+		SetGlobal("C#AjSoD_bd_mdd000te_ot","bd0120",1)
+		DisplayStringHead("Ajantis",@107)
+		Wait(5)
+		Continue()
+END

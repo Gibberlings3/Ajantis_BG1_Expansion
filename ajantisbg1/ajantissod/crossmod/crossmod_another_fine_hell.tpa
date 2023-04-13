@@ -1,0 +1,182 @@
+/* Compatibility with Another fine Hell */
+/* Another Fine Hell */
+ACTION_IF FILE_EXISTS_IN_GAME ~c#afh3.bcs~ THEN BEGIN
+  PRINT @90006 /* ~Another Fine Hell detected */ 
+
+/* get state number for c#afhblt to add your NPC's comment after Duke Belt announced that the PC will have to leave the town:
+@77 = [Duke Belt]Sort your equipment and rest once again. Tomorrow morning we will take you out of the city unnoticed. */
+/* Your NPC would either say their farewells here (verbal only - leaving will be handled by bdcut61.bcs) or reassure that they will stay with the PC if they do */
+  OUTER_SET belt_interjection = STATE_WHICH_SAYS 77 IN ~c#anotherfinehell/translations/autotra/%s/anotherfinehell_sod.tra~ FROM ~c#afhblt~
+/* add interjection for NPC into Duke Belt's dialogue */
+<<<<<<<< .../add_c#ajsod_afh_interjection.d
+I_C_T c#afhblt %belt_interjection% C#AjSoD_c#afhblt_77
+== BDAJANTJ IF ~InParty("Ajantis") InMyArea("Ajantis")!StateCheck("Ajantis",CD_STATE_NOTVALID)
+!Global("X#AjantisRomanceActive","GLOBAL",2)~ THEN @0 /* ~It was an honor to cleanse this place from the threat Caelar and her crusade posed with you. Important tasks await you, but my task here is done. I have to return home to call on the Order of the Radiant Heart. I will report the happenings and your part in it. I, ahem, will also mention my part in it, and hope I will be found worthy to receive knighthood. If Helm will, we might meet again.~ */
+END
+>>>>>>>>
+COMPILE EVALUATE_BUFFER ~.../add_c#ajsod_afh_interjection.d~ 
+//USING ~%MOD_FOLDER%/tra/autotra/%s/game.tra~
+
+/* Romance case: if NPC is in party, they will give their romance dialogue now. If not, they will visit the PC later. (In the original game, this would be the visit inside the prison.) */
+/* Note: done like this, the addition enables other romances to play their final romance dialgue, too - all mod romances and one original game romance in case a multi romance tweak is used. */
+/* get state number for bdimoen to add the transaction for your NPC's romance case:
+@216 = ~[Imoen]You just rest here, <CHARNAME>, okay? I'll go and have a look around who of our old friends might still be around. This is important things we have to do!~ */
+  OUTER_SET imoen_transaction = STATE_WHICH_SAYS 216 IN ~c#anotherfinehell/translations/autotra/%s/anotherfinehell_sod.tra~ FROM ~bdimoen~
+/* add the transaction for your NPC's romance case */
+<<<<<<<< .../add_c#ajsod_afh_romance_transaction.d
+
+APPEND BDAJANTJ
+IF ~~ THEN c#ajsod_afh_romance_final
+SAY @1 /* ~At last, a moment of peace to talk to each other, <CHARNAME>. Skie - the poor girl is dead. What happened? Who would try to blame such a murder onto you?~ */
+++ @2 /* ~It's the same scheme Sarevok used. Seems there is a new foe in town.~ */ + c#ajsod_afh_romance_final_01
+++ @3 /* ~That's something we'll have to find out I guess.~ */ + c#ajsod_afh_romance_final_01
+++ @4 /* ~They were playing tricks with my mind for sure. I felt completely helpless.~ */ + c#ajsod_afh_romance_final_02
+++ @5 /* ~If I'd know that I wouldn't sit here like this.~ */ + c#ajsod_afh_romance_final_01
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_01
+SAY @6 /* ~This is bigger than us, <CHARNAME>. Politics, intrigues...~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_03
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_02
+SAY @7 /* ~We need more support in this, <CHARNAME>. Politics, intrigues...~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_03
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_03
+SAY @8 /* ~Everyone knows about your Bhaal heritage now, <CHARNAME>. You are no longer the hero of Baldur's Gate, you are also Sarevok's <PRO_BROTHERSISTER>, a child of the God of Murder. I will travel, no - ride on the fasted steed - I will *fly* to the Headquarters of my Order brethren, my love. I will call on them to see your true worth. We need their support now - not their distrust in your heritage.~ */
+++ @9 /* ~That sounds like a good idea. Do that.~ */ + c#ajsod_afh_romance_final_06
+++ @10 /* ~Come back to me as soon as you can!~ */ + c#ajsod_afh_romance_final_07
+++ @11 /* ~That's a stupid idea! Do you want to draw even more attention onto me?~ */ + c#ajsod_afh_romance_final_05
+++ @12 /* ~What, you are leaving me - now? I need you support right here, Ajantis, when sneaking out of the town tomorrow!~ */ + c#ajsod_afh_romance_final_04
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_04
+SAY @13 /* ~Your departure will be guided and protected by the Dukes.~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_06
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_05
+SAY @14 /* ~More than the Order is already watching you? I don't think that is possible, love.~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_06
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_06
+SAY @15 /* ~I want to be there when they will discuss about you and how to deal with you. I *need* to be there, to speak for you and have them see your true worth! This is crucial, my love. I need to go as soon as possible.~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_08
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_07
+SAY @16 /* ~I will. I promise.~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_06
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_08
+SAY @17 /* ~I will protect you - from dangers from both outside as well as inside you! When I will be back with you, I will take you in my arms again. I will hold you - and never let you go. Until then, may Helm protect you.~ */
+COPY_TRANS bdimoen %imoen_transaction%
+END
+END //APPEND
+
+EXTEND_BOTTOM bdimoen %imoen_transaction% 
+IF ~Global("X#AjantisRomanceActive","GLOBAL",2)~ THEN DO ~SetGlobal("C#AjSoD_RIdone","GLOBAL",2)~ EXTERN BDAJANTJ c#ajsod_afh_romance_final
+END
+>>>>>>>>
+COMPILE EVALUATE_BUFFER ~.../add_c#ajsod_afh_romance_transaction.d~ 
+//USING ~%MOD_FOLDER%/tra/%s/game.tra~
+
+/* If the active romancing NPC wasn't in party at the end (for whatever reason) they'll visit the PC in their chambers */
+/* insert script block into the script aftr Corwin's */
+/* Note: done like this, the addition enables other romances to play their final romance dialgue, too - all mod romances and one original game romance in case a multi romance tweak is used. */
+
+COPY_EXISTING ~c#afh3.BCS~ ~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(ActionOverride("bdschae2",ChangeAIScript("c#afhvis",OVERRIDE))\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~\1 
+END //we start with an END for the script block before
+
+IF
+	Global("chapter","global",13)
+	Global("C#AjSoD_RIdone","GLOBAL",0)
+	GlobalTimerExpired("C#AfH_jail_visitors_timer","c#afh3")  
+	Global("C#AfH_jail_visitors","c#afh3",4)  
+	Global("X#AjantisRomanceActive","GLOBAL",2)
+	!Dead("Ajantis")  
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjSoD_RIdone","GLOBAL",1)  
+		SetGlobalTimer("C#AfH_jail_visitors_timer","c#afh3",TEN_ROUNDS)  
+		MoveGlobal("c#afh3","Ajantis",[596.220]) 
+		ActionOverride("Ajantis",SetDialog("BDAJANTI")) 
+		ActionOverride("Ajantis",ChangeAIScript("c#afhvis",OVERRIDE))
+/* no END here that is wanted behavior */~ 
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
+	END
+BUT_ONLY
+
+/* We need to add the final romance dialogue to the kickout dialogue, as well. */
+<<<<<<<< .../add_c#ajsod_afh_romance_visit.d
+APPEND BDAJANTI
+IF WEIGHT #-1
+~AreaCheck("c#afh3")
+Global("C#AjSoD_RIdone","GLOBAL",1)~ THEN c#ajsod_afh_romance_final_visit
+SAY @1 /* ~At last, a moment of peace to talk to each other, <CHARNAME>. Skie - the poor girl is dead. What happened? Who would try to blame such a murder onto you?~ */
+++ @2 /* ~It's the same scheme Sarevok used. Seems there is a new foe in town.~ */ + c#ajsod_afh_romance_final_01
+++ @3 /* ~That's something we'll have to find out I guess.~ */ + c#ajsod_afh_romance_final_01
+++ @4 /* ~They were playing tricks with my mind for sure. I felt completely helpless.~ */ + c#ajsod_afh_romance_final_02
+++ @5 /* ~If I'd know that I wouldn't sit here like this.~ */ + c#ajsod_afh_romance_final_01
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_01
+SAY @6 /* ~This is bigger than us, <CHARNAME>. Politics, intrigues...~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_03
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_02
+SAY @7 /* ~We need more support in this, <CHARNAME>. Politics, intrigues...~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_03
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_03
+SAY @8 /* ~Everyone knows about your Bhaal heritage now, <CHARNAME>. You are no longer the hero of Baldur's Gate, you are also Sarevok's <PRO_BROTHERSISTER>, a child of the God of Murder. I will travel, no - ride on the fasted steed - I will *fly* to the Headquarters of my Order brethren, my love. I will call on them to see your true worth. We need their support now - not their distrust in your heritage.~ */
+++ @9 /* ~That sounds like a good idea. Do that.~ */ + c#ajsod_afh_romance_final_06
+++ @10 /* ~Come back to me as soon as you can!~ */ + c#ajsod_afh_romance_final_07
+++ @11 /* ~That's a stupid idea! Do you want to draw even more attention onto me?~ */ + c#ajsod_afh_romance_final_05
+++ @12 /* ~What, you are leaving me - now? I need you support right here, Ajantis, when sneaking out of the town tomorrow!~ */ + c#ajsod_afh_romance_final_04
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_04
+SAY @13 /* ~Your departure will be guided and protected by the Dukes.~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_06
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_05
+SAY @14 /* ~More than the Order is already watching you? I don't think that is possible, love.~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_06
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_06
+SAY @15 /* ~I want to be there when they will discuss about you and how to deal with you. I *need* to be there, to speak for you and have them see your true worth! This is crucial, my love. I need to go as soon as possible.~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_08
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_07
+SAY @16 /* ~I will. I promise.~ */
+IF ~~ THEN + c#ajsod_afh_romance_final_06
+END
+
+IF ~~ THEN c#ajsod_afh_romance_final_08
+SAY @17 /* ~I will protect you - from dangers from both outside as well as inside you! When I will be back with you, I will take you in my arms again. I will hold you - and never let you go. Until then, may Helm protect you.~ */
+IF ~~ THEN DO ~SetGlobal("C#AjSoD_RIdone","GLOBAL",2)~ EXIT
+END
+END //APPEND
+>>>>>>>>
+COMPILE EVALUATE_BUFFER ~.../add_c#ajsod_afh_romance_visit.d~ 
+//USING ~%MOD_FOLDER%/tra/autotra/%s/game.tra~
+
+END //Another Fine Hell

@@ -1,0 +1,27 @@
+/* bd1000_patch.baf */
+/* (T1) Ajantis moves to first war camp at Coast Way Crossing, bd1000.are */
+
+IF
+  Global("C#AjSoD_Spawn","GLOBAL",1)
+  Global("C#AjSoD_MoveCamp","MYAREA",0) //so it happens only once in this area
+  !Dead("Ajantis")
+  !InPartyAllowDead("Ajantis")
+THEN
+  RESPONSE #100
+    SetGlobal("C#AjSoD_MoveCamp","MYAREA",1)
+    MoveGlobal("bd1000","Ajantis",[855.3672]) 
+    ActionOverride("Ajantis",Face(N))
+    ReallyForceSpellDeadRES("bdrejuve","Ajantis")
+    ChangeEnemyAlly("Ajantis",NEUTRAL)
+    ChangeSpecifics("Ajantis",ALLIES)
+    ActionOverride("Ajantis",SetGlobal("bd_joined","locals",0))
+    ActionOverride("Ajantis",SetGlobal("bd_retreat","locals",0))
+    ActionOverride("Ajantis",SaveObjectLocation("LOCALS","bd_default_loc",Myself))
+    ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))
+    ActionOverride("Ajantis",ChangeAIScript("bdasc3",CLASS))
+    ActionOverride("Ajantis",ChangeAIScript("BDSHOUT",RACE))
+    ActionOverride("Ajantis",ChangeAIScript("BDFIGH01",GENERAL))
+    ActionOverride("Ajantis",ChangeAIScript("",DEFAULT))
+    ActionOverride("Ajantis",SetDialogue("BDAJANTI")) 
+    Continue()
+END

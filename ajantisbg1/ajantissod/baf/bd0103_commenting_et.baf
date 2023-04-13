@@ -1,0 +1,18 @@
+/* (T3) bd0103_commenting_et.baf
+after Skie woke the PC up on the day of departure */
+IF
+	Global("bd_plot","global",55)
+	Global("C#AjSoD_BD_PLAY_ONCE","BD0103",0)
+	Global("BD_OT_DELAY","BD0103",0)
+	IsValidForPartyDialog("Ajantis")  
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("BD_OT_DELAY","BD0103",1)
+		SetGlobal("C#AjSoD_BD_PLAY_ONCE","BD0103",1)
+		Wait(1)
+		DisplayStringWait("Ajantis",~Today we will march against the crusade!~)
+		SetGlobal("BD_OT_DELAY","BD0103",0)
+		SetInterrupt(TRUE)
+		Continue()
+END	

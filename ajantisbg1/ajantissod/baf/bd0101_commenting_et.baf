@@ -1,0 +1,26 @@
+/* (T3) bd0101_commenting_et.baf; this goes into bd0101.bcs */
+/* Waiting to march out of BG city: make Ajantis comment while waiting to leave */
+IF
+	Global("bd_mdd010z_ot","bd0101",1)
+	!GlobalTimerNotExpired("bd_mdd010z_ot_timer","bd0101")
+	InMyArea("Ajantis")  
+	!InParty("Ajantis")  
+THEN
+	RESPONSE #10
+		SetGlobalTimer("bd_mdd010z_ot_timer","bd0101",ONE_ROUND)
+		SetGlobal("bd_mdd010z_ot","bd0101",0)
+		DisplayStringHead("Ajantis",@102)
+		Continue()
+	RESPONSE #10
+		SetGlobalTimer("bd_mdd010z_ot_timer","bd0101",ONE_ROUND)
+		SetGlobal("bd_mdd010z_ot","bd0101",0)
+		DisplayStringHead("Ajantis",@103)
+		Continue()
+	RESPONSE #10
+		SetGlobalTimer("bd_mdd010z_ot_timer","bd0101",ONE_ROUND)
+		SetGlobal("bd_mdd010z_ot","bd0101",0)
+		DisplayStringHead("Ajantis",@104)
+		Continue()
+	RESPONSE #160
+		Continue()
+END

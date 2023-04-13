@@ -1,0 +1,36 @@
+/* (T2) bd4100_patch.baf. CHARNAME is accused of murder. Ajantis comments */
+
+/* first script block: Ajantis makes a comment in case of lower reputation and no active romance */
+IF
+	Global("bd_plot","global",591)
+	!GlobalTimerNotExpired("bd_mdd1352_ot_timer","bd4100") //this is SoD's own timer and makes sure all comments fire before the next scripted event kicks in 
+	Global("C#AjSoD_MurderAccusations","bd4100",0)
+	ReputationLT(Player1,10) 
+	!Global("X#AjantisRomanceActive","GLOBAL",2)
+	IsValidForPartyDialogue("Ajantis")  
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjSoD_MurderAccusations","bd4100",1)
+		SetGlobalTimer("bd_mdd1352_ot_timer","bd4100",ONE_ROUND) //set the timer according to how long the comment is. ONE_ROUND equals ONE_MINUTE = 6 seconds realtime. You can put in the amount of realtime seconds as a number directly.
+		DisplayStringHead("Ajantis",@114)  
+		Continue()
+END
+
+/* second script block: Ajantis makes a comment in case of higher reputation or active romance*/
+IF
+	Global("bd_plot","global",591)
+	!GlobalTimerNotExpired("bd_mdd1352_ot_timer","bd4100")
+	Global("C#AjSoD_MurderAccusations","bd4100",0)
+	OR(2)
+		!ReputationLT(Player1,10) 
+		Global("X#AjantisRomanceActive","GLOBAL",2)
+	IsValidForPartyDialogue("Ajantis")  
+THEN
+//	RESPONSE #100 //uncomment these 2 lines for the original SoD 50% chance
+//		SetGlobal("C#AjSoD_MurderAccusations","bd4100",1)
+	RESPONSE #100
+		SetGlobal("C#AjSoD_MurderAccusations","bd4100",1)
+		SetGlobalTimer("bd_mdd1352_ot_timer","bd4100",ONE_ROUND)
+		DisplayStringHead("Ajantis",@115)   
+		Continue()
+END
