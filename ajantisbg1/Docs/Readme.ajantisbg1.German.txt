@@ -133,6 +133,9 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 
 HISTORY
 
+Version 19.1:
+-Fixed install error for BG1NPC' Ajantis shield crossmod compatibility.
+
 Version 19:
 -Ajantis as a joinable NPC for SoD added.
 -Some more interjections in BG1.
