@@ -14,7 +14,7 @@ AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~19~ //
+VERSION ~19.1~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -1097,7 +1097,8 @@ END
 
 /* BG1NPC: shield */
 ACTION_IF (FILE_EXISTS_IN_GAME ~override/x#ajshld.itm~) THEN BEGIN
-  EXTEND_BOTTOM ~BDAJANTI.bcs~ ~ajantisbg1/ajantissod/baf/bg1npc_shield.baf~ EVALUATE_BUFFER
+PRINT @90007 /* ~BG1NPC detected.~ */
+  EXTEND_BOTTOM ~BDAJANTI.bcs~ ~ajantisbg1/ajantissod/crossmod/bg1npc_shield.baf~ EVALUATE_BUFFER
 END
 
 

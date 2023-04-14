@@ -32,3 +32,6 @@
 @90004  = ~Ajantis SoD NPC: Crossmod Content~
 @90005  = ~The Boareskyr Bridge Scene mod detected.~
 @90006  = ~Another Fine Hell mod detected.~
+
+/* new for v19.1 */
+@90007  = ~BG1NPC detected.~

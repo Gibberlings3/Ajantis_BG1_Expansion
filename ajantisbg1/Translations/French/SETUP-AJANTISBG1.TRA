@@ -38,6 +38,9 @@
 @90005  = ~The Boareskyr Bridge Scene mod detected.~
 @90006  = ~Another Fine Hell mod detected.~
 
+/* new for v19.1 */
+@90007  = ~BG1NPC detected.~
+
 // WeiDU prompts
 @-1000= "Le mod %TP2_FILE_NAME% contient"
 @-1001= "composants optionnels distincts.
