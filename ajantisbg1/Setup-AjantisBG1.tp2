@@ -14,7 +14,7 @@ AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~19.1~ //
+VERSION ~19.2~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -609,22 +609,42 @@ ACTION_IF (MOD_IS_INSTALLED ~c#endlessbg1.tp2~ ~14~) BEGIN
 /* make sure Ajantis' SoD override script is used in Korlasz' Crypt */
 COPY_EXISTING ~bd0120.bcs~ ~override~
 DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
-~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+		SPRINT textToReplace ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
 END
 BUT_ONLY_IF_IT_CHANGES
 COPY_EXISTING ~bd0130.bcs~ ~override~
 DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
-~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+		SPRINT textToReplace ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
 END
 BUT_ONLY_IF_IT_CHANGES
-COPY_EXISTING ~c#st2bc.bcs~ ~override~
+/* not necessary here: will be done later anyhow!
+COPY_EXISTING ~bdintro.bcs~ ~override~
 DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
-~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+		SPRINT textToReplace ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
 END
 BUT_ONLY_IF_IT_CHANGES
+*/
 
 END //~c#endlessbg1.tp2~ ~14~
 
@@ -673,8 +693,14 @@ WRITE_EVALUATED_ASCII 0x250 ~BDAJANTC~ #8   // Class script
 
 COPY_EXISTING ~bdintro.bcs~ ~override~
 DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
-~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+		SPRINT textToReplace ~\(ActionOverride("Ajantis",ChangeAIScript("",OVERRIDE))\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
 END
 BUT_ONLY_IF_IT_CHANGES
 
