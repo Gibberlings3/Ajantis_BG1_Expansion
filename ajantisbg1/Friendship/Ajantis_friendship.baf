@@ -22,7 +22,7 @@ THEN
  SetGlobal("C#AjantisRomanceMatch_possible","GLOBAL",1)
 END
 
-/* start friendship diaogues */
+/* start friendship dialogues */
 
 IF	%BGT_VAR%
   	InParty(Myself)
@@ -138,6 +138,26 @@ IF 	%BGT_VAR%
 	Global("Chapter","GLOBAL",%tutu_chapter_6%)
 	%AreaCheck_CandlekCellarL1%
 	Global("Arrested","GLOBAL",1)
+	Global("C#AjantisFPArrested","GLOBAL",0)
+THEN
+  RESPONSE #100
+  	SetGlobal("C#AjantisFPArrested","GLOBAL",1)
+END
+
+/* dialogue activation: framed. triggers in prison */
+/* dialogue activation */
+IF 	%BGT_VAR%
+	InParty(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	%InMyArea_Player1%
+	!See([ENEMY])
+	%CombatCounter_0%
+	!Global("X#AjantisRomanceActive","GLOBAL",1)
+	!Global("X#AjantisRomanceActive","GLOBAL",2)
+	AreaCheck("%SWBaldursGate_FlamingFistHQ_L1%")
+	Global("Chapter","GLOBAL",%tutu_chapter_7%)
+	Global("Captured","GLOBAL",1)  
 	Global("C#AjantisFPArrested","GLOBAL",0)
 THEN
   RESPONSE #100
