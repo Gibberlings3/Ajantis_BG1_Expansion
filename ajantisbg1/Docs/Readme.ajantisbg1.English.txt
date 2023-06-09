@@ -141,6 +141,7 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 HISTORY
 
 Version 19.2:
+-Fixed install error for French version.
 -Corrected patching of scripts for compatibility with EndlessBG1 (no notable bug for players).
 -Comment on being arrested should also fire if Candlekeep is visited early via Framed mod.
 
