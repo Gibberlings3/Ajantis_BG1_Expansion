@@ -44,7 +44,7 @@ For more information, please have a look at the files "BG1_Romance_Guide" (for t
 The file Translation_Guide.txt gives a list about which text lines are the same in BG1NPC Project, hopefully to save some translation time for the one mod or the other.
 
 
-Please note: For Ajantis to react to game events in SoD accordingly, the main component (Tracking System, 2nd component) of "Road to Discovery" needs to be installed.
+Please note: For Ajantis to react to game events in SoD accordingly, the main component (Tracking System, 2nd component) of "Road to Discovery" needs to be included in your install (independent of install order).
 
 
 INSTALLATION
@@ -74,7 +74,7 @@ COMPATIBILITY
 The Ajantis BG1 Expansion Mod is coded using WeiDU, and it does not overwrite any files. The BG1 version patches all area scripts. It should be compatible with most other (WeiDU) mods.
 Install order is after BG1NPC Project.
 
-Please note: For Ajantis to react to game events in SoD accordingly, the main component (Tracking System, 2nd component) of "Road to Discovery" needs to be installed.
+Please note: For Ajantis to react to game events in SoD accordingly, the main component (Tracking System, 2nd component) of "Road to Discovery" needs to be included in your install (independent of install order).
 
 
 I want to thank all who have helped me making this mod.
@@ -139,6 +139,12 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 =============================================================================
 
 HISTORY
+
+Version 19.3:
+-If BG1NPC Romance is installed, Friendship Path should not start for low rep.
+-Reaction to three FF on the road should not lead to a stutter.
+-Reaction to SoD romances should happen independent whether another ended already.
+-Rephrased note about compatibility with Road to Discovery in the readme: RtD does not have to be installed before Ajantis Expansion.
 
 Version 19.2:
 -Fixed install error for French version.

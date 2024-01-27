@@ -133,6 +133,12 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 
 HISTORY
 
+Version 19.3:
+-If BG1NPC Romance is installed, Friendship Path should not start for low rep.
+-Reaction to three FF on the road should not lead to a stutter.
+-Reaction to SoD romances should happen independent whether another ended already.
+-Rephrased note about compatibility with Road to Discovery in the readme: RtD does not have to be installed before Ajantis Expansion.
+
 Version 19.2:
 -Fixed install error for French version.
 -Corrected patching of scripts for compatibility with EndlessBG1 (no notable bug for players).
