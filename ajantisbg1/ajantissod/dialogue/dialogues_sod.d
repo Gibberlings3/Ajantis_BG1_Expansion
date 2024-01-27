@@ -101,7 +101,11 @@ END
 
 /* Romance conflict: Rasaad */
 
-IF ~Global("C#AjSoD_RomanceConflict","GLOBAL",1)~ THEN rasaad_conflict
+IF ~Global("C#AjSoD_RomanceConflict","GLOBAL",4)
+GlobalGT("bd_RasaadRomance4","GLOBAL",0) 
+Global("bd_rasaad_romanceactive","global",1)
+Global("bd_voghiln_romanceactive","global",0)
+Global("bd_corwin_romanceactive","global",0)~ THEN rasaad_conflict
 SAY @38 /* [Ajantis]My love, I noticed that Rasaad seems to have taken a great liking to you. I think he is... romantically interested in you, <CHARNAME>. */
 ++ @39 /* [PC Reply]I think you are right. I noticed it, too. */ + rasaad_conflict_01
 ++ @40 /* [PC Reply]I'm not sure. He's a good friend, Ajantis. */ + rasaad_conflict_01
@@ -133,7 +137,11 @@ END
 
 /* Romance conflict: VOGHILN */
 
-IF ~Global("C#AjSoD_RomanceConflict","GLOBAL",2)~ THEN voghiln_conflict
+IF ~Global("C#AjSoD_RomanceConflict","GLOBAL",4)
+GlobalGT("bd_VoghilnRomance3","GLOBAL",0)
+Global("bd_voghiln_romanceactive","global",1)
+Global("bd_corwin_romanceactive","global",0)
+Global("bd_rasaad_romanceactive","global",0)~ THEN voghiln_conflict
 SAY @48 /* [Ajantis]My love, I noticed that Voghiln seems to have taken a great liking to you. I think he is... romantically interested in you, <CHARNAME>. */
 ++ @39 /* [PC Reply]I think you are right. I noticed it, too. */ + voghiln_conflict_01
 ++ @49 /* [PC Reply]I'm not sure. He's fun to have around, Ajantis. */ + voghiln_conflict_01
@@ -164,7 +172,11 @@ END
 
 /* Romance conflict: Corwin */
 
-IF ~Global("C#AjSoD_RomanceConflict","GLOBAL",3)~ THEN corwin_conflict
+IF ~Global("C#AjSoD_RomanceConflict","GLOBAL",4)
+GlobalGT("bd_CorwinRomance3","GLOBAL",0)
+Global("bd_corwin_romanceactive","global",1)
+Global("bd_rasaad_romanceactive","global",0)
+Global("bd_voghiln_romanceactive","global",0)~ THEN corwin_conflict
 SAY @51 /* [Ajantis]My love, I noticed that Corwin seems to have taken a great liking to you. I think she is... romantically interested in you, <CHARNAME>. */
 ++ @39 /* [PC Reply]I think you are right. I noticed it, too. */ + corwin_conflict_01
 ++ @52 /* [PC Reply]I'm not sure. She's a good friend, Ajantis. */ + corwin_conflict_01
