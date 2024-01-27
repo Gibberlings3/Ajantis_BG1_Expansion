@@ -1,32 +1,10 @@
 /* APPEND ajantis.bcs for "friendship path". Universal baf for BG1 + Tutu/BGT */
 
-/* prevent friendship dialogues to start if PC could be romance material */
-/* failsave for low rep */
-IF %BGT_VAR%
- Global("C#AjantisRomanceMatch_possible","GLOBAL",0)
- Gender(Player1,FEMALE)
- OR(4)
- Alignment(Player1,MASK_GOOD)
- Alignment(Player1,LAWFUL_NEUTRAL)
- Alignment(Player1,NEUTRAL)
- Class(Player1,DRUID_ALL)
- OR(4)
- Race(Player1,HUMAN)
- Race(Player1,HALF_ELF)
- Race(Player1,HALFLING)
- Race(Player1,ELF)
- !HasItemEquiped("%tutu_var%BELT05",Player1) //girdle of gender bender
- !HasItemEquiped("%tutu_var%HELM02",Player1) //helmet of alignment
-THEN
- RESPONSE #100
- SetGlobal("C#AjantisRomanceMatch_possible","GLOBAL",1)
-END
-
 /* start friendship dialogues */
 
 IF	%BGT_VAR%
   	InParty(Myself)
-  	Global("X#AjantisRomanceMatch","GLOBAL",0)
+	Global("X#AjantisRomanceMatch","GLOBAL",0)
 	Global("C#AjantisRomanceMatch_possible","GLOBAL",0)
 	Global("C#AjanFP_NoPCTalks","GLOBAL",0)
 	Global("C#AjantisPCTalk","GLOBAL",0)
