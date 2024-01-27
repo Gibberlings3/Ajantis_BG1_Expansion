@@ -1,0 +1,22 @@
+/* prevent friendship dialogues to start if PC could be romance material */
+/* failsave for low rep */
+IF %BGT_VAR%
+ Global("C#AjantisRomanceMatch_possible","GLOBAL",0)
+ Gender(Player1,FEMALE)
+ ReputationLT(Player1,11)
+ OR(4)
+ Alignment(Player1,MASK_GOOD)
+ Alignment(Player1,LAWFUL_NEUTRAL)
+ Alignment(Player1,NEUTRAL)
+ Class(Player1,DRUID_ALL)
+ OR(4)
+ Race(Player1,HUMAN)
+ Race(Player1,HALF_ELF)
+ Race(Player1,HALFLING)
+ Race(Player1,ELF)
+ !HasItemEquiped("%tutu_var%BELT05",Player1) //girdle of gender bender
+ !HasItemEquiped("%tutu_var%HELM02",Player1) //helmet of alignment
+THEN
+ RESPONSE #100
+ SetGlobal("C#AjantisRomanceMatch_possible","GLOBAL",1)
+END

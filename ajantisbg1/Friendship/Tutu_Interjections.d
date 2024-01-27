@@ -45,7 +45,8 @@ I_C_T ~%tutu_var%FLAM5~ 0 C#AjantisFLAM5_0
 END
 
 APPEND ~%AJANTIS_JOINED%~
-IF ~Global("C#AjantisFLAM5_0","GLOBAL",2)~ THEN flam5_dead
+IF WEIGHT #-1
+~Global("C#AjantisFLAM5_0","GLOBAL",2)~ THEN flam5_dead
 SAY @17 /* ~What - what impertinent fools! Attacking the ones that are here to help their cause of stopping the bandit threat - attacking us, making us kill them! What an unfortunate cause of events.~ */
 IF ~~ THEN DO ~SetGlobal("C#AjantisFLAM5_0","GLOBAL",3)~EXIT
 END

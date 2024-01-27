@@ -14,7 +14,7 @@ AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~19.2~ //
+VERSION ~19.3~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -187,9 +187,16 @@ ACTION_IF GAME_IS ~tutu tutu_totsc bgt bgee eet~ THEN BEGIN
 
 EXTEND_TOP ~%tutu_var%ajantis.bcs~ ~AjantisBG1/Friendship/Ajantis_friendship.baf~
 EVALUATE_BUFFER 
-/* in case BG1NPC romance ends, Ajantis shouldn't start friendship track from the beginning */
-EXTEND_TOP ~%tutu_var%ajantis.bcs~ ~AjantisBG1/Friendship/Variable_transfer.baf~
+
+/* compatibility with BG1NPC romance */
+ACTION_IF (MOD_IS_INSTALLED ~bg1npc.tp2~ ~20~) OR (MOD_IS_INSTALLED ~bg1npc.tp2~ ~21~) OR(MOD_IS_INSTALLED ~bg1npc.tp2~ ~22~) OR(MOD_IS_INSTALLED ~bg1npc.tp2~ ~23~) OR(MOD_IS_INSTALLED ~bg1npc.tp2~ ~24~) BEGIN
+/* make sure friendshipt doesn't start because of too low rep for romance */
+	EXTEND_TOP ~%tutu_var%ajantis.bcs~ ~AjantisBG1/Friendship/Ajantis_friendship_bg1npcrom.baf~
 EVALUATE_BUFFER 
+/* in case BG1NPC romance ends, Ajantis shouldn't start friendship track from the beginning */
+	EXTEND_TOP ~%tutu_var%ajantis.bcs~ ~AjantisBG1/Friendship/Variable_transfer.baf~
+EVALUATE_BUFFER
+END 
 
 END
 

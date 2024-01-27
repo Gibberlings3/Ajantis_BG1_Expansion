@@ -364,8 +364,6 @@ IF
 	!Dead("Rasaad")
 	GlobalGT("bd_RasaadRomance4","GLOBAL",0) 
 	Global("bd_rasaad_romanceactive","global",1)
-	Global("bd_voghiln_romanceactive","global",0)
-	Global("bd_corwin_romanceactive","global",0)
 	OR(3)
 		!RealGlobalTimerNotExpired("C#AjSoD_DialogReactionTimer","GLOBAL")
 		GlobalGT("bd_plot","GLOBAL",349)
@@ -387,9 +385,7 @@ IF
 	Global("C#AjSoD_IgnoreRomances","GLOBAL",0)
 	!Dead("Voghiln")
 	GlobalGT("bd_VoghilnRomance3","GLOBAL",0) 
-	Global("bd_rasaad_romanceactive","global",0)
 	Global("bd_voghiln_romanceactive","global",1)
-	Global("bd_corwin_romanceactive","global",0)
 	OR(3)
 		!RealGlobalTimerNotExpired("C#AjSoD_DialogReactionTimer","GLOBAL")
 		GlobalGT("bd_plot","GLOBAL",349)
@@ -411,8 +407,6 @@ IF
 	Global("C#AjSoD_IgnoreRomances","GLOBAL",0)
 	!Dead("Corwin")
 	GlobalGT("bd_CorwinRomance3","GLOBAL",0) 
-	Global("bd_rasaad_romanceactive","global",0)
-	Global("bd_voghiln_romanceactive","global",0)
 	Global("bd_corwin_romanceactive","global",1)
 	OR(2)
 		!RealGlobalTimerNotExpired("C#AjSoD_DialogReactionTimer","GLOBAL")
@@ -424,7 +418,7 @@ THEN
 		SetGlobal("C#AjSoD_RomanceConflict","GLOBAL",3) 
 END
 
-/* trigger for all in-group romance conflicts */
+/* Romance conflicts - Corwin, Rasaad, or Voghiln */
 IF
 	InParty(Myself)
 	See(Player1)
@@ -436,6 +430,20 @@ IF
 		Global("C#AjSoD_RomanceConflict","GLOBAL",1) //Rasaad
 		Global("C#AjSoD_RomanceConflict","GLOBAL",2) //Voghlin
 		Global("C#AjSoD_RomanceConflict","GLOBAL",3) //Corwin
+THEN
+	RESPONSE #100
+		SetGlobal("C#AjSoD_RomanceConflict","GLOBAL",4) 
+END
+
+/* trigger for all in-group romance conflicts */
+IF
+	InParty(Myself)
+	See(Player1)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(PLAYER1,CD_STATE_NOTVALID)
+	Global("C#AjSoD_RomanceConflict","GLOBAL",4) //Any of them
 THEN
 	RESPONSE #100
 		RealSetGlobalTimer("C#AjSoD_DialogReactionTimer","GLOBAL",600)
