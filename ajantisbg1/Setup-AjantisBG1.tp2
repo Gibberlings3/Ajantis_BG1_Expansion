@@ -102,7 +102,7 @@ ALWAYS
     END
   END
 
- ACTION_DEFINE_ARRAY fl#noconvert BEGIN AJANTIS_MESSENGER.TRA AJANTIS_REPREACTIONS.TRA AJANTISBHAALLTS.TRA AJANTISBHAALLTS_RA1.TRA AJANTISDREAMLTS.TRA AJANTISINIFLIRTS_D.TRA AJANTISLTS.TRA AJANTISLTS_ADD.TRA AJANTISPC_PID.TRA AJANTISPCINIFLIRTS.TRA AJANTISROMNPC_TALKS.TRA ROM_INTERJECTIONS.TRA END
+ ACTION_DEFINE_ARRAY fl#noconvert BEGIN setup-osx setup-unix setup-win32 AJANTIS_MESSENGER.TRA AJANTIS_REPREACTIONS.TRA AJANTISBHAALLTS.TRA AJANTISBHAALLTS_RA1.TRA AJANTISDREAMLTS.TRA AJANTISINIFLIRTS_D.TRA AJANTISLTS.TRA AJANTISLTS_ADD.TRA AJANTISPC_PID.TRA AJANTISPCINIFLIRTS.TRA AJANTISROMNPC_TALKS.TRA ROM_INTERJECTIONS.TRA END
 
  ACTION_DEFINE_ARRAY fl#reload BEGIN game journal END
 
@@ -160,6 +160,11 @@ LANGUAGE ~Deutsch~
          ~AjantisBG1/Translations/German/game.tra~
          ~AjantisBG1/Translations/German/journal.tra~
 
+LANGUAGE ~Simplified Chinese~
+         ~schinese~
+         ~AjantisBG1/Translations/Schinese/Setup-%WEIDU_OS%.tra~
+         ~AjantisBG1/Translations/Schinese/game.tra~
+         ~AjantisBG1/Translations/Schinese/journal.tra~
 
 BEGIN @0
 REQUIRE_PREDICATE GAME_IS ~totsc tutu tutu_totsc bgt bgee eet~ @25
@@ -320,7 +325,7 @@ COPY_EXISTING_REGEXP GLOB ~^xan[0-9]*\.cre~ ~override~
    WRITE_ASCII SCRIPT_OVERRIDE ~xan~
    BUT_ONLY_IF_IT_CHANGES
 
-//patching der Skripte für die CombatCounter() simulation
+//patching der Skripte fÃ¼r die CombatCounter() simulation
 ACTION_IF (NOT FILE_CONTAINS_EVALUATED (~dplayer3.BCS~ ~Z!EnemyAlreadySeen~))
   THEN BEGIN
     EXTEND_BOTTOM ~dplayer3.BCS~ ~AjantisBG1/BG1_TriggerSimulations/combatcounter.baf~
@@ -1042,9 +1047,9 @@ SAY UNIDENTIFIED_DESC @126 /* ~These Gauntlets are normal gauntlets of weapon ex
 STATISTICS:
 
 Equipped abilities:
-– THAC0: +1
-– Damage: +2
-– Infravision up to 120 ft.
+Â– THAC0: +1
+Â– Damage: +2
+Â– Infravision up to 120 ft.
 
 Weight: 1~ */
 SAY IDENTIFIED_DESC @126
