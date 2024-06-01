@@ -1,37 +1,37 @@
-@0   = ~Installs Ajantis BG1 Expansion Modification~
-@1   = ~Tutu detected.~
-@2   = ~BGT detected.~
-@3   = ~Original BG1 detected. Installing BG1 version...~
+@0   = ~阿詹提斯BG1扩展包~
+@1   = ~检测到Tutu。~
+@2   = ~检测到BGT。~
+@3   = ~检测到原版BG1。正在安装BG1版本……~
 
 
-@14   = ~Baldur's Gate Enhanced Edition detected.~
+@14   = ~检测到BGEE。~
 
-@15   = ~Enhanced Edition Trilogy detected.~
+@15   = ~检测到EET。~
 
 /* new for v11 */
-@16   = ~Install the unique BG:EE BAM for Ajantis' Family Shield~
-@17   = ~This component is only available for the Enhanced Edition.~
-@18  = ~Ajantis' shield from BG1NPC Project not installed.~
+@16   = ~为阿詹提斯家族盾牌安装BG:EE独有的BAM~
+@17   = ~本组件仅支持EE版。~
+@18  = ~未安装来自BG1NPC Project MOD的阿詹提斯家族盾牌。~
 
 /* new for v16 */
-@23  = ~Transitions Mod detected...~
+@23  = ~检测到Transitions Mod……~
 
 
 /* new for v17 */
-@25  = ~This mod is not compatible with this game.~
-@26  = ~This mod needs to be installed before EET_End.~
+@25  = ~本MOD不支持此版本游戏。~
+@26  = ~本MOD需要在EET_End之前安装。~
 
 /* new for v18 */
-@27  = ~EndlessBG1 detected: Installing crossmod...~
+@27  = ~检测到EndlessBG1：正在安装跨MOD文件……~
 
 /* new for v19 */
-@90000  = ~Detecting SoD: Installing Ajantis NPC for SoD~
+@90000  = ~检测到龙矛围攻（SoD）：正在安装阿詹提斯龙矛围攻（SoD）可入队。~
 //@90001  = 
-@90002  = ~Imoen 4 Ever SoD component "Give Imoen dialogue content during chapters 8 to 12" detected.~
-@90003  = ~Ajantis NPC for SoD component needs to be installed.~
-@90004  = ~Ajantis SoD NPC: Crossmod Content~
-@90005  = ~The Boareskyr Bridge Scene mod detected.~
-@90006  = ~Another Fine Hell mod detected.~
+@90002  = ~检测到Imoen 4 Ever MOD的龙矛围攻（SoD）组件"Give Imoen dialogue content during chapters 8 to 12"。~
+@90003  = ~需要安装阿詹提斯龙矛围攻（SoD）可入队组件。~
+@90004  = ~阿詹提斯龙矛围攻（SoD）可入队：跨MOD内容~
+@90005  = ~检测到巴里斯凯尔桥过场动画。~
+@90006  = ~检测到Another Fine Hell mod。~
 
 /* new for v19.1 */
-@90007  = ~BG1NPC detected.~
+@90007  = ~检测到BG1NPC MOD。~
