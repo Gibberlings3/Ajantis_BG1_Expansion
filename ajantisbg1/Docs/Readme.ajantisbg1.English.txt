@@ -102,6 +102,7 @@ Translations:
 
 French by Galathée (of the d'Oghmatiques)
 German by the BG1NPC Übersetzungsteam (of Kerzenburgforum) & Leo
+Chinese (simplified) by yoshimo0417, setup.tra format corrections by MephistoSatanDevil
 
 
 TOOLS USED
@@ -139,6 +140,8 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 =============================================================================
 
 HISTORY
+Version 19.4:
+-Simplified Chinese translation added, by yoshimo0417, setup.tra format corrections by MephistoSatanDevil
 
 Version 19.3:
 -If BG1NPC Romance is installed, Friendship Path should not start for low rep.
