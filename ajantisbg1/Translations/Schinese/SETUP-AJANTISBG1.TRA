@@ -1,0 +1,37 @@
+@0   = ~Installs Ajantis BG1 Expansion Modification~
+@1   = ~Tutu detected.~
+@2   = ~BGT detected.~
+@3   = ~Original BG1 detected. Installing BG1 version...~
+
+
+@14   = ~Baldur's Gate Enhanced Edition detected.~
+
+@15   = ~Enhanced Edition Trilogy detected.~
+
+/* new for v11 */
+@16   = ~Install the unique BG:EE BAM for Ajantis' Family Shield~
+@17   = ~This component is only available for the Enhanced Edition.~
+@18  = ~Ajantis' shield from BG1NPC Project not installed.~
+
+/* new for v16 */
+@23  = ~Transitions Mod detected...~
+
+
+/* new for v17 */
+@25  = ~This mod is not compatible with this game.~
+@26  = ~This mod needs to be installed before EET_End.~
+
+/* new for v18 */
+@27  = ~EndlessBG1 detected: Installing crossmod...~
+
+/* new for v19 */
+@90000  = ~Detecting SoD: Installing Ajantis NPC for SoD~
+//@90001  = 
+@90002  = ~Imoen 4 Ever SoD component "Give Imoen dialogue content during chapters 8 to 12" detected.~
+@90003  = ~Ajantis NPC for SoD component needs to be installed.~
+@90004  = ~Ajantis SoD NPC: Crossmod Content~
+@90005  = ~The Boareskyr Bridge Scene mod detected.~
+@90006  = ~Another Fine Hell mod detected.~
+
+/* new for v19.1 */
+@90007  = ~BG1NPC detected.~
