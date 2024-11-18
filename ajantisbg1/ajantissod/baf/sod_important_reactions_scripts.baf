@@ -307,7 +307,7 @@ IF
 	OR(2)
   		GlobalGT("bd_mdd018","global",0) //Caelar told she is no child of Bhaal
 		GlobalGT("C#RtD_CaelarBhaalChild","GLOBAL",1) //from Road to Discovery
-	GlobalLT("C#AjSoD_CaelarNoBhaalChild","GLOBAL",3) 
+	GlobalLT("C#AjSoD_CaelarNoBhaalChild","GLOBAL",2) 
 THEN
 	RESPONSE #100
 		SetGlobal("C#AjSoD_CaelarNoBhaalChild","GLOBAL",1) 
