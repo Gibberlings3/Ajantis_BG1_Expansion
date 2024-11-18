@@ -134,7 +134,7 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 
 HISTORY
 
-Version 21:
+Version 20.1:
 -(SoD) Dialogue about Caelar should not loop.
 -(oBG1) Fixed install error.
 
