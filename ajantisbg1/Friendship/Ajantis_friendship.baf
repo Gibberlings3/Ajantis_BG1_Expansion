@@ -133,7 +133,7 @@ IF 	%BGT_VAR%
 	%CombatCounter_0%
 	!Global("X#AjantisRomanceActive","GLOBAL",1)
 	!Global("X#AjantisRomanceActive","GLOBAL",2)
-	AreaCheck("%SWBaldursGate_FlamingFistHQ_L1%")
+	%AreaCheck_SWBaldursGate_FlamingFistHQ_L1% 
 	Global("Chapter","GLOBAL",%tutu_chapter_7%)
 	Global("Captured","GLOBAL",1)  
 	Global("C#AjantisFPArrested","GLOBAL",0)
