@@ -31,6 +31,7 @@ OUTER_SPRINT
 ~AreaCheck_Undercity~ ~AreaCheck("BG0123")~
 OUTER_SPRINT
 ~AreaCheck_CandlekCellarL1~ ~AreaCheck("BG2615")~
+OUTER_SPRINT ~AreaCheck_SWBaldursGate_FlamingFistHQ_L1~ ~AreaCheck("BG0607")~
 OUTER_SPRINT ~AreaCheck_OUTDOOR~ ~AreaType(OUTDOOR)~
 OUTER_SPRINT ~CombatCounter_0~ ~CombatCounter(0)~
 OUTER_SPRINT ~InMyArea_Player1~ ~InMyArea(Player1)~

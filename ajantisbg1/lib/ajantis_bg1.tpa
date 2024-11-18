@@ -32,6 +32,7 @@ OUTER_SPRINT ~FP_TIMER_EXPIRED~ ~GlobalTimerExpired("C#AjantisFPTimer","GLOBAL")
 OUTER_SPRINT ~AreaCheck_Undercity~ ~Global("Z!EmulAreaCheck","GLOBAL",123)~
 OUTER_SPRINT
 ~AreaCheck_CandlekCellarL1~ ~Global("Z!EmulAreaCheck","GLOBAL",2615)~
+OUTER_SPRINT ~AreaCheck_SWBaldursGate_FlamingFistHQ_L1~ ~Global("Z!EmulAreaCheck","GLOBAL",607)~
 OUTER_SPRINT ~AreaCheck_OUTDOOR~ ~Global("Z!EmulAreaOutdoor","GLOBAL",1)~
 OUTER_SPRINT ~CombatCounter_0~ ~!GlobalTimerNotExpired("Z!EnemySeenPeriod60","GLOBAL")~
 OUTER_SPRINT ~InMyArea_Player1~ ~Detect(Player1)~
