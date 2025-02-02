@@ -1,13 +1,13 @@
 			Ajantis BG1 (Expansion Modification) 
-	für BG1 (mit oder ohne LdSk), BG1Tutu v4, EasyTutu, BGT, BG:EE und EET
+		       für BG1 (mit LdSk), BGT, BG:EE und EET
 					von jastey 
 
 
-Die Ajantis BG1 Erweiterungs-Modifikation ist für das normale BG1 (mit oder ohne der Legenden der Schwertküste), BG1Tutu v4, EasyTutu, BGT, BG:EE und EET. Es fügt zusätzlichen Inhalt (Dialoge) für den BioWare NHC Ajantis ein.
+Die Ajantis BG1 Erweiterungs-Modifikation ist für das normale BG1 (mit Legenden der Schwertküste), BGT, BG:EE und EET. Es fügt zusätzlichen Inhalt (Dialoge) für den BioWare NHC Ajantis ein.
 
-Für original BG1 (mit oder ohne LdSk) fügt die Modifikation einen Freundschaftspfad und die Romanze aus dem BG1NPC Projekt ein (leicht an die geringeren Möglichkeiten der BG1-Engine angepasst).
+Für original BG1 (mit LdSk) fügt die Modifikation einen Freundschaftspfad und die Romanze aus dem BG1NPC Projekt ein (leicht an die geringeren Möglichkeiten der BG1-Engine angepasst).
 
-Für Tutu, BGT, BG:EE und EET wird ein Freundschaftspfad und weiteren Inhalt für die BG1NPC Projekt Romanze eingefügt. Inhaltlich ist hier die Modifikation als Zusatz zum BG1NPC Projekt gedacht, daher sind (inhaltlich) wichtige Reaktionen von Ajantis zum Spielgeschehen hier nicht enthalten. Technisch kann die Modifikation aber auch ohne das BG1NPC Projekt installiert und gespielt werden.
+Für BGT, BG:EE und EET wird ein Freundschaftspfad und weiteren Inhalt für die BG1NPC Projekt Romanze eingefügt. Inhaltlich ist hier die Modifikation als Zusatz zum BG1NPC Projekt gedacht, daher sind (inhaltlich) wichtige Reaktionen von Ajantis zum Spielgeschehen hier nicht enthalten. Technisch kann die Modifikation aber auch ohne das BG1NPC Projekt installiert und gespielt werden.
 
 Für die EE fügt die Mod mehrere Banter mit Rasaad und einen mit Baeloth ein, sowie einen Rasaad-Ajantis Romanzenkonflikt.
 
@@ -31,15 +31,15 @@ Bitte beachten: damit Ajantis in SoD entsprechend auf die Spielereignisse reagie
 
 GENERAL INFORMATION 
 
-Romance (BG1 and BG1:TotSC only): if you want to start the player initiated dialogues (or flirts for the romance) with Ajantis, select him and press "k".
+Romance (BG1:TotSC only): if you want to start the player initiated dialogues (or flirts for the romance) with Ajantis, select him and press "k".
 
-Friendship path: the friendship dialogues are available to all PCs. However, if the PC matches the romance conditions, the romance will be triggered instead (for Tutu/BGT/BG:EE via BG1NPC Project only: component Ajantis romance has to be installed. If "Ajantis romance" from the BG1NPC project is not installed, the full friendship path will trigger instead). In this case, the friendship will resume only if the romance was interrupted no later than LT 10 ("Lady <CHARNAME>, may I share my thoughts with you?...") via player-initiated dialogue (PID) or by the PC comitting to another man. For Tutu/BGT with "Ajantis romance" installed, the PID option to end the romance will be available only after the third lovetalk (the one about Helm).
+Friendship path: the friendship dialogues are available to all PCs. However, if the PC matches the romance conditions, the romance will be triggered instead (for BGT/BG:EE/EET via BG1NPC Project only: component Ajantis romance has to be installed. If "Ajantis romance" from the BG1NPC project is not installed, the full friendship path will trigger instead). In this case, the friendship will resume only if the romance was interrupted no later than LT 10 ("Lady <CHARNAME>, may I share my thoughts with you?...") via player-initiated dialogue (PID) or by the PC comitting to another man. For Tutu/BGT with "Ajantis romance" installed, the PID option to end the romance will be available only after the third lovetalk (the one about Helm).
 
 Two of the dialogues that are triggered by game events of the friendship path will also trigger for an active romance.
 
-For BG1 and BG1:TotSC, this mod uses "Zed Nocear's BG1 Trigger-Simulations" (http://forums.gibberlings3.net/index.php?s=&showtopic=13858&view=findpost&p=119631). Many thanks to Zed Nocear for making these workarounds available, so that simulating numerous standard BGII triggers became possible!
+For BG1:TotSC, this mod uses "Zed Nocear's BG1 Trigger-Simulations" (http://forums.gibberlings3.net/index.php?s=&showtopic=13858&view=findpost&p=119631). Many thanks to Zed Nocear for making these workarounds available, so that simulating numerous standard BGII triggers became possible!
 
-WARNING for original BG1 and BG1:TotSC players: *after* installing the Ajantis for BG1 mod, do not import for your PC a character that was exported from a modded game using Zed Nocear's BG1 trigger simulations, as it would break the "party rested" detection for the morning dialogue(s).
+WARNING for original BG1:TotSC players: *after* installing the Ajantis for BG1 mod, do not import for your PC a character that was exported from a modded game using Zed Nocear's BG1 trigger simulations, as it would break the "party rested" detection for the morning dialogue(s).
 
 For more information, please have a look at the files "BG1_Romance_Guide" (for the BG1 romance) and "Friendship Path Guide" (for the friendship path); both files are located in the folder "AjantisBG1/install".
 
@@ -133,6 +133,11 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 =============================================================================
 
 HISTORY
+
+Version 21:
+-update Chinese translation and adjust file construction, by yoshimo0417.
+-(oBG1:TotSC) Fixed install errors for real.
+-The mod is no longer officially supported for oBG1 (without TotSC) and Tutu.
 
 Version 20.1:
 -(SoD) Dialogue about Caelar should not loop.
