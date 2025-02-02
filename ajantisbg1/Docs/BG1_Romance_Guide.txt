@@ -8,6 +8,7 @@ There is no music theme for the original BG1 romance yet.
 
 ROMANCE REQUIREMENTS:
 
+Gender: female PC
 Alignments: all good alignments, Lawful neutral, or Neutral 
 Classes: all classes except thieves. Druids are included, even if they have a different alignment than the above-mentioned. 
 Reputation: has to be 11 or above for the romance to initiate; has to be above 15 in order for the romance to progress after LT 14.

@@ -4,17 +4,17 @@
 // Author: jastey
 
 
-//vanilla BG1 version, Tutu and BGT version. Automatic identification.
+//original BG1:TotSC, BGT, BG:EE, EET. Automatic game detection upon install.
 
-//For BG1, this mod adds the BG1NPC Ajantis romance, and a friendship path
-//For Tutu, BGT, BG:EE, and EET this mod adds the Ajantis friendship path and some more romance reactions in addition to the BG1NPC Project
+//For BG1:TotSC, this mod adds the BG1NPC Ajantis romance, and a friendship path
+//For BGT, BG:EE, and EET this mod adds the Ajantis friendship path and some more romance reactions in addition to the BG1NPC Project
 
 BACKUP ~AjantisBG1/Backup~
 AUTHOR ~Please post at G3 or Kerzenburgforum, refer to readme.~
 
 //MODDER
 
-VERSION ~20.1~ //
+VERSION ~21~ //
 
 README ~AjantisBG1/docs/readme.ajantisbg1.%LANGUAGE%.txt~ ~AjantisBG1/docs/readme.ajantisbg1.english.txt~
 
@@ -663,18 +663,18 @@ END //~c#endlessbg1.tp2~ ~14~
 END /* EndlessBG1 */
 
 /* transition from BG1 to SoD: in case Ajantis was in party but dead, he will be silently revived */
-
-/* only install this if it isn't installed already */
-ACTION_IF NOT (MOD_IS_INSTALLED ~ajantisbg2/setup-ajantisbg2.TP2~ ~0~) THEN BEGIN
-  EXTEND_TOP ~BD0103.bcs~ ~AjantisBG1/ee/sod_transition.baf~ 
-EVALUATE_BUFFER
-/* this is for the case that the player skips SoD in EET */
-  ACTION_IF GAME_IS ~eet~ THEN BEGIN
-    EXTEND_TOP ~K#TELBGT.bcs~ ~AjantisBG1/ee/eet_transition.baf~ 
-EVALUATE_BUFFER
+ACTION_IF (GAME_INCLUDES ~sod~) THEN BEGIN
+  /* only install this if it isn't installed already */
+  ACTION_IF NOT (MOD_IS_INSTALLED ~ajantisbg2/setup-ajantisbg2.TP2~ ~0~) THEN BEGIN
+    EXTEND_TOP ~BD0103.bcs~ ~AjantisBG1/ee/sod_transition.baf~ 
+  EVALUATE_BUFFER
+  /* this is for the case that the player skips SoD in EET */
+    ACTION_IF GAME_IS ~eet~ THEN BEGIN
+      EXTEND_TOP ~K#TELBGT.bcs~ ~AjantisBG1/ee/eet_transition.baf~ 
+  EVALUATE_BUFFER
+    END
   END
 END
-
 
 ///////////////////////////////////////////////////////////
 // ~Ajantis NPC for SoD~ 
@@ -1127,6 +1127,7 @@ DESIGNATED 30
 LABEL C#Ajantis_SoD_NPC-crossmod_content 
 /* make sure the component can only be installed if the main component is installed */
 REQUIRE_COMPONENT ~ajantisbg1.tp2~ ~0~  @90003 /* ~Ajantis NPC for SoD component needs to be installed.~ */
+REQUIRE_PREDICATE !(GAME_IS ~totsc~) @25
 
 /* Another fine Hell */
 WITH_TRA ~ajantisbg1/translations/%LANGUAGE%/crossmod_another_fine_hell.tra~ BEGIN
