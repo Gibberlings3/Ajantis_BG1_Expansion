@@ -1,40 +1,40 @@
 /* ALL numbers up to @27 not used here are used in setup.tra! */
 @4   = ~Mittlerer Schild~
 @5   = ~Familienschild der Ilvastarrs~
-@6   = ~Dies ist Ajantis' Familienschild. Er zeigt das Hauswappen der adligen Familie Ilvastarr von Tiefwasser: einen metallgrÃ¼nen Drachen mit orangenen Augen auf goldenem Grund.~
-@7   = ~Der mittlere Schild wird auf dieselbe Weise getragen wie der kleine Schild, ist jedoch so schwer, dass mit der Schildhand keine anderen Aktionen ausgefÃ¼hrt werden kann. Mittlere Schilde bestehen fÃ¼r gewÃ¶hnlich aus Metall und haben einen Durchmesser von 90 bis 120 cm. Es gibt sie in zahlreichen Formen; von rund Ã¼ber quadratisch bis zur Form der gespreizten DrachenflÃ¼gel. Ein typischer mittlerer Schild ist dreieckig, wobei eine Spitze nach unten zeigt.
+@6   = ~Dies ist Ajantis' Familienschild. Er zeigt das Hauswappen der adligen Familie Ilvastarr von Tiefwasser: einen metallgrünen Drachen mit orangenen Augen auf goldenem Grund.~
+@7   = ~Der mittlere Schild wird auf dieselbe Weise getragen wie der kleine Schild, ist jedoch so schwer, dass mit der Schildhand keine anderen Aktionen ausgeführt werden kann. Mittlere Schilde bestehen für gewöhnlich aus Metall und haben einen Durchmesser von 90 bis 120 cm. Es gibt sie in zahlreichen Formen; von rund über quadratisch bis zur Form der gespreizten Drachenflügel. Ein typischer mittlerer Schild ist dreieckig, wobei eine Spitze nach unten zeigt.
 
-Dieser spezielle Schild zeigt das Hauswappen der adligen Familie Ilvastarr von Tiefwasser: einen metallgrÃ¼nen Drachen mit orangenen Augen auf goldenem Grund.
+Dieser spezielle Schild zeigt das Hauswappen der adligen Familie Ilvastarr von Tiefwasser: einen metallgrünen Drachen mit orangenen Augen auf goldenem Grund.
 
 EIGENSCHAFTEN:
 
-GewÃ¤hrt einen Fertigkeitspunkt im Kampf "Schwert und Schild" wenn getragen.
+Gewährt einen Fertigkeitspunkt im Kampf "Schwert und Schild" wenn getragen.
 
 RK-Bonus: -1
 Gewicht: 7
 Kann nur verwendet werden von:
  Ajantis~
-@8   = ~BlumenanhÃ¤nger~
-@9   = ~Verzauberter BlumenanhÃ¤nger
+@8   = ~Blumenanhänger~
+@9   = ~Verzauberter Blumenanhänger
 
-Dies ist der verzauberte BlumenanhÃ¤nger, den Ajantis Euch gab.
+Dies ist der verzauberte Blumenanhänger, den Ajantis Euch gab.
 
 EIGENSCHAFTEN:
 
-Kann einmal tÃ¤glich Schutz vor BÃ¶sem auf den Anwender wirken (fÃ¼nf Ladungen).
+Kann einmal täglich Schutz vor Bösem auf den Anwender wirken (fünf Ladungen).
 
 Kann nicht verwendet werden von:
- Wesen bÃ¶ser Gesinnung~
-@10   = ~Verzauberter BlumenanhÃ¤nger
+ Wesen böser Gesinnung~
+@10   = ~Verzauberter Blumenanhänger
 
-Dies ist der verzauberte BlumenanhÃ¤nger, den Ajantis Euch gab. Seine Ladungen sind verbraucht.
+Dies ist der verzauberte Blumenanhänger, den Ajantis Euch gab. Seine Ladungen sind verbraucht.
 
 Kann nicht verwendet werden von:
- Wesen bÃ¶ser Gesinnung~
+ Wesen böser Gesinnung~
 @11   = ~Ajantis' Verlobungsring~
 @12   = ~Verlobungsring
 
-Dies ist der Verlobungsring, den Ajantis Euch Ã¼berreicht hat. Der Ring ist ein altes FamilienerbstÃ¼ck der Ilvastarrs. Er ist schlicht gehalten, mit nur wenig aufwendigen Verzierungen rund um einen hellblauen Edelstein.~
+Dies ist der Verlobungsring, den Ajantis Euch überreicht hat. Der Ring ist ein altes Familienerbstück der Ilvastarrs. Er ist schlicht gehalten, mit nur wenig aufwendigen Verzierungen rund um einen hellblauen Edelstein.~
 @13   = ~Douglas~
 
 
@@ -42,7 +42,7 @@ Dies ist der Verlobungsring, den Ajantis Euch Ã¼berreicht hat. Der Ring ist ein 
 @20  = ~An <CHARNAME> von Kerzenburg, momentan in Baldurs Tor, Herzogspalast
 
 Liebste <CHARNAME>,
-Nun bin ich also auf dem Weg nach Tiefwasser, Liebste <CHARNAME>, zum Haus meiner Familie, wie wir es vor kurzem besprochen haben. Mein Herz ist voller Sorge, dass sie unserem VerlÃ¶bnis nicht zustimmen kÃ¶nnten... Werde ich ihnen Euer bezauberndes Wesen, Eure unbeirrbare Entschlossenheit, Eure beeindruckenden FÃ¤higkeiten erklÃ¤ren kÃ¶nnen? Dass Ihr ohne zu zweifeln den Pfad des Guten geht? Ich kann nur hoffen, dass sie Ã¼ber das Stigma "Tochter von Bhaal" durch mein Herz die Frau sehen werden, die ich in Euch sehe, Liebste!
+Nun bin ich also auf dem Weg nach Tiefwasser, Liebste <CHARNAME>, zum Haus meiner Familie, wie wir es vor kurzem besprochen haben. Mein Herz ist voller Sorge, dass sie unserem Verlöbnis nicht zustimmen könnten... Werde ich ihnen Euer bezauberndes Wesen, Eure unbeirrbare Entschlossenheit, Eure beeindruckenden Fähigkeiten erklären können? Dass Ihr ohne zu zweifeln den Pfad des Guten geht? Ich kann nur hoffen, dass sie über das Stigma "Tochter von Bhaal" durch mein Herz die Frau sehen werden, die ich in Euch sehe, Liebste!
 
 Euer Euch liebender, Euch verehrender und Euch vermissender Ajantis.~
 //@21  = 
@@ -50,11 +50,11 @@ Euer Euch liebender, Euch verehrender und Euch vermissender Ajantis.~
 
 /* SoD lines */
 //#57802 from SoD with "Athkatla" instead of "Waterdeep".
-@24  = ~Auch wenn es mein Herz schwer macht, muss ich bald nach Atkatla zurÃ¼ckkehren.~
+@24  = ~Obwohl es mich zutiefst betrübt, muss ich bald nach Atkatla zurückkehren.~
 
 
 /* SoD lines */
-@100 = ~Eine solche gÃ¶ttliche Macht, die uns von den FÃ¼ÃŸen reiÃŸt - Helm, hab Erbarmen!~
+@100 = ~Eine solche göttliche Macht, die uns von den Füßen reißt - Helm, hab Erbarmen!~
 @101 = ~This place is ideal for an ambush. We should be vigilant.~
 @102 = ~Duty is calling us.~
 @103 = ~We will march on to bring justice to the crusaders!~
@@ -85,9 +85,9 @@ Euer Euch liebender, Euch verehrender und Euch vermissender Ajantis.~
 STATISTICS:
 
 Equipped abilities:
-â€“ THAC0: +1
-â€“ Damage: +2
-â€“ Infravision up to 120 ft.
+– THAC0: +1
+– Damage: +2
+– Infravision up to 120 ft.
 
 Weight: 1~
-@127 = ~Ich werde das nicht lange tragen, <CHARNAME>. Dieser... "Helm" ist eine Schande fÃ¼r den Stolz eines jeden fÃ¤higen KÃ¤mpfers.~
+@127 = ~Ich werde das nicht lange tragen, <CHARNAME>. Dieser... "Helm" ist eine Schande für den Stolz eines jeden fähigen Kämpfers.~
