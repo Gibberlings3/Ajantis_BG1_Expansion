@@ -110,7 +110,7 @@ ALWAYS
     INT_VAR
       infer_charsets = 1
     STR_VAR
-      tra_path = EVAL ~AjantisBG1\Translations\~
+      tra_path = EVAL ~AjantisBG1/Translations/~
       noconvert_array = fl#noconvert
       reload_array = fl#reload
   END
