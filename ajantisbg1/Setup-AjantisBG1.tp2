@@ -51,7 +51,6 @@ ALWAYS
   OUTER_SPRINT ~46139~ ~46139~
   OUTER_SPRINT ~46140~ ~46140~
   OUTER_SPRINT ~46145~ ~46145~
-  OUTER_SPRINT ~57802~ ~57802~
         PRINT @14
  END
 
@@ -63,7 +62,6 @@ ALWAYS
   OUTER_SPRINT ~46139~ ~246139~
   OUTER_SPRINT ~46140~ ~246140~
   OUTER_SPRINT ~46145~ ~246145~
-  OUTER_SPRINT ~57802~ ~257802~
         PRINT @15
  END
 
@@ -725,7 +723,7 @@ EXTEND_TOP ~BD0130.bcs~ ~AjantisBG1/ee/ajbg1_bd0120_rom.baf~ EVALUATE_BUFFER
 
 /* correct his farewell DisplayStringHead: "Athkatla" instead of "Waterdeep". There is no Order of the Radiant Heart in Waterdeep.
 #57802  // Though it makes my heart heavy, I must soon return to Waterdeep. */
-STRING_SET %57802% @24 /* ~Though it makes my heart heavy, I must soon return to Athkatla.~ */
+STRING_SET_EVALUATE (GAME_IS ~eet~ ? 257802 : 57802) @24 /* ~Though it makes my heart heavy, I must soon return to Athkatla.~ */
 
 EXTEND_TOP ~BDAJANTI.bcs~ ~AjantisBG1/BG1_end/c#ajan_bg1end_sod.baf~
 EVALUATE_BUFFER 
