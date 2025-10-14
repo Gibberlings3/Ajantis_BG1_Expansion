@@ -141,6 +141,12 @@ REDISTRIBUTION NOTE: The Ajantis BG1 Expansion Mod was created to be freely enjo
 
 HISTORY
 
+Version 22:
+-change backslashes to slashes in path names in tp2 (fix text encoding errors on EE for Linux).
+-Set correct index of TLK file in EET.
+-German: fix wrong text encoding.
+
+
 Version 21:
 -update Chinese translation and adjust file construction, by yoshimo0417.
 -(oBG1:TotSC) Fixed install errors for real.
