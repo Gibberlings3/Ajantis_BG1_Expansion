@@ -143,7 +143,8 @@ HISTORY
 
 Version 22:
 -change backslashes to slashes in path names in tp2 (fix text encoding errors on EE for Linux).
--German: fix wrong encoding for game.tra.
+-Set correct index of TLK file in EET.
+-German: fix wrong text encoding.
 
 
 Version 21:
