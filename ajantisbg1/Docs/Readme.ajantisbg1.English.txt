@@ -144,6 +144,7 @@ HISTORY
 Version 22:
 -change backslashes to slashes in path names in tp2 (fix text encoding errors on EE for Linux).
 -Set correct index of TLK file in EET.
+-typo corrections for Simplified Chinese.
 -German: fix wrong text encoding.
 
 
